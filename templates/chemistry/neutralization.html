@@ -1,0 +1,579 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Neutralization Calculator | Free Calculator to find Capacitance</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  a and d and c %}
+<script>
+    $(document).ready(function () {
+        $("#hassle").click();
+    });
+
+</script>
+
+<!--<button type="button" hidden id="hassle" onclick="location.href='#'">ans1</button>-->
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Neutralization Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="{% url 'neutralization' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Choose Option</span>
+                    </div>
+
+
+                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"
+                            id="inlineFormInputGroup" onchange="this.form.submit()">
+
+                        {% if given == 'form1' %}
+                        <option value='form1' selected="selected">Find Normality | Using weight of solute & volume of
+                            solute & equivalent weight
+                        </option>
+                        {% else %}
+                        <option value='form1'>Find Normality | Using weight of solute & volume of solute & equivalent
+                            weight
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form2' %}
+                        <option value='form2' selected="selected">Find equivalent weight | Using weight of solute &
+                            volume of solute & normality
+                        </option>
+                        {% else %}
+                        <option value='form2'>Find equivalent weight | Using weight of solute & volume of solute &
+                            normality
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form3' %}
+                        <option value='form3' selected="selected">Find volume of solvent | Using wt. of solute &
+                            equivalent weight & normality
+                        </option>
+                        {% else %}
+                        <option value='form3'>Find volume of solvent | Using weight of solute & equivalent weight &
+                            normality
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form4' %}
+                        <option value='form4' selected="selected">Find weight of solute | Using volume of solvent &
+                            equivalent weight & normality
+                        </option>
+                        {% else %}
+                        <option value='form4'>Find weight of solute | Using volume of solvent & equivalent weight &
+                            normality
+                        </option>
+                        {% endif %}
+                    </select>
+                </div>
+
+                {% if given != "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Euivalent weight</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="eq_wt" name="eq_wt" value="{{eq_wt}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                    <select class="select form-control" id="inlineFormInputGroup" name="eq_wt_op">
+
+                        {% if eq_wt_op == 'g' %}
+                        <option value="g" selected="selected">gram (g)</option>
+                        {% else %}
+                        <option value="g">gram (g)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'μg' %}
+                        <option value="μg" selected="selected">microgram (μg) (</option>
+                        {% else %}
+                        <option value="μg">microgram (μg)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'mg' %}
+                        <option value="mg" selected="selected">miligram (mg)</option>
+                        {% else %}
+                        <option value="mg">miligram (mg)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'kg' %}
+                        <option value="kg" selected="selected">kilogram (kg)</option>
+                        {% else %}
+                        <option value="kg">kilogram (kg)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'dg' %}
+                        <option value="dg" selected="selected">decagram (dg)</option>
+                        {% else %}
+                        <option value="dg">decagram (dg)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'lb' %}
+                        <option value="lb" selected="selected">pounds (lb)</option>
+                        {% else %}
+                        <option value="lb">pounds (lb)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'oz' %}
+                        <option value="oz" selected="selected">ounces (oz)</option>
+                        {% else %}
+                        <option value="oz">ounces (oz)</option>
+                        {% endif %}
+
+                    </select>
+                </div>
+                {% endif %}
+
+                {% if given != "form4" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Weight of solute</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="wt_sol" name="wt_sol" value="{{wt_sol}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="text" required
+                           width="48">
+                    <select class="select form-control" id="inlineFormInputGroup" name="wt_sol_op">
+
+                        {% if wt_sol_op == 'g' %}
+                        <option value="g" selected="selected">gram (g)</option>
+                        {% else %}
+                        <option value="g">gram (g)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 'μg' %}
+                        <option value="μg" selected="selected">microgram (μg) (</option>
+                        {% else %}
+                        <option value="μg">microgram (μg)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 'mg' %}
+                        <option value="mg" selected="selected">miligram (mg)</option>
+                        {% else %}
+                        <option value="mg">miligram (mg)</option>
+                        {% endif %}
+
+
+                        {% if wt_sol_op == 'kg' %}
+                        <option value="kg" selected="selected">kilogram (kg)</option>
+                        {% else %}
+                        <option value="kg">kilogram (kg)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 'dg' %}
+                        <option value="dg" selected="selected">decagram (dg)</option>
+                        {% else %}
+                        <option value="dg">decagram (dg)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 'lb' %}
+                        <option value="lb" selected="selected">pounds (lb)</option>
+                        {% else %}
+                        <option value="lb">pounds (lb)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 'oz' %}
+                        <option value="oz" selected="selected">ounces (oz)</option>
+                        {% else %}
+                        <option value="oz">ounces (oz)</option>
+                        {% endif %}
+
+                    </select>
+                </div>
+                {% endif %}
+
+                {% if given != "form3" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Volume of solvent</span>
+                    </div>
+                    <input style="margin-top: 5px;width:100%" id="vol_sol" name="vol_sol" value="{{vol_sol}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="text" required
+                           width="48">
+                    <select class="select form-control" id="inlineFormInputGroup" name="vol_sol_op">
+                        {% if vol_sol_op == 'l' %}
+                        <option value="l" selected="selected">liters (l)</option>
+                        {% else %}
+                        <option value="l">liters (l)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'mm³' %}
+                        <option value="mm³" selected="selected">cubic milimeter (mm³)</option>
+                        {% else %}
+                        <option value="mm³">cubic milimeter (mm³)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'cm³' %}
+                        <option value="cm³" selected="selected">cubic centimeter (cm³)</option>
+                        {% else %}
+                        <option value="cm³">cubic centimeter (cm³)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'm³' %}
+                        <option value="m³" selected="selected">cubic meter (m³)</option>
+                        {% else %}
+                        <option value="m³">cubic meter (m³)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'in' %}
+                        <option value="in" selected="selected">cubic inches (cu in)</option>
+                        {% else %}
+                        <option value="in">cubic inches (cu in)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'ft' %}
+                        <option value="ft" selected="selected">cubic inches (cu ft)</option>
+                        {% else %}
+                        <option value="ft">cubic feet (cu ft)</option>
+                        {% endif %}
+
+                    </select>
+                </div>
+                {% endif %}
+
+                {% if given != "form1" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Normality</span>
+                    </div>
+                    <input style="margin-top: 5px;width:100%" id="norm" name="norm" value="{{norm}}"
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48"
+                           placeholder="N">
+
+                </div>
+
+                {% endif %}
+
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'neutralization' %}" class="btn btn-warning">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+        {% if given == "form1" and wt_sol and vol_sol and eq_wt %}
+
+        <div class="card c1">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Normalization :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Normalization:-</strong><br>
+                <p class="btn btn-outline-secondary active">Normalization Formula N = weight of solute / volume of
+                    sovent * equivalent weight</p>
+                <br>
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        <bold>Weight of solute</bold>
+                        is the weight of the substance of interest (acid or base), expressed in
+                        <bold>grams (g)</bold>
+                        grams (g)
+                    </li>
+                    <li>
+                        <bold>Volume of solvent</bold>
+                        is the volume of the liquid in which the substance is dissolved. It is typically measured in
+                        <bold>liters (L)</bold>
+                    </li>
+                    <li>
+                        <bold>Equivalent weight</bold>
+                        is equal to the molecular weight of the substance (acid or base) divided by its valence. You can
+                        easily find this value for most common substances. It is expressed in
+                        <bold>g/eq</bold>
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+
+                <strong>Input values are:-</strong>
+                <p>Weight of solute = {{wt_sol}} {{wt_sol_op}}</p>
+                <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>
+                <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>
+                <strong>Unit Conversions :</strong>
+                {% for formulas in formula_desc %}
+                <p>{{ formulas }}</p>
+                {% endfor%}
+
+                <strong>Put values into formula</strong>
+                <p>{{ put_values_in_formula }}</p>
+
+
+                <center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% if given == "form2" and vol_sol and norm and wt_sol %}
+
+        <div class="card c1">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Equivalent weight:</h2>
+            </div>
+
+            <div class="card-body">
+
+                <strong>Equivalent weight:-</strong><br>
+                <p class="btn btn-outline-secondary active">Equivalent weight Formula weight of solute / (volume of
+                    solvent * normality) </p><br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        <bold>Weight of solute</bold>
+                        is the weight of the substance of interest (acid or base), expressed in
+                        <bold>grams (g)</bold>
+                        grams (g)
+                    </li>
+                    <li>
+                        <bold>Volume of solvent</bold>
+                        is the volume of the liquid in which the substance is dissolved. It is typically measured in
+                        <bold>liters (L)</bold>
+                    </li>
+                    <li>
+                        <bold>Normality</bold>
+                        bold> is a value that measures the concentration of the substance (acid or base) in a dissolving
+                        liquid. It is measured in the unit N equivalent to
+                        <bold>eq/L</bold>
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+
+                <strong>Input values are:-</strong>
+                <p>Weight of solute = {{wt_sol}} {{wt_sol_op}}</p>
+                <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>
+                <p>Normality = {{norm}} N</p>
+
+
+                <strong>Unit Conversions :</strong>
+                {% for formulas in formula_desc %}
+                <p>{{ formulas }}</p>
+                {% endfor%}
+
+                <strong>Put values into formula</strong>
+                <p>{{ put_values_in_formula }}</p>
+
+
+                <center><b id="formula" style="font-size:25px;">Equivalent weight = {{eq_wt}} g </b></center>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if given == "form3" and eq_wt and norm and wt_sol %}
+
+<div class="card c1">
+    <div class="card-header">
+        <h2 class="h2">Steps to Volume of solvent:</h2>
+    </div>
+
+    <div class="card-body">
+
+        <strong>Volume of solvent:-</strong>
+        <br>
+        <p class="btn btn-outline-secondary active">Volume of solvent Formula : weight of solute / (normality *
+            equivalent weight)</p>
+        <br>
+        <strong>where:</strong>
+        <ul>
+            <li>
+                <bold>Weight of solute</bold>
+                is the weight of the substance of interest (acid or base), expressed in
+                <bold>grams (g)</bold>
+                grams (g)
+            </li>
+            <li>
+                <bold>Equivalent weight</bold>
+                is equal to the molecular weight of the substance (acid or base) divided by its valence. You can easily
+                find this value for most common substances. It is expressed in
+                <bold>g/eq</bold>
+            </li>
+            <li>
+                <bold>Normality</bold>
+                bold> is a value that measures the concentration of the substance (acid or base) in a dissolving liquid.
+                It is measured in the unit N equivalent to
+                <bold>eq/L</bold>
+            </li>
+            <!--                    <li>S is the separation distance between the plates..</li>-->
+        </ul>
+
+
+        <strong>Input values are:-</strong>
+        <p>Weight of solute = {{wt_sol}} {{wt_sol_op}}</p>
+        <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>
+        <p>Normality = {{norm}} N</p>
+
+
+        <strong>Unit Conversions :</strong>
+        {% for formulas in formula_desc %}
+        <p>{{ formulas }}</p>
+        {% endfor%}
+
+        <strong>Put values into formula</strong>
+        <p>{{ put_values_in_formula }}</p>
+
+        <center><b id="formula" style="font-size:25px;">Volume of solvent = {{vol_sol}} L </b></center>
+
+        </p>
+        </details>
+    </div>
+</div>
+</div>
+</div>
+{% endif %}
+
+{% if given == "form4" and eq_wt and norm and vol_sol %}
+
+<div class="card c1">
+    <div class="card-header">
+        <h2 class="h2">Steps to Find Weight of solute:</h2>
+    </div>
+
+    <div class="card-body">
+
+        <strong>Weight of solute:-</strong>
+        <br>
+        <p class="btn btn-outline-secondary active">Weight of solute Formula : volume of solvent * normality *
+            equivalent weight</p>
+        <br>
+        <strong>where:</strong>
+
+
+        <ul>
+            <li>
+                <bold>Equivalent weight</bold>
+                is equal to the molecular weight of the substance (acid or base) divided by its valence. You can easily
+                find this value for most common substances. It is expressed in
+                <bold>g/eq</bold>
+            </li>
+            <li>
+                <bold>Normality</bold>
+                bold> is a value that measures the concentration of the substance (acid or base) in a dissolving liquid.
+                It is measured in the unit N equivalent to
+                <bold>eq/L</bold>
+            </li>
+            <li>
+                <bold>Volume of solvent</bold>
+                is the volume of the liquid in which the substance is dissolved. It is typically measured in
+                <bold>liters (L)</bold>
+            </li>
+            <!--                    <li>S is the separation distance between the plates..</li>-->
+        </ul>
+
+
+        <strong>Input values are:-</strong>
+        <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>
+        <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>
+        <p>Normality = {{norm}} N</p>
+
+
+        <strong>Unit Conversions :</strong>
+        {% for formulas in formula_desc %}
+        <p>{{ formulas }}</p>
+        {% endfor%}
+
+        <strong>Put values into formula</strong>
+        <p>{{ put_values_in_formula }}</p>
+
+        <center><b id="formula" style="font-size:25px;">Weight of solute = {{wt_sol}} g </b></center>
+
+
+    </div>
+</div>
+</div>
+</div>
+{% endif %}
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,745 @@
+{%extends 'chemistry/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+    type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Angular Resolution Calculator | Free Calculator to find Angular Resolution</title>
+<meta name="description"
+    content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps." />
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property="og:description" content="Angular Resolution Calculator" />
+<meta content="" property="og:site_name" />
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+    property="og:image" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="435" />
+<meta property="og:image:width" content="354" />
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator" />
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta name="twitter:description"
+    content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps." />
+<meta name="twitter:image:src"
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property="twitter:image:height" content="435" />
+<meta property="twitter:image:width" content="354" />
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property='og:image'
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property='og:description' content="Angular Resolution Calculator." />
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock%}
+
+{%block content%}
+
+<style>
+    input {
+        text-align: right;
+    }
+</style>
+
+{% if w and ad and r  %}
+<script>
+    $(document).ready(function () {
+
+        $("#hassle").click();
+
+
+    });
+
+
+</script>
+
+<button type="button" hidden id="hassle" onclick="location.href='#get_resolution'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Atomic Mass Calculator</h1>
+        </div>
+        <div class="card-body">
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                    style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+
+            <form action="{% url 'atomic_mass' %}" method="post" id="my_form">
+                {% csrf_token %}
+                <div class="col-auto">
+<!--                    <div class="input-group mb-2">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <div class="input-group-text"><strong>Choose a Calculation</strong></div>-->
+<!--                        </div>-->
+<!--                        <select name="given_data" id="inlineFormInputGroup" class="form-control"-->
+<!--                            onchange="this.form.submit();" autofocus="">-->
+
+<!--                            {% if given_data == 'form1' %}-->
+<!--                            <option value="form1" selected="selected"> Find Resolution | Given Wavelength and-->
+<!--                                Aperture diameter </option>-->
+<!--                            {% else %}-->
+<!--                            <option value="form1"> Find Resolution | Given Wavelength and-->
+<!--                                Aperture diameter-->
+<!--                            </option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if given_data == 'form2' %}-->
+<!--                            <option value="form2" selected="selected"> Find Aperture diameter | Given Wavelength and-->
+<!--                                Resolution </option>-->
+<!--                            {% else %}-->
+<!--                            <option value="form2"> Find Aperture diameter | Given Wavelength and-->
+<!--                                Resolution-->
+<!--                            </option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if given_data == 'form3' %}-->
+<!--                            <option value="form3" selected="selected"> Find Wavelength | Given Aperture diameter and-->
+<!--                                Resolution </option>-->
+<!--                            {% else %}-->
+<!--                            <option value="form3"> Find Wavelength | Given Aperture diameter and-->
+<!--                                Resolution-->
+<!--                            </option>-->
+<!--                            {% endif %}-->
+
+
+
+<!--                        </select>-->
+                    </div>
+
+                    {% if given_data != "form3" %}
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><strong>Number of Protons(Z):</strong></div>
+                        </div>
+                        <input type="text" oninput="validateNumber(this);" id="inlineFormInputGroup" required=""
+                            placeholder="Enter number" maxlength="118" class="form-control" name="protons" value="{{protons}}">
+
+
+<!--                        <select class="select form-control" id="inlineFormInputGroup" name="w_op">-->
+<!--                            {% if w_op == 'm' %}-->
+<!--                            <option value="m" selected="selected">meter (m)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="m">meter (m)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if w_op == 'nm' %}-->
+<!--                            <option value="nm" selected="selected">nanometer (nm)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="nm">nanometer (nm)</option>-->
+<!--                            {% endif %}-->
+<!--                            -->
+<!--                            {% if w_op == 'um' %}-->
+<!--                            <option value="um" selected="selected">micrometer (um)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="um">micrometer (um)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if w_op == 'cm' %}-->
+<!--                            <option value="cm" selected="selected">centimeter (cm)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="cm">centimeter (cm)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            -->
+
+<!--                            {% if w_op == 'mm' %}-->
+<!--                            <option value="mm" selected="selected">millimeter (mm)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="mm">millimeter (mm)</option>-->
+<!--                            {% endif %}-->
+
+
+
+<!--                            {% if w_op == 'km' %}-->
+<!--                            <option value="km" selected="selected">kilometer (km)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="km">kilometer (km)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if w_op == 'in' %}-->
+<!--                            <option value="in" selected="selected">inches (in)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="in">inches (in)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if w_op == 'ft' %}-->
+<!--                            <option value="ft" selected="selected">feet (ft)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="ft">feet (ft)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if w_op == 'yd' %}-->
+<!--                            <option value="yd" selected="selected">yard (yd)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="yd">yard (yd)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if w_op == 'mi' %}-->
+<!--                            <option value="mi" selected="selected">miles (mi)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="mi">miles (mi)</option>-->
+<!--                            {% endif %}-->
+
+
+<!--                        </select>-->
+                    </div>
+                    {% endif %}
+
+                    {% if given_data != "form2" %}
+                    <div class="input-group mb-2">
+
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><strong>Number of Neutrons(N)(:</strong></div>
+                        </div>
+                        <input type="text" oninput="validateNumber(this);" id="inlineFormInputGroup" required=""
+                            placeholder="Enter number" maxlength="177" class="form-control" name="neutrons" value="{{neutrons}}">
+
+
+<!--                        <select class="select form-control" id="inlineFormInputGroup" name="ad_op">-->
+
+<!--                            {% if ad_op == 'm' %}-->
+<!--                            <option value="m" selected="selected">meter (m)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="m">meter (m)</option>-->
+<!--                            {% endif %}-->
+
+<!--                             {% if ad_op == 'mm' %}-->
+<!--                            <option value="mm" selected="selected">millimeter (mm)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="mm">millimeter (mm)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'cm' %}-->
+<!--                            <option value="cm" selected="selected">centimeter (cm)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="cm">centimeter (cm)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'nm' %}-->
+<!--                            <option value="nm" selected="selected">nanometer (nm)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="nm">nanometer (nm)</option>-->
+<!--                            {% endif %}-->
+<!--                            -->
+<!--                            {% if ad_op == 'um' %}-->
+<!--                            <option value="um" selected="selected">micrometer (um)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="um">micrometer (um)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            -->
+
+
+<!--                            {% if ad_op == 'km' %}-->
+<!--                            <option value="km" selected="selected">kilometer (km)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="km">kilometer (km)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'in' %}-->
+<!--                            <option value="in" selected="selected">inches (in)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="in">inches (in)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'ft' %}-->
+<!--                            <option value="ft" selected="selected">feet (ft)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="ft">feet (ft)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'yd' %}-->
+<!--                            <option value="yd" selected="selected">yard (yd)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="yd">yard (yd)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'mi' %}-->
+<!--                            <option value="mi" selected="selected">miles (mi)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="mi">miles (mi)</option>-->
+<!--                            {% endif %}-->
+
+<!--                           -->
+<!--                        </select>-->
+<!--                    </div>-->
+
+                    {% endif %}
+
+<!--                        same as above for creating dropdown -->
+
+                        {% if given_data != "form2" %}
+                    <div class="input-group mb-2">
+
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><strong>Atoms Mass :</strong></div>
+                        </div>
+<!--                        <input type="text" oninput="validateNumber(this);" id="inlineFormInputGroup" required=""-->
+<!--                            placeholder="Enter number" maxlength="177" class="form-control" name="neutrons" value="{{neutrons}}">-->
+
+
+                        <select class="select form-control" id="inlineFormInputGroup" name="ad_op">
+
+                            {% if ad_op == 'm' %}
+                            <option value="m" selected="selected">nanogram (ng)</option>
+                            {% else %}
+                            <option value="m">nanogram (ng)</option>
+                            {% endif %}
+
+                             {% if ad_op == 'mm' %}
+                            <option value="mm" selected="selected">Electron Rest Mass(me)</option>
+                            {% else %}
+                            <option value="mm">Electron Rest Mass(me)</option>
+                            {% endif %}
+
+                            {% if ad_op == 'cm' %}
+                            <option value="cm" selected="selected">Proton Rest Mass(mp)</option>
+                            {% else %}
+                            <option value="cm">Proton Rest Mass(mp)</option>
+                            {% endif %}
+
+                            {% if ad_op == 'nm' %}
+                            <option value="nm" selected="selected">Neutron Rest Mass(mn)</option>
+                            {% else %}
+                            <option value="nm">Neutron Rest Mass(mn)</option>
+                            {% endif %}
+<!--                            -->
+                            {% if ad_op == 'um' %}
+                            <option value="um" selected="selected">Atomic mass unit(u)</option>
+                            {% else %}
+                            <option value="um">Atomic mass unit(u)</option>
+                            {% endif %}
+
+<!--                            -->
+
+
+<!--                            {% if ad_op == 'km' %}-->
+<!--                            <option value="km" selected="selected">kilometer (km)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="km">kilometer (km)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'in' %}-->
+<!--                            <option value="in" selected="selected">inches (in)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="in">inches (in)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'ft' %}-->
+<!--                            <option value="ft" selected="selected">feet (ft)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="ft">feet (ft)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'yd' %}-->
+<!--                            <option value="yd" selected="selected">yard (yd)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="yd">yard (yd)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'mi' %}-->
+<!--                            <option value="mi" selected="selected">miles (mi)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="mi">miles (mi)</option>-->
+<!--                            {% endif %}-->
+
+<!--                           -->
+                        </select>
+                    </div>
+
+                    {% endif %}
+
+<!--                    {% if given_data != "form1" %}-->
+
+<!--                    <div class="input-group mb-2">-->
+
+<!--                        <div class="input-group-prepend">-->
+<!--                            <div class="input-group-text"><strong>Atoms Mass(SI) :</strong></div>-->
+<!--                        </div>-->
+<!--                        <input type="text" oninput="validateNumber(this);" id="inlineFormInputGroup" required=""-->
+<!--                            placeholder="Enter number" maxlength="177" class="form-control" name="neutrons" value="{{neutrons}}">-->
+
+
+<!--                        <select class="select form-control" id="inlineFormInputGroup" name="ad_op">-->
+<!--&lt;!&ndash;<var>c</var><sup>2</sup>&ndash;&gt;-->
+<!--                            {% if ad_op == 'm' %}-->
+<!--                            <option value="m" selected="selected"><var>10</var><sup>-25</sup></option>-->
+<!--                            {% else %}-->
+<!--                            <option value="m"><var>10</var><sup>-25</sup></option>-->
+<!--                            {% endif %}-->
+
+<!--                             {% if ad_op == 'mm' %}-->
+<!--                            <option value="mm" selected="selected"><var>10</var><sup>-28</sup></option>-->
+<!--                            {% else %}-->
+<!--                            <option value="mm"><var>10</var><sup>-28</sup></option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'cm' %}-->
+<!--                            <option value="cm" selected="selected">10<sup>-27</sup></option>-->
+<!--                            {% else %}-->
+<!--                            <option value="cm">10<sup>-27</sup></option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'nm' %}-->
+<!--                            <option value="nm" selected="selected">nanometer (nm)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="nm">nanometer (nm)</option>-->
+<!--                            {% endif %}-->
+<!--                            -->
+<!--                            {% if ad_op == 'um' %}-->
+<!--                            <option value="um" selected="selected">micrometer (um)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="um">micrometer (um)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            -->
+
+
+<!--                            {% if ad_op == 'km' %}-->
+<!--                            <option value="km" selected="selected">kilometer (km)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="km">kilometer (km)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'in' %}-->
+<!--                            <option value="in" selected="selected">inches (in)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="in">inches (in)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'ft' %}-->
+<!--                            <option value="ft" selected="selected">feet (ft)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="ft">feet (ft)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'yd' %}-->
+<!--                            <option value="yd" selected="selected">yard (yd)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="yd">yard (yd)</option>-->
+<!--                            {% endif %}-->
+
+<!--                            {% if ad_op == 'mi' %}-->
+<!--                            <option value="mi" selected="selected">miles (mi)</option>-->
+<!--                            {% else %}-->
+<!--                            <option value="mi">miles (mi)</option>-->
+<!--                            {% endif %}-->
+
+<!--                           -->
+<!--                        </select>-->
+<!--                    </div>-->
+
+
+<!--                    {% endif %}-->
+                    <br>
+                    <div>
+                        <div class=" center col mt-2 ">
+                        <center><button type="submit" class="btn btn-primary">Calculate</button>
+                            <button type="button" onclick="myFunction()" style="margin-top:5px;"
+                                class="btn btn-danger">Reset</button>
+                        </center>
+                    </div>
+                    </div>
+
+
+
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div id="clear">
+    {% if given_data == "form1" and r %}
+    <div class="card" id="get_resolution">
+        <div class="card-header">
+            <h2 class="h2">Steps to Find Resolution:</h2>
+        </div>
+
+        <div class="card-body">
+
+            <strong>Resolution formula:-</strong>
+            <br>
+            <p class="btn btn-outline-secondary active">θ = 1.22 * λ / d</p>
+            <br>
+            <strong>where:</strong>
+                    <ul>
+                        <li>θ is the angular resolution (expressed in radians),</li>
+                        <li>λ is the wavelength of the light,</li>
+                        <li>d is the diameter of the lens aperture.</li>
+                    </ul>
+
+
+
+            <strong>Input values are:-</strong>
+            <p>λ = {{w}} {{w_op}}</p>
+            <p>d = {{ad}} {{ad_op}}</p>
+
+
+
+            {% if w_op != 'm' %}
+            <b id="formula" style="font-size:25px;"><b>⇒</b> Convert the wavelength {{w}} <b><i> "{{w_op}}" </i></b> to
+                <b><i>"meter"</i></b></b>
+            <p>{{text_w}}</p>
+            {% endif %}
+
+            {% if ad_op != 'm' %}
+
+            <b id="formula" style="font-size:25px;"><b>⇒</b> Convert the diameter {{ad}} <b><i> "{{ad_op}}" </b></i> to
+                <b><i>"meter"</i></b></b>
+            <p>{{text_ad}}</p>
+
+            {% endif %}
+
+            <strong>Put values into formula</strong>
+
+
+            <p>Resolution = {{text_resolution}}</p>
+            {% if r == "NaN" %}
+            <p>Resolution = {{r}} </p>
+            <center><b id="formula" style="font-size:25px;">Resolution = {{r}} </b></center>
+
+            {% else %}
+            <p>Resolution = {{r}} radian</p>
+            <center><b id="formula" style="font-size:25px;">Resolution = {{r}} radian</b></center>
+
+            {% endif %}
+
+
+
+
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if given_data == "form2" and ad %}
+    <div class="card" id="get_resolution">
+        <div class="card-header">
+            <h2 class="h2">Steps to Find Aperture diameter:</h2>
+        </div>
+
+        <div class="card-body">
+
+            <strong>Aperture diameter formula:-</strong>
+            <br>
+            <p class="btn btn-outline-secondary active">Aperture diameter = 1.22 * λ / θ</p>
+            <br>
+            <strong>where:</strong>
+                    <ul>
+                        <li>θ is the angular resolution (expressed in radians),</li>
+                        <li>λ is the wavelength of the light,</li>
+                        <li>d is the diameter of the lens aperture.</li>
+                    </ul>
+
+
+
+            <strong>Input values are:-</strong>
+            <p>λ = {{w}} {{w_op}}</p>
+            <p>θ = {{r}} {{r_op}}</p>
+
+
+
+            {% if w_op != 'm' %}
+            <b id="formula" style="font-size:25px;"><b>⇒</b> Convert the wavelength {{w}} <b><i> "{{w_op}}" </i></b> to
+                <b><i>"meter"</i></b></b>
+            <p>{{text_w}}</p>
+            {% endif %}
+
+            {% if r_op != 'rad' %}
+
+            <b id="formula" style="font-size:25px;"><b>⇒</b> Convert the resolution {{r}} <b><i> "{{r_op}}" </b></i> to
+                <b><i>"radian"</i></b></b>
+            <p>{{text_r}}</p>
+
+            {% endif %}
+
+
+            <strong>Put values into formula</strong>
+            <p>Aperture diameter = {{text_aperture_diameter}}</p>
+            {% if ad == "NaN" %}
+            <p>Aperture diameter = {{ad}} </p>
+            <center><b id="formula" style="font-size:25px;">Aperture diameter = {{ad}} </b></center>
+
+            {% else %}
+            <p>Aperture diameter = {{ad}} meter</p>
+            <center><b id="formula" style="font-size:25px;">Aperture diameter = {{ad}} meter</b></center>
+
+            {% endif %}
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+    {% endif %}
+    {% if given_data == "form3" and w or w == 0 %}
+    <div class="card" id="get_resolution">
+        <div class="card-header">
+            <h2 class="h2">Steps to Find wavelength:</h2>
+        </div>
+
+        <div class="card-body">
+
+            <strong>wavelength formula:-</strong>
+            <br>
+            <p class="btn btn-outline-secondary active">wavelength = θ * d / 1.22</p>
+            <br>
+            <strong>where:</strong>
+                    <ul>
+                      <li>θ is the angular resolution (expressed in radians),</li>
+                        <li>λ is the wavelength of the light,</li>
+                        <li>d is the diameter of the lens aperture.</li>
+                    </ul>
+
+
+
+            <strong>Input values are:-</strong>
+            <p>θ = {{r}} {{r_op}}</p>
+            <p>d = {{ad}} {{ad_op}}</p>
+
+
+
+
+
+            {% if r_op != 'rad' %}
+
+            <b id="formula" style="font-size:25px;"><b>⇒</b> Convert the resolution {{r}} <b><i> "{{r_op}}" </b></i> to
+                <b><i>"radian"</i></b></b>
+            <p>{{text_r}}</p>
+
+            {% endif %}
+
+            {% if ad_op != 'm' %}
+
+            <b id="formula" style="font-size:25px;"><b>⇒</b> Convert the diameter {{ad}} <b><i> "{{ad_op}}" </b></i> to
+                <b><i>"meter"</i></b></b>
+            <p>{{text_ad}}</p>
+
+            {% endif %}
+
+
+
+
+            <strong>Put values into formula</strong>
+
+
+            <p>wavelength  = {{text_wavelength}}</p>
+            <p>wavelength  = {{w}} meter</p>
+            <center><b id="formula" style="font-size:25px;">wavelength = {{w}} meter</b></center>
+
+
+
+
+
+
+        </div>
+
+    </div>
+    {% endif %}
+</div>
+</div>
+
+
+
+
+
+<script>
+    var validNumber = new RegExp(/^\d*\.?-?\d*$/);
+    var fist_input = document.getElementById("inlineFormInputGroup").value;
+    function validateNumber(elem) {
+        console.log(elem)
+        if (validNumber.test(elem.value)) {
+            fist_input = elem.value;
+        } else {
+            elem.value = fist_input;
+        }
+    }
+</script>
+
+<script>
+    function myFunction() {
+
+        {% if given_data == "form1" %}
+
+            document.getElementsByName("ad")[0].value = "";
+            document.getElementsByName("w")[0].value = "";
+
+            document.getElementsByName("w_op")[0].value = "m";
+            document.getElementsByName("ad_op")[0].value = "m";
+
+            document.getElementById("clear").innerHTML = "";
+
+        {% endif %}
+
+        {% if given_data == "form2" %}
+
+            document.getElementsByName("w")[0].value = "";
+
+            document.getElementsByName("r")[0].value = "";
+            document.getElementsByName("w_op")[0].value = "m";
+
+            document.getElementsByName("r_op")[0].value = "rad";
+            document.getElementById("clear").innerHTML = "";
+
+        {% endif %}
+
+        {% if given_data == "form3" %}
+
+
+            document.getElementsByName("ad")[0].value = "";
+            document.getElementsByName("r")[0].value = "";
+
+            document.getElementsByName("ad_op")[0].value = "m";
+            document.getElementsByName("r_op")[0].value = "rad";
+            document.getElementById("clear").innerHTML = "";
+
+            {% endif %}
+    }
+</script>
+<br>
+
+
+{%endblock%}
