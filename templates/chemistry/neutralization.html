@@ -62,15 +62,15 @@
 {%endblock meta %}
 
 {% block content %}
-{% if  a and d and c %}
+{% if  flag1 or flag2 or flag3 or flag4 %}
 <script>
-    $(document).ready(function () {
-        $("#hassle").click();
-    });
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
 
 </script>
-
-<!--<button type="button" hidden id="hassle" onclick="location.href='#'">ans1</button>-->
+<button type="button" hidden id="hassle" onclick="location.href='#neutralization'">ans1</button>
 {% endif %}
 
 
@@ -148,51 +148,83 @@
                         <span class="input-group-text" id="basic-addon1">Euivalent weight</span>
                     </div>
 
-                    <input style="margin-top: 5px;width:100%" id="eq_wt" name="eq_wt" value="{{eq_wt}}" required=""
+                    <input style="margin-top: 5px;width:100%" id="eq_wt" type="number" step="any" min="0" name="eq_wt"
+                           value="{{eq_wt}}" required=""
                            oninput="validateNumber(this);" class="form-control" type="text" required width="48">
                     <select class="select form-control" id="inlineFormInputGroup" name="eq_wt_op">
 
                         {% if eq_wt_op == 'g' %}
-                        <option value="g" selected="selected">gram (g)</option>
+                        <option value="g" selected="selected">gram(g)</option>
                         {% else %}
-                        <option value="g">gram (g)</option>
+                        <option value="g">gram(g)</option>
                         {% endif %}
 
                         {% if eq_wt_op == 'μg' %}
-                        <option value="μg" selected="selected">microgram (μg) (</option>
+                        <option value="μg" selected="selected">microgram(μg) (</option>
                         {% else %}
-                        <option value="μg">microgram (μg)</option>
+                        <option value="μg">microgram(μg)</option>
                         {% endif %}
 
                         {% if eq_wt_op == 'mg' %}
-                        <option value="mg" selected="selected">miligram (mg)</option>
+                        <option value="mg" selected="selected">miligram(mg)</option>
                         {% else %}
-                        <option value="mg">miligram (mg)</option>
+                        <option value="mg">miligram(mg)</option>
                         {% endif %}
 
                         {% if eq_wt_op == 'kg' %}
-                        <option value="kg" selected="selected">kilogram (kg)</option>
+                        <option value="kg" selected="selected">kilogram(kg)</option>
                         {% else %}
-                        <option value="kg">kilogram (kg)</option>
+                        <option value="kg">kilogram(kg)</option>
                         {% endif %}
 
                         {% if eq_wt_op == 'dg' %}
-                        <option value="dg" selected="selected">decagram (dg)</option>
+                        <option value="dg" selected="selected">decagram(dg)</option>
                         {% else %}
-                        <option value="dg">decagram (dg)</option>
+                        <option value="dg">decagram(dg)</option>
                         {% endif %}
 
                         {% if eq_wt_op == 'lb' %}
-                        <option value="lb" selected="selected">pounds (lb)</option>
+                        <option value="lb" selected="selected">pounds(lb)</option>
                         {% else %}
-                        <option value="lb">pounds (lb)</option>
+                        <option value="lb">pounds(lb)</option>
                         {% endif %}
 
                         {% if eq_wt_op == 'oz' %}
-                        <option value="oz" selected="selected">ounces (oz)</option>
+                        <option value="oz" selected="selected">ounces(oz)</option>
                         {% else %}
-                        <option value="oz">ounces (oz)</option>
+                        <option value="oz">ounces(oz)</option>
                         {% endif %}
+
+                        {% if eq_wt_op == 't' %}
+                        <option value="t" selected="selected">metric tons(t)</option>
+                        {% else %}
+                        <option value="t">metric tons(t)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'stone' %}
+                        <option value="stone" selected="selected">stones(stone)</option>
+                        {% else %}
+                        <option value="stone">stones (stone)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'US ton' %}
+                        <option value="US ton" selected="selected">US short tons(US ton)</option>
+                        {% else %}
+                        <option value="US ton">US short tons(US ton)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'gr' %}
+                        <option value="gr" selected="selected">grains(gr)</option>
+                        {% else %}
+                        <option value="gr">grains(gr)</option>
+                        {% endif %}
+
+                        {% if eq_wt_op == 'dr' %}
+                        <option value="dr" selected="selected">dranchms(dr)</option>
+                        {% else %}
+                        <option value="dr">dranchms(dr)</option>
+                        {% endif %}
+
 
                     </select>
                 </div>
@@ -204,52 +236,83 @@
                         <span class="input-group-text" id="basic-addon1">Weight of solute</span>
                     </div>
 
-                    <input style="margin-top: 5px;width:100%" id="wt_sol" name="wt_sol" value="{{wt_sol}}"
+                    <input style="margin-top: 5px;width:100%" id="wt_sol" type="number" step="any" min="0" name="wt_sol"
+                           value="{{wt_sol}}"
                            required="" oninput="validateNumber(this);" class="form-control" type="text" required
                            width="48">
                     <select class="select form-control" id="inlineFormInputGroup" name="wt_sol_op">
 
                         {% if wt_sol_op == 'g' %}
-                        <option value="g" selected="selected">gram (g)</option>
+                        <option value="g" selected="selected">gram(g)</option>
                         {% else %}
-                        <option value="g">gram (g)</option>
+                        <option value="g">gram(g)</option>
                         {% endif %}
 
                         {% if wt_sol_op == 'μg' %}
-                        <option value="μg" selected="selected">microgram (μg) (</option>
+                        <option value="μg" selected="selected">microgram(μg) (</option>
                         {% else %}
-                        <option value="μg">microgram (μg)</option>
+                        <option value="μg">microgram(μg)</option>
                         {% endif %}
 
                         {% if wt_sol_op == 'mg' %}
-                        <option value="mg" selected="selected">miligram (mg)</option>
+                        <option value="mg" selected="selected">miligram(mg)</option>
                         {% else %}
-                        <option value="mg">miligram (mg)</option>
+                        <option value="mg">miligram(mg)</option>
                         {% endif %}
 
 
                         {% if wt_sol_op == 'kg' %}
-                        <option value="kg" selected="selected">kilogram (kg)</option>
+                        <option value="kg" selected="selected">kilogram(kg)</option>
                         {% else %}
-                        <option value="kg">kilogram (kg)</option>
+                        <option value="kg">kilogram(kg)</option>
                         {% endif %}
 
                         {% if wt_sol_op == 'dg' %}
-                        <option value="dg" selected="selected">decagram (dg)</option>
+                        <option value="dg" selected="selected">decagram(dg)</option>
                         {% else %}
-                        <option value="dg">decagram (dg)</option>
+                        <option value="dg">decagram(dg)</option>
                         {% endif %}
 
                         {% if wt_sol_op == 'lb' %}
-                        <option value="lb" selected="selected">pounds (lb)</option>
+                        <option value="lb" selected="selected">pounds(lb)</option>
                         {% else %}
-                        <option value="lb">pounds (lb)</option>
+                        <option value="lb">pounds(lb)</option>
                         {% endif %}
 
                         {% if wt_sol_op == 'oz' %}
-                        <option value="oz" selected="selected">ounces (oz)</option>
+                        <option value="oz" selected="selected">ounces(oz)</option>
                         {% else %}
-                        <option value="oz">ounces (oz)</option>
+                        <option value="oz">ounces(oz)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 't' %}
+                        <option value="t" selected="selected">metric tons(t)</option>
+                        {% else %}
+                        <option value="t">metric tons(t)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 'stone' %}
+                        <option value="stone" selected="selected">stones(stone)</option>
+                        {% else %}
+                        <option value="stone">stones(stone)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 'US ton' %}
+                        <option value="US ton" selected="selected">US short tons(US ton)</option>
+                        {% else %}
+                        <option value="US ton">US short tons(US ton)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 'gr' %}
+                        <option value="gr" selected="selected">grains(gr)</option>
+                        {% else %}
+                        <option value="gr">grains(gr)</option>
+                        {% endif %}
+
+                        {% if wt_sol_op == 'dr' %}
+                        <option value="dr" selected="selected">dranchms(dr)</option>
+                        {% else %}
+                        <option value="dr">dranchms(dr)</option>
                         {% endif %}
 
                     </select>
@@ -261,45 +324,95 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Volume of solvent</span>
                     </div>
-                    <input style="margin-top: 5px;width:100%" id="vol_sol" name="vol_sol" value="{{vol_sol}}"
+                    <input style="margin-top: 5px;width:100%" id="vol_sol" type="number" step="any" min="0"
+                           name="vol_sol" value="{{vol_sol}}"
                            required="" oninput="validateNumber(this);" class="form-control" type="text" required
                            width="48">
                     <select class="select form-control" id="inlineFormInputGroup" name="vol_sol_op">
                         {% if vol_sol_op == 'l' %}
-                        <option value="l" selected="selected">liters (l)</option>
+                        <option value="l" selected="selected">liters(l)</option>
                         {% else %}
-                        <option value="l">liters (l)</option>
+                        <option value="l">liters(l)</option>
                         {% endif %}
 
                         {% if vol_sol_op == 'mm³' %}
-                        <option value="mm³" selected="selected">cubic milimeter (mm³)</option>
+                        <option value="mm³" selected="selected">cubic milimeter(mm³)</option>
                         {% else %}
-                        <option value="mm³">cubic milimeter (mm³)</option>
+                        <option value="mm³">cubic milimeter(mm³)</option>
                         {% endif %}
 
                         {% if vol_sol_op == 'cm³' %}
-                        <option value="cm³" selected="selected">cubic centimeter (cm³)</option>
+                        <option value="cm³" selected="selected">cubic centimeter(cm³)</option>
                         {% else %}
-                        <option value="cm³">cubic centimeter (cm³)</option>
+                        <option value="cm³">cubic centimeter(cm³)</option>
                         {% endif %}
 
                         {% if vol_sol_op == 'm³' %}
-                        <option value="m³" selected="selected">cubic meter (m³)</option>
+                        <option value="m³" selected="selected">cubic meter(m³)</option>
                         {% else %}
-                        <option value="m³">cubic meter (m³)</option>
+                        <option value="m³">cubic meter(m³)</option>
                         {% endif %}
 
-                        {% if vol_sol_op == 'in' %}
-                        <option value="in" selected="selected">cubic inches (cu in)</option>
+                        {% if vol_sol_op == 'cu in' %}
+                        <option value="cu in" selected="selected">cubic inches(cu in)</option>
                         {% else %}
-                        <option value="in">cubic inches (cu in)</option>
+                        <option value="cu in">cubic inches(cu in)</option>
                         {% endif %}
 
-                        {% if vol_sol_op == 'ft' %}
-                        <option value="ft" selected="selected">cubic inches (cu ft)</option>
+                        {% if vol_sol_op == 'cu ft' %}
+                        <option value="cu ft" selected="selected">cubic inches(cu ft)</option>
                         {% else %}
-                        <option value="ft">cubic feet (cu ft)</option>
+                        <option value="cu ft">cubic feet(cu ft)</option>
+                        {% endif %}dm³
+
+                        {% if vol_sol_op == 'cu yd' %}
+                        <option value="cu yd" selected="selected">cubic yards(cu yd)</option>
+                        {% else %}
+                        <option value="cu yd">cubic yards(cu yd)</option>
                         {% endif %}
+
+                        {% if vol_sol_op == 'dm³' %}
+                        <option value="dm³" selected="selected">cubic decimeter(dm³)</option>
+                        {% else %}
+                        <option value="dm³">cubic decimeter(dm³)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'ml' %}
+                        <option value="ml" selected="selected">mililiters(ml)</option>
+                        {% else %}
+                        <option value="ml">mililiters(ml)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'cl' %}
+                        <option value="cl" selected="selected">centiliters(cl)</option>
+                        {% else %}
+                        <option value="cl">centiliters(cl)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'US fl oz' %}
+                        <option value="US fl oz" selected="selected">cfluid ounces US(US fl oz)</option>
+                        {% else %}
+                        <option value="US fl oz">fluid ounces US(US fl oz)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'US gal' %}
+                        <option value="US gal" selected="selected">gallon US(US gal)</option>
+                        {% else %}
+                        <option value="US gal">gallon US(US gal)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'US qt' %}
+                        <option value="US qt" selected="selected">quartz US(US qt)</option>
+                        {% else %}
+                        <option value="US qt">quartz US(US qt)</option>
+                        {% endif %}
+
+                        {% if vol_sol_op == 'US pt' %}
+                        <option value="US pt" selected="selected">pints US(US pt)</option>
+                        {% else %}
+                        <option value="US pt">pints US(US pt)</option>
+                        {% endif %}
+
 
                     </select>
                 </div>
@@ -310,7 +423,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Normality</span>
                     </div>
-                    <input style="margin-top: 5px;width:100%" id="norm" name="norm" value="{{norm}}"
+                    <input style="margin-top: 5px;width:100%" id="norm" type="number" step="any" min="0" name="norm"
+                           value="{{norm}}"
                            oninput="validateNumber(this);" class="form-control" type="text" required width="48"
                            placeholder="N">
 
@@ -338,16 +452,17 @@
 <!--summary of result and how it's evaluated-->
 <div id="clear">
     <div class="container" style="height: auto !important;">
-        {% if given == "form1" and wt_sol and vol_sol and eq_wt %}
+        <!--        if given == "form1" and wt_sol and vol_sol and eq_wt -->
+        {% if flag1 %}
 
-        <div class="card c1">
+        <div class="card c1" id="neutralization">
             <div class="card-header">
-                <h2 class="h2">Steps to Find Normalization :</h2>
+                <h2 class="h2">Steps to Find Normality :</h2>
             </div>
 
             <div class="card-body">
-                <strong>Normalization:-</strong><br>
-                <p class="btn btn-outline-secondary active">Normalization Formula N = weight of solute / volume of
+                <strong>Normality Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">Normality = weight of solute / volume of
                     sovent * equivalent weight</p>
                 <br>
                 <strong>where:</strong>
@@ -356,53 +471,58 @@
                         <bold>Weight of solute</bold>
                         is the weight of the substance of interest (acid or base), expressed in
                         <bold>grams (g)</bold>
-                        grams (g)
+                        .
                     </li>
                     <li>
                         <bold>Volume of solvent</bold>
                         is the volume of the liquid in which the substance is dissolved. It is typically measured in
                         <bold>liters (L)</bold>
+                        .
                     </li>
                     <li>
                         <bold>Equivalent weight</bold>
                         is equal to the molecular weight of the substance (acid or base) divided by its valence. You can
                         easily find this value for most common substances. It is expressed in
                         <bold>g/eq</bold>
+                        .
                     </li>
                     <!--                    <li>S is the separation distance between the plates..</li>-->
                 </ul>
-
 
                 <strong>Input values are:-</strong>
                 <p>Weight of solute = {{wt_sol}} {{wt_sol_op}}</p>
                 <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>
                 <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>
-                <strong>Unit Conversions :</strong>
-                {% for formulas in formula_desc %}
-                <p>{{ formulas }}</p>
-                {% endfor%}
+
+                <details style="border:2px solid #009FE8; width:100%;">
+                    <summary><b>Unit Conversions :</b></summary>
+                    {% for formulas in formula_desc %}
+                    <p>{{ formulas }}</p>
+                    {% endfor%}
+                </details>
+                <br>
 
                 <strong>Put values into formula</strong>
                 <p>{{ put_values_in_formula }}</p>
 
-
-                <center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+                </b><strong>Normality = {{norm}} <sup>{{power_of_result}}</sup> N </strong>
 
             </div>
         </div>
         {% endif %}
 
-        {% if given == "form2" and vol_sol and norm and wt_sol %}
+        <!--         if given == "form2" and vol_sol and norm and wt_sol -->
+        {% if flag2 %}
 
-        <div class="card c1">
+        <div class="card c1" id="neutralization">
             <div class="card-header">
                 <h2 class="h2">Steps to Find Equivalent weight:</h2>
             </div>
 
             <div class="card-body">
-
                 <strong>Equivalent weight:-</strong><br>
-                <p class="btn btn-outline-secondary active">Equivalent weight Formula weight of solute / (volume of
+                <p class="btn btn-outline-secondary active">Equivalent weight = weight of solute / (volume of
                     solvent * normality) </p><br>
 
                 <strong>where:</strong>
@@ -433,27 +553,30 @@
                 <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>
                 <p>Normality = {{norm}} N</p>
 
-
-                <strong>Unit Conversions :</strong>
-                {% for formulas in formula_desc %}
-                <p>{{ formulas }}</p>
-                {% endfor%}
+                <details style="border:2px solid #009FE8; width:100%;">
+                    <summary><b>Unit Conversions :</b></summary>
+                    {% for formulas in formula_desc %}
+                    <p>{{ formulas }}</p>
+                    {% endfor%}
+                </details>
+                <br>
 
                 <strong>Put values into formula</strong>
                 <p>{{ put_values_in_formula }}</p>
 
-
-                <center><b id="formula" style="font-size:25px;">Equivalent weight = {{eq_wt}} g </b></center>
-
+                <!--                    <center><b id="formula" style="font-size:25px;">Equivalent weight = {{eq_wt}} g </b></center>-->
+                <!--                <center><b>Equivalent weight = {{eq_wt}} g </b></center>-->
+                </b><strong>Equivalent weight = {{eq_wt}} <sup>{{power_of_result}}</sup> g </strong>
             </div>
         </div>
     </div>
 </div>
 {% endif %}
 
-{% if given == "form3" and eq_wt and norm and wt_sol %}
-
-<div class="card c1">
+<!-----------Volume of solvent result-->
+{% if flag3 %}
+<!--if given == "form3" and eq_wt and norm and wt_sol -->
+<div class="card c1" id="neutralization">
     <div class="card-header">
         <h2 class="h2">Steps to Volume of solvent:</h2>
     </div>
@@ -462,7 +585,7 @@
 
         <strong>Volume of solvent:-</strong>
         <br>
-        <p class="btn btn-outline-secondary active">Volume of solvent Formula : weight of solute / (normality *
+        <p class="btn btn-outline-secondary active">Volume of solvent = weight of solute / (normality *
             equivalent weight)</p>
         <br>
         <strong>where:</strong>
@@ -471,21 +594,22 @@
                 <bold>Weight of solute</bold>
                 is the weight of the substance of interest (acid or base), expressed in
                 <bold>grams (g)</bold>
-                grams (g)
+                .
             </li>
             <li>
                 <bold>Equivalent weight</bold>
                 is equal to the molecular weight of the substance (acid or base) divided by its valence. You can easily
                 find this value for most common substances. It is expressed in
                 <bold>g/eq</bold>
+                .
             </li>
             <li>
                 <bold>Normality</bold>
-                bold> is a value that measures the concentration of the substance (acid or base) in a dissolving liquid.
+                is a value that measures the concentration of the substance (acid or base) in a dissolving liquid.
                 It is measured in the unit N equivalent to
                 <bold>eq/L</bold>
+                .
             </li>
-            <!--                    <li>S is the separation distance between the plates..</li>-->
         </ul>
 
 
@@ -494,28 +618,29 @@
         <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>
         <p>Normality = {{norm}} N</p>
 
-
-        <strong>Unit Conversions :</strong>
-        {% for formulas in formula_desc %}
-        <p>{{ formulas }}</p>
-        {% endfor%}
-
+        <details style="border:2px solid #009FE8; width:100%;">
+            <summary><b>Unit Conversions:</b></summary>
+            {% for formulas in formula_desc %}
+            <p>{{ formulas }}</p>
+            {% endfor%}
+        </details>
+        <br>
         <strong>Put values into formula</strong>
         <p>{{ put_values_in_formula }}</p>
 
-        <center><b id="formula" style="font-size:25px;">Volume of solvent = {{vol_sol}} L </b></center>
+        <!--        <center><b id="formula" style="font-size:25px;">Volume of solvent = {{vol_sol}} L </b></center>-->
+        <strong>Volume of solvent = {{vol_sol}} <sup>{{power_of_result}}</sup> L </strong>
 
-        </p>
-        </details>
     </div>
 </div>
 </div>
 </div>
 {% endif %}
 
-{% if given == "form4" and eq_wt and norm and vol_sol %}
-
-<div class="card c1">
+<!---------- Weight of solute result-->
+{% if flag4 %}
+<!--if given == "form4" and eq_wt and norm and vol_sol -->
+<div class="card c1" id="neutralization">
     <div class="card-header">
         <h2 class="h2">Steps to Find Weight of solute:</h2>
     </div>
@@ -524,31 +649,32 @@
 
         <strong>Weight of solute:-</strong>
         <br>
-        <p class="btn btn-outline-secondary active">Weight of solute Formula : volume of solvent * normality *
-            equivalent weight</p>
+        <p class="btn btn-outline-secondary active">Weight of solute = normality *
+            equivalent weight * volume of solvent </p>
         <br>
+
         <strong>where:</strong>
-
-
         <ul>
             <li>
                 <bold>Equivalent weight</bold>
                 is equal to the molecular weight of the substance (acid or base) divided by its valence. You can easily
                 find this value for most common substances. It is expressed in
                 <bold>g/eq</bold>
+                .
             </li>
             <li>
                 <bold>Normality</bold>
                 bold> is a value that measures the concentration of the substance (acid or base) in a dissolving liquid.
                 It is measured in the unit N equivalent to
                 <bold>eq/L</bold>
+                .
             </li>
             <li>
                 <bold>Volume of solvent</bold>
                 is the volume of the liquid in which the substance is dissolved. It is typically measured in
                 <bold>liters (L)</bold>
+                .
             </li>
-            <!--                    <li>S is the separation distance between the plates..</li>-->
         </ul>
 
 
@@ -558,16 +684,20 @@
         <p>Normality = {{norm}} N</p>
 
 
-        <strong>Unit Conversions :</strong>
-        {% for formulas in formula_desc %}
-        <p>{{ formulas }}</p>
-        {% endfor%}
+        <details style="border:2px solid #009FE8; width:100%;">
+            <summary><b>Unit Conversions :</b></summary>
+            {% for formulas in formula_desc %}
+            <p>{{ formulas }}</p>
+            {% endfor%}
+        </details>
+        <br>
 
         <strong>Put values into formula</strong>
         <p>{{ put_values_in_formula }}</p>
 
-        <center><b id="formula" style="font-size:25px;">Weight of solute = {{wt_sol}} g </b></center>
+        <!--        <center><b id="formula" style="font-size:25px;">Weight of solute = {{wt_sol}} g </b></center>-->
 
+        <strong>Weight of solute = {{wt_sol}} <sup>{{power_of_result}}</sup> g </strong>
 
     </div>
 </div>

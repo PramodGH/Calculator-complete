@@ -1,6 +1,6 @@
-{%extends 'calculator/base.html'%}
-{%load static%}
-{%block meta%}
+{% extends 'calculator/base.html'%}
+{% load static %}
+{% block meta %}
 <!-- HTML Defaults Broweser -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <!-- Meta Title, Description and Canonical URL Starts --->
-<title>Factorial Calculator | Free Calculator to find Factorial</title>
+<title>Factorial Calculator | Free Calculator to combinations replacement</title>
 <meta name="description"
       content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
 <link rel="canonical" href="{{request.build_absolute_uri}}">
@@ -59,8 +59,7 @@
 <!-- OPEN GRAPH CONFIGURATION ENDS -->
 <!-- FAQ SCHEMA STARTS -->
 
-{%endblock meta %}
-
+{%endblock  %}
 {% block content %}
 {% if  flag %}
 <script>
@@ -68,13 +67,13 @@
             $("#hassle").click();
         });
 </script>
-<button type="button" hidden id="hassle" onclick="location.href='#combinations'">ans1</button>
+<button type="button" hidden id="hassle" onclick="location.href='#odd-permutations'">ans1</button>
 {% endif %}
 
 <div class="container" style="height: auto !important;">
     <div class="card c1">
         <div class="card-header">
-            <h1 class="h1">Combinations Calculator</h1>
+            <h1 class="h1">Odd Permutations Calculator</h1>
         </div>
         <div class="card-body">
             {% if messages %}
@@ -85,32 +84,25 @@
                 {% endfor %}
             </ul>
             {% endif %}
-            <form action="{% url 'combinations' %}" method="POST" id="my_form">
+
+<!--            form part-->
+            <form action="{% url 'odd-permutations' %}" method="POST" id="my_form">
                 {% csrf_token %}
+<!--                Input part-->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <p class="input-group-text" id="basic-addon1">n (objects)</p>
+                        <p class="input-group-text" id="basic-addon1">n (elements):</p>
                     </div>
                     <input style="margin-top: 5px;width:100%" id="n" name="n" value="{{n}}" required=""
-                           oninput="validateNumber(this);" class="form-control" type="number" min="0" required width="48">
-
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <p class="input-group-text" id="basic-addon1">r (sample) :</p>
-                    </div>
-                    <input style="margin-top: 5px;width:100%" id="r" name="r" value="{{r}}" required=""
-                           oninput="validateNumber(this);" class="form-control" type="number" min="0" required width="48">
-
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
                 </div>
 
-                <!-----------    calculations : ----------------->
                 <div>
                     <div class=" center col mt-2 ">
 
                         <center>
                             <button type="submit" class="btn btn-primary">Calculate</button>
-                            <a href="{% url 'combinations' %}" class="btn btn-warning">Reset</a>
+                            <a href="{% url 'odd-permutations' %}" class="btn btn-warning">Reset</a>
                         </center>
                     </div>
                 </div>
@@ -123,52 +115,47 @@
 </div>
 
 {% if not flag %}
-<br><br><br>
+<br><br><br><br>
 {% endif %}
 
-<div id="clear">
-    <div class="container" style="height: auto !important;">
-        {% if result %}
-
-        <div class="card c1" id="combinations">
+    <div id="clear">
+        <div class="container" style="height: auto !important;">
+        {% if flag %}
+        <div class="card" id="odd-permutations">
             <div class="card-header">
-                <h3 class="h2">Steps to Find Combinations </h3>
+                <h2 class="h2">Steps to Find Odd Permutaions :</h2>
             </div>
 
             <div class="card-body">
 
-                <strong>Combinations Formula:-</strong>
+                <strong>Odd Permutaions formula:-</strong>
                 <br>
-                <p class="btn btn-outline-secondary active">C(n,r)= n! <span>&#247;</span> ( r! * (n−r)! )</p>
+                <p class="btn btn-outline-secondary active">Odd Permutaions(n) = n!/2 </p>
                 <br>
-
-                <strong>Where:</strong>
+                <strong>where:</strong>
                 <ul>
-                    <li>n - The set or population, for n ≥ r ≥ 0</li>
-                    <li>r - Subset of n or sample set</li>
-<!--                    <li>For n ≥ r ≥ 0</li>-->
+                    <li>n - set of n elements where n >= 2</li>
                 </ul>
 
                 <strong>Input values are:-</strong>
                 <p>n = {{n}}</p>
-                <p>r = {{r}}</p>
 
                 <strong>Put values into formula</strong>
 
-                <p>Combinations C({{n}},{{r}}) = {{n}}! / ({{r}}! * ( {{n}}-{{r}})! )</p>
-                <p>{{n}}! = {{output1}} = <strong>{{result1}}<sup>{{power1}}</sup></strong> </p>
-                <p>{{r}}! = {{output2}} = <strong> {{result2}}<sup>{{power2}}</sup></strong> </p>
-                <p>({{n}} - {{r}})! = {{output3}} = <strong> {{result3}}<sup>{{power3}}</sup></strong> </p>
+                <p>Even Permutaions({{n}}) = {{n}}! / 2</p>
+                <p>{{n}}! = {{output1}}</p>
 
-                <p>C({{n}},{{r}}) = {{result1}}<sup>{{power1}}</sup> / ({{result2}}<sup>{{power2}}</sup> * {{result3}}<sup>{{power3}}</sup>)</p>
+                <p>{{n}}!/2 = {{result1}}<sup>{{power1}}</sup>/2  </p><br>
 
-<!--                <center><b id="formula" style="font-size:25px;">Combinations C({{n}},{{r}})  = {{result}} </b></center>-->
-                <strong>Combinations C({{n}},{{r}}) = {{result}}<sup>{{power}}</sup></strong>
-
+<!--                <center><b id="formula" style="font-size:25px;">Odd Permutaions ({{n}}!/2) = {{result}} </b></center>-->
+                <strong>Odd Permutaions ({{n}}) = {{result}}<sup>{{power}}</sup> </strong>
             </div>
+
         </div>
+
         {% endif %}
 
     </div>
 </div>
-{% endblock content %}
+{% endblock %}
+

@@ -1,0 +1,642 @@
+<!--{%extends 'calculator/base.html'%}-->
+<!--{%load static%}-->
+<!--{%block meta%}-->
+<!--&lt;!&ndash; HTML Defaults Broweser &ndash;&gt;-->
+<!--<meta charset="utf-8">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--&lt;!&ndash; Bootstrap Stylesheet and Jquery, Google APIS &ndash;&gt;-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
+<!--&lt;!&ndash; Online Calculator Guru Site Fevicon &ndash;&gt;-->
+<!--<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"-->
+<!--      type="icon">-->
+<!--&lt;!&ndash; Online Calculator Guru Project Style Sheet &ndash;&gt;-->
+<!--{%block css%}-->
+<!--<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">-->
+<!--{%endblock css%}-->
+<!--&lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"-->
+<!--      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+<!--&lt;!&ndash; Meta Title, Description and Canonical URL Starts -&ndash;&gt;-->
+<!--<title>Neutralization Calculator | Free Calculator to find Capacitance</title>-->
+<!--<meta name="description"-->
+<!--      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>-->
+<!--<link rel="canonical" href="{{request.build_absolute_uri}}">-->
+<!--&lt;!&ndash; Meta Title, Description and Canonical URL ENDS -&ndash;&gt;-->
+
+<!--&lt;!&ndash; OPEN GRAPH CONFIGURATIONS STARTS &ndash;&gt;-->
+<!--&lt;!&ndash;  FACEBOOK CONFIGURATION STARTS  &ndash;&gt;-->
+<!--<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>-->
+<!--<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>-->
+<!--<meta property="og:description" content="Angular Resolution Calculator"/>-->
+<!--<meta content="" property="og:site_name"/>-->
+<!--<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"-->
+<!--      property="og:image"/>-->
+<!--<meta property="og:image:type" content="image/png"/>-->
+<!--<meta property="og:image:height" content="435"/>-->
+<!--<meta property="og:image:width" content="354"/>-->
+<!--&lt;!&ndash;  FACEBOOK CONFIGURATION ENDS  &ndash;&gt;-->
+<!--&lt;!&ndash; TWITTER CARD CONFIGURATION STARTS  &ndash;&gt;-->
+<!--<meta name="twitter:card" content="summary"/>-->
+<!--<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>-->
+<!--<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>-->
+<!--<meta name="twitter:description"-->
+<!--      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>-->
+<!--<meta name="twitter:image:src"-->
+<!--      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>-->
+<!--<meta property="twitter:image:height" content="435"/>-->
+<!--<meta property="twitter:image:width" content="354"/>-->
+<!--&lt;!&ndash; TWITTER CARD CONFIGURATION ENDS  &ndash;&gt;-->
+<!--&lt;!&ndash;  LINKEDIN CONFIGURATION STARTS&ndash;&gt;-->
+<!--<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>-->
+<!--<meta property='og:image'-->
+<!--      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>-->
+<!--<meta property='og:description' content="Angular Resolution Calculator."/>-->
+<!--<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>-->
+<!--&lt;!&ndash; end of linkedin CONFIGURATIONS ENDS &ndash;&gt;-->
+<!--&lt;!&ndash; OPEN GRAPH CONFIGURATION ENDS &ndash;&gt;-->
+<!--&lt;!&ndash; FAQ SCHEMA STARTS &ndash;&gt;-->
+
+<!--{%endblock meta %}-->
+
+<!--{% block content %}-->
+<!--{% if  flag1 or flag2 or flag3 or flag4 %}-->
+<!--<script>-->
+<!--        $(document).ready(function () {-->
+<!--            $("#hassle").click();-->
+<!--        });-->
+
+<!--</script>-->
+<!--<button type="button" hidden id="hassle" onclick="location.href='#triangle_law_of_cosines'">ans1</button>-->
+<!--{% endif %}-->
+
+
+<!--<div class="container" style="height: auto !important;">-->
+<!--    <div class="card c1">-->
+<!--        <div class="card-header">-->
+<!--            <h1 class="h1">Triangle Law of Cosines Calculator</h1>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--            {% if messages %}-->
+<!--            <ul class="messages">-->
+<!--                {% for message in messages %}-->
+<!--                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}-->
+<!--                   style="color:red">{{ message }}</p>-->
+<!--                {% endfor %}-->
+<!--            </ul>-->
+<!--            {% endif %}-->
+
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;           form&ndash;&gt;-->
+<!--            <form action="{% url 'triangle_law_of_cosines' %}" method="POST" id="my_form">-->
+<!--                {% csrf_token %}-->
+<!--                <div class="input-group mb-3">-->
+
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">Choose Option to calculate</span>-->
+<!--                    </div>-->
+
+<!--                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"-->
+<!--                            id="inlineFormInputGroup" onchange="this.form.submit()">-->
+
+<!--                        {% if given == 'form1' %}-->
+<!--                        <option value='form1' selected="selected">Find Angle A | Using side a, side b, side c-->
+<!--                        </option>-->
+<!--                        {% else %}-->
+<!--                        <option value='form1'>Find Angle A | Using side a, side b, side c-->
+<!--                        </option>-->
+<!--                        {% endif %}-->
+
+<!--                        {% if given == 'form2' %}-->
+<!--                        <option value='form2' selected="selected">Find Angle B | Using side a, side b, side c-->
+<!--                        </option>-->
+<!--                        {% else %}-->
+<!--                        <option value='form2'>Find Angle B | Using side a, side b, side c-->
+<!--                        </option>-->
+<!--                        {% endif %}-->
+
+<!--                        {% if given == 'form3' %}-->
+<!--                        <option value='form3' selected="selected">Find Angle C | Using side a, side b, side c-->
+<!--                        </option>-->
+<!--                        {% else %}-->
+<!--                        <option value='form3'>Find Angle C | Using side a, side b, side c-->
+<!--                        </option>-->
+<!--                        {% endif %}-->
+
+<!--                        {% if given == 'form4' %}-->
+<!--                        <option value='form4' selected="selected">Find Side a | Using Angle A side b, side c-->
+<!--                        </option>-->
+<!--                        {% else %}-->
+<!--                        <option value='form4'>Find Side a | Using Angle A side b, side c-->
+<!--                        </option>-->
+<!--                        {% endif %}-->
+
+<!--                        {% if given == 'form5' %}-->
+<!--                        <option value='form5' selected="selected">Find Side b | Using Angle B, side a, side c-->
+<!--                        </option>-->
+<!--                        {% else %}-->
+<!--                        <option value='form5'>Find Side b | Using Angle B, side a, side c-->
+<!--                        </option>-->
+<!--                        {% endif %}-->
+
+<!--                        {% if given == 'form6' %}-->
+<!--                        <option value='form6' selected="selected">Find Side c | Using Angle C, side a, side b-->
+<!--                        </option>-->
+<!--                        {% else %}-->
+<!--                        <option value='form6'>Find Side c | Using Angle C, side a, side b-->
+<!--                        </option>-->
+<!--                        {% endif %}-->
+<!--                    </select>-->
+<!--                </div>-->
+
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;          form for Anglw A, B, C      -&#45;&#45;&ndash;&gt;-->
+<!--                {% if given == "form1" or given == "form2" or given == "form3" %}-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">side a</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="side_a" type="number" step="any" min="0" name="side_a"-->
+<!--                           value="{{side_a}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">side b</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="side_b" type="number" step="any" min="0" name="side_b"-->
+<!--                           value="{{side_b}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">side c</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="side_c" type="number" step="any" min="0" name="side_c"-->
+<!--                           value="{{side_c}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                {% endif %}-->
+
+<!--                {% if given == "form4" %}-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">Angle A</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="angle_a" type="number" step="any" min="0" name="angle_a"-->
+<!--                           value="{{angle_a}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">side b</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="side_b" type="number" step="any" min="0" name="side_b"-->
+<!--                           value="{{side_b}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">side c</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="side_c" type="number" step="any" min="0" name="side_c"-->
+<!--                           value="{{side_c}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                {% endif %}-->
+
+<!--                {% if given == "form5" %}-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">Angle B</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="angle_b" type="number" step="any" min="0" name="angle_b"-->
+<!--                           value="{{angle_b}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">side a</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="side_a" type="number" step="any" min="0" name="side_a"-->
+<!--                           value="{{side_a}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">side c</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="side_c" type="number" step="any" min="0" name="side_c"-->
+<!--                           value="{{side_c}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                {% endif %}-->
+
+<!--                {% if given == "form6" %}-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">Angle C</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="angle_c" type="number" step="any" min="0" name="angle_c"-->
+<!--                           value="{{angle_c}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">side a</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="side_a" type="number" step="any" min="0" name="side_a"-->
+<!--                           value="{{side_a}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">side b</span>-->
+<!--                    </div>-->
+
+<!--                    <input style="margin-top: 5px;width:100%" id="side_b" type="number" step="any" min="0" name="side_b"-->
+<!--                           value="{{side_b}}" required=""-->
+<!--                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">-->
+<!--                </div>-->
+<!--                {% endif %}-->
+
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">Angle unit</span>-->
+<!--                    </div>-->
+<!--                <select class="select form-control" id="inlineFormInputGroup" name="angle_unit">-->
+<!--                        {% if angle_unit == 'degrees' %}-->
+<!--                        <option value="degrees" selected="selected">degrees</option>-->
+<!--                        {% else %}-->
+<!--                        <option value="degrees">degrees</option>-->
+<!--                        {% endif %}-->
+<!--                        {% if angle_unit == 'radians' %}-->
+<!--                        <option value="radians" selected="selected">radians</option>-->
+<!--                        {% else %}-->
+<!--                        <option value="radians">radians</option>-->
+<!--                        {% endif %}-->
+<!--                </select>-->
+<!--                </div>-->
+
+<!--                <div class="input-group mb-3">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text" id="basic-addon1">Length units*</span>-->
+<!--                    </div>-->
+<!--                <select class="select form-control" id="inlineFormInputGroup" name="length_unit">-->
+<!--                        {% if length_unit == 'm' %}-->
+<!--                        <option value="m" selected="selected">meters(m)</option>-->
+<!--                        {% else %}-->
+<!--                        <option value="m">meters(m)</option>-->
+<!--                        {% endif %}-->
+
+<!--                        {% if length_unit == 'cm' %}-->
+<!--                        <option value="cm" selected="selected">cenimeters(cm)</option>-->
+<!--                        {% else %}-->
+<!--                        <option value="cm">cenimeters(cm)</option>-->
+<!--                        {% endif %}-->
+
+<!--                    {% if length_unit == 'mm' %}-->
+<!--                        <option value="mm" selected="selected">millimeters(mm)</option>-->
+<!--                        {% else %}-->
+<!--                        <option value="mm">millimeters(cm)</option>-->
+<!--                        {% endif %}-->
+
+<!--                    {% if length_unit == 'yd' %}-->
+<!--                        <option value="yd" selected="selected">yard(yd)</option>-->
+<!--                        {% else %}-->
+<!--                        <option value="yd">yard(yd)</option>-->
+<!--                        {% endif %}-->
+
+<!--                    {% if length_unit == 'ft' %}-->
+<!--                        <option value="ft" selected="selected">feets(ft)</option>-->
+<!--                        {% else %}-->
+<!--                        <option value="ft">feets(ft)</option>-->
+<!--                        {% endif %}-->
+
+<!--                    {% if length_unit == 'in' %}-->
+<!--                        <option value="in" selected="selected">inches(in)</option>-->
+<!--                        {% else %}-->
+<!--                        <option value="in">inches(in)</option>-->
+<!--                        {% endif %}-->
+<!--                </select>-->
+<!--                </div>-->
+
+
+
+<!--                <div>-->
+<!--                    <div class=" center col mt-2 ">-->
+<!--                        <center>-->
+<!--                            <button type="submit" class="btn btn-primary">Calculate</button>-->
+<!--                            <a href="{% url 'triangle_law_of_cosines' %}" class="btn btn-warning">Reset</a>-->
+<!--                        </center>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+<!--            </form>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;summary of result and how it's evaluated&ndash;&gt;-->
+<!--<div id="clear">-->
+<!--    <div class="container" style="height: auto !important;">-->
+<!--        &lt;!&ndash;        if given == "form1" and wt_sol and vol_sol and eq_wt &ndash;&gt;-->
+<!--        {% if given == 'form1'  and flag1 %}-->
+
+<!--        <div class="card c1" id="triangle_law_of_cosines">-->
+<!--            <div class="card-header">-->
+
+<!--                <h2 class="h2">Steps to Find Angle A :</h2>-->
+<!--            </div>-->
+
+<!--            <div class="card-body">-->
+<!--                <strong>Formula:-</strong><br>-->
+<!--                <p class="btn btn-outline-secondary active">Angle A = cos<sup>-1</sup>[(b<sup>2</sup> + c<sup>2</sup> - a<sup>2</sup>) / 2*b*c ]-->
+<!--                    </p>-->
+<!--                <br>-->
+<!--                <strong>where:</strong>-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        a - side a of triangle-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        b - side b of triangle-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                       c - side c of triangle-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;                    <li>S is the separation distance between the plates..</li>&ndash;&gt;-->
+<!--                </ul>-->
+
+<!--                <strong>Input values are:-</strong>-->
+<!--                <p>Side a = {{side_a}}</p>-->
+<!--                <p>Side b = {{side_b}}</p>-->
+<!--                <p>Side c = {{side_c}}</p>-->
+
+<!--&lt;!&ndash;                <details style="border:2px solid #009FE8; width:100%;">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <summary><b>Unit Conversions :</b></summary>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% for formulas in formula_desc %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p>{{ formulas }}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endfor%}&ndash;&gt;-->
+<!--&lt;!&ndash;                </details>&ndash;&gt;-->
+<!--&lt;!&ndash;                <br>&ndash;&gt;-->
+
+<!--                <strong>Put values into formula</strong>-->
+<!--                <p>Angle A = cos<sup>-1</sup>[({{side_b}}<sup>2</sup> + {{side_c}}<sup>2</sup> - {{side_a}}<sup>2</sup>) / 2*{{side_b}}*{{side_c}} ]</p>-->
+
+<!--                &lt;!&ndash;<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>&ndash;&gt;-->
+<!--                </b><strong>Angle A = {{result}}  </strong>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--        {% endif %}-->
+
+
+<!--        {% if given == 'form2'  and flag1 %}-->
+
+<!--        <div class="card c1" id="triangle_law_of_cosines">-->
+<!--            <div class="card-header">-->
+
+<!--                <h2 class="h2">Steps to Find Angle B :</h2>-->
+<!--            </div>-->
+
+<!--            <div class="card-body">-->
+<!--                <strong>Formula:-</strong><br>-->
+<!--                <p class="btn btn-outline-secondary active">Angle B = cos<sup>-1</sup>[(a<sup>2</sup> + c<sup>2</sup> - b<sup>2</sup>) / 2*a*c ]</p>-->
+
+<!--                <br>-->
+<!--                <strong>where:</strong>-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        a - side a of triangle-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        b - side b of triangle-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                       c - side c of triangle-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;                    <li>S is the separation distance between the plates..</li>&ndash;&gt;-->
+<!--                </ul>-->
+
+<!--                <strong>Input values are:-</strong>-->
+<!--                <p>Side a = {{side_a}}</p>-->
+<!--                <p>Side b = {{side_b}}</p>-->
+<!--                <p>Side c = {{side_c}}</p>-->
+
+<!--&lt;!&ndash;                <details style="border:2px solid #009FE8; width:100%;">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <summary><b>Unit Conversions :</b></summary>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% for formulas in formula_desc %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p>{{ formulas }}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    {% endfor%}&ndash;&gt;-->
+<!--&lt;!&ndash;                </details>&ndash;&gt;-->
+<!--&lt;!&ndash;                <br>&ndash;&gt;-->
+
+<!--                <strong>Put values into formula</strong>-->
+<!-- <p>Angle B = cos<sup>-1</sup>[({{side_a}}<sup>2</sup> + {{side_c}}<sup>2</sup> - {{side_b}}<sup>2</sup>) / 2*{{side_a}}*{{side_c}} ]</p>-->
+
+<!--                &lt;!&ndash;<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>&ndash;&gt;-->
+<!--                </b><strong>Angle B = {{result}}  </strong>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--        {% endif %}-->
+
+<!--        &lt;!&ndash;         if given == "form2" and vol_sol and norm and wt_sol &ndash;&gt;-->
+<!--        {% if flag2 %}-->
+
+<!--        <div class="card c1" id="triangle_law_of_cosines">-->
+<!--            <div class="card-header">-->
+<!--                <h2 class="h2">Steps to Find Equivalent weight:</h2>-->
+<!--            </div>-->
+
+<!--            <div class="card-body">-->
+<!--                <strong>Equivalent weight:-</strong><br>-->
+<!--                <p class="btn btn-outline-secondary active">Equivalent weight = weight of solute / (volume of-->
+<!--                    solvent * normality) </p><br>-->
+
+<!--                <strong>where:</strong>-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <bold>Weight of solute</bold>-->
+<!--                        is the weight of the substance of interest (acid or base), expressed in-->
+<!--                        <bold>grams (g)</bold>-->
+<!--                        grams (g)-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <bold>Volume of solvent</bold>-->
+<!--                        is the volume of the liquid in which the substance is dissolved. It is typically measured in-->
+<!--                        <bold>liters (L)</bold>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <bold>Normality</bold>-->
+<!--                        bold> is a value that measures the concentration of the substance (acid or base) in a dissolving-->
+<!--                        liquid. It is measured in the unit N equivalent to-->
+<!--                        <bold>eq/L</bold>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;                    <li>S is the separation distance between the plates..</li>&ndash;&gt;-->
+<!--                </ul>-->
+
+
+<!--                <strong>Input values are:-</strong>-->
+<!--                <p>Weight of solute = {{wt_sol}} {{wt_sol_op}}</p>-->
+<!--                <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>-->
+<!--                <p>Normality = {{norm}} N</p>-->
+
+<!--                <details style="border:2px solid #009FE8; width:100%;">-->
+<!--                    <summary><b>Unit Conversions :</b></summary>-->
+<!--                    {% for formulas in formula_desc %}-->
+<!--                    <p>{{ formulas }}</p>-->
+<!--                    {% endfor%}-->
+<!--                </details>-->
+<!--                <br>-->
+
+<!--                <strong>Put values into formula</strong>-->
+<!--                <p>{{ put_values_in_formula }}</p>-->
+
+<!--                &lt;!&ndash;                    <center><b id="formula" style="font-size:25px;">Equivalent weight = {{eq_wt}} g </b></center>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <center><b>Equivalent weight = {{eq_wt}} g </b></center>&ndash;&gt;-->
+<!--                </b><strong>Equivalent weight = {{eq_wt}} g </strong>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--{% endif %}-->
+
+<!--&lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Volume of solvent result&ndash;&gt;-->
+<!--{% if flag3 %}-->
+<!--&lt;!&ndash;if given == "form3" and eq_wt and norm and wt_sol &ndash;&gt;-->
+<!--<div class="card c1" id="triangle_law_of_cosines">-->
+<!--    <div class="card-header">-->
+<!--        <h2 class="h2">Steps to Volume of solvent:</h2>-->
+<!--    </div>-->
+
+<!--    <div class="card-body">-->
+
+<!--        <strong>Volume of solvent:-</strong>-->
+<!--        <br>-->
+<!--        <p class="btn btn-outline-secondary active">Volume of solvent = weight of solute / (normality *-->
+<!--            equivalent weight)</p>-->
+<!--        <br>-->
+<!--        <strong>where:</strong>-->
+<!--        <ul>-->
+<!--            <li>-->
+<!--                <bold>Weight of solute</bold>-->
+<!--                is the weight of the substance of interest (acid or base), expressed in-->
+<!--                <bold>grams (g)</bold>-->
+<!--                .-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <bold>Equivalent weight</bold>-->
+<!--                is equal to the molecular weight of the substance (acid or base) divided by its valence. You can easily-->
+<!--                find this value for most common substances. It is expressed in-->
+<!--                <bold>g/eq</bold>-->
+<!--                .-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <bold>Normality</bold>-->
+<!--                is a value that measures the concentration of the substance (acid or base) in a dissolving liquid.-->
+<!--                It is measured in the unit N equivalent to-->
+<!--                <bold>eq/L</bold>-->
+<!--                .-->
+<!--            </li>-->
+<!--        </ul>-->
+
+
+<!--        <strong>Input values are:-</strong>-->
+<!--        <p>Weight of solute = {{wt_sol}} {{wt_sol_op}}</p>-->
+<!--        <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>-->
+<!--        <p>Normality = {{norm}} N</p>-->
+
+<!--        <details style="border:2px solid #009FE8; width:100%;">-->
+<!--            <summary><b>Unit Conversions:</b></summary>-->
+<!--            {% for formulas in formula_desc %}-->
+<!--            <p>{{ formulas }}</p>-->
+<!--            {% endfor%}-->
+<!--        </details>-->
+<!--        <br>-->
+<!--        <strong>Put values into formula</strong>-->
+<!--        <p>{{ put_values_in_formula }}</p>-->
+
+<!--        &lt;!&ndash;        <center><b id="formula" style="font-size:25px;">Volume of solvent = {{vol_sol}} L </b></center>&ndash;&gt;-->
+<!--        <strong>Volume of solvent = {{vol_sol}} L </strong>-->
+
+<!--    </div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--{% endif %}-->
+
+<!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Weight of solute result&ndash;&gt;-->
+<!--{% if flag4 %}-->
+<!--&lt;!&ndash;if given == "form4" and eq_wt and norm and vol_sol &ndash;&gt;-->
+<!--<div class="card c1" id="triangle_law_of_cosines">-->
+<!--    <div class="card-header">-->
+<!--        <h2 class="h2">Steps to Find Weight of solute:</h2>-->
+<!--    </div>-->
+
+<!--    <div class="card-body">-->
+
+<!--        <strong>Weight of solute:-</strong>-->
+<!--        <br>-->
+<!--        <p class="btn btn-outline-secondary active">Weight of solute = normality *-->
+<!--            equivalent weight * volume of solvent </p>-->
+<!--        <br>-->
+
+<!--        <strong>where:</strong>-->
+<!--        <ul>-->
+<!--            <li>-->
+
+
+<!--            </li>-->
+<!--            <li>-->
+
+<!--            </li>-->
+<!--            <li>-->
+
+<!--            </li>-->
+<!--        </ul>-->
+
+
+<!--        <strong>Input values are:-</strong>-->
+<!--        <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>-->
+<!--        <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>-->
+<!--        <p>Normality = {{norm}} N</p>-->
+
+
+<!--        <details style="border:2px solid #009FE8; width:100%;">-->
+<!--            <summary><b>Unit Conversions :</b></summary>-->
+<!--            {% for formulas in formula_desc %}-->
+<!--            <p>{{ formulas }}</p>-->
+<!--            {% endfor%}-->
+<!--        </details>-->
+<!--        <br>-->
+
+<!--        <strong>Put values into formula</strong>-->
+<!--        <p>{{ put_values_in_formula }}</p>-->
+
+<!--        &lt;!&ndash;        <center><b id="formula" style="font-size:25px;">Weight of solute = {{wt_sol}} g </b></center>&ndash;&gt;-->
+<!--        <strong>Weight of solute = {{wt_sol}} g </strong>-->
+
+<!--    </div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--{% endif %}-->
+<!--</div>-->
+<!--</div>-->
+<!--{% endblock content %}-->

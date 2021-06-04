@@ -68,13 +68,14 @@
             $("#hassle").click();
         });
 </script>
-<button type="button" hidden id="hassle" onclick="location.href='#combinations'">ans1</button>
+<button type="button" hidden id="hassle" onclick="location.href='#permutations-replacement'">ans1</button>
 {% endif %}
+
 
 <div class="container" style="height: auto !important;">
     <div class="card c1">
         <div class="card-header">
-            <h1 class="h1">Combinations Calculator</h1>
+            <h1 class="h1">Permutations Replacement Calculator</h1>
         </div>
         <div class="card-body">
             {% if messages %}
@@ -85,14 +86,14 @@
                 {% endfor %}
             </ul>
             {% endif %}
-            <form action="{% url 'combinations' %}" method="POST" id="my_form">
+            <form action="{% url 'permutations-replacement' %}" method="POST" id="my_form">
                 {% csrf_token %}
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <p class="input-group-text" id="basic-addon1">n (objects)</p>
                     </div>
                     <input style="margin-top: 5px;width:100%" id="n" name="n" value="{{n}}" required=""
-                           oninput="validateNumber(this);" class="form-control" type="number" min="0" required width="48">
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
 
                 </div>
                 <div class="input-group mb-3">
@@ -100,21 +101,18 @@
                         <p class="input-group-text" id="basic-addon1">r (sample) :</p>
                     </div>
                     <input style="margin-top: 5px;width:100%" id="r" name="r" value="{{r}}" required=""
-                           oninput="validateNumber(this);" class="form-control" type="number" min="0" required width="48">
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
 
                 </div>
+                <!--  calculations :-->
 
-                <!-----------    calculations : ----------------->
-                <div>
                     <div class=" center col mt-2 ">
 
                         <center>
                             <button type="submit" class="btn btn-primary">Calculate</button>
-                            <a href="{% url 'combinations' %}" class="btn btn-warning">Reset</a>
+                            <a href="{% url 'permutations-replacement' %}" class="btn btn-warning">Reset</a>
                         </center>
                     </div>
-                </div>
-
             </form>
 
         </div>
@@ -128,24 +126,24 @@
 
 <div id="clear">
     <div class="container" style="height: auto !important;">
-        {% if result %}
-
-        <div class="card c1" id="combinations">
+        {% if flag %}
+        <div class="card c1" id="permutations-replacement">
             <div class="card-header">
-                <h3 class="h2">Steps to Find Combinations </h3>
+                <h3 class="h2">Steps to Find Permutaions Replacement </h3>
             </div>
 
             <div class="card-body">
 
-                <strong>Combinations Formula:-</strong>
+                <strong>Permutaions Replacement Formula:-</strong>
                 <br>
-                <p class="btn btn-outline-secondary active">C(n,r)= n! <span>&#247;</span> ( r! * (n−r)! )</p>
+                <p class="btn btn-outline-secondary active">P<sup>R</sup>(n,r) = n<sup>r</sup> </p>
                 <br>
 
                 <strong>Where:</strong>
                 <ul>
-                    <li>n - The set or population, for n ≥ r ≥ 0</li>
-                    <li>r - Subset of n or sample set</li>
+                    <li>P - the number of permutations.</li>
+                    <li>n - the total number of elements in the set.</li>
+                    <li>r - the number of elements you choose from this set.</li>
 <!--                    <li>For n ≥ r ≥ 0</li>-->
                 </ul>
 
@@ -155,15 +153,9 @@
 
                 <strong>Put values into formula</strong>
 
-                <p>Combinations C({{n}},{{r}}) = {{n}}! / ({{r}}! * ( {{n}}-{{r}})! )</p>
-                <p>{{n}}! = {{output1}} = <strong>{{result1}}<sup>{{power1}}</sup></strong> </p>
-                <p>{{r}}! = {{output2}} = <strong> {{result2}}<sup>{{power2}}</sup></strong> </p>
-                <p>({{n}} - {{r}})! = {{output3}} = <strong> {{result3}}<sup>{{power3}}</sup></strong> </p>
+                <p>P<sup>R</sup>({{n}},{{r}}) = {{n}}<sup>{{r}}</sup></p>
 
-                <p>C({{n}},{{r}}) = {{result1}}<sup>{{power1}}</sup> / ({{result2}}<sup>{{power2}}</sup> * {{result3}}<sup>{{power3}}</sup>)</p>
-
-<!--                <center><b id="formula" style="font-size:25px;">Combinations C({{n}},{{r}})  = {{result}} </b></center>-->
-                <strong>Combinations C({{n}},{{r}}) = {{result}}<sup>{{power}}</sup></strong>
+                <strong>Permutations Replacement P<sup>R</sup>({{n}},{{r}}) = {{result}}<sup>{{power}}</sup></strong>
 
             </div>
         </div>
