@@ -332,8 +332,6 @@
 <!--                </select>-->
 <!--                </div>-->
 
-
-
 <!--                <div>-->
 <!--                    <div class=" center col mt-2 ">-->
 <!--                        <center>-->
@@ -355,18 +353,31 @@
 <!--<div id="clear">-->
 <!--    <div class="container" style="height: auto !important;">-->
 <!--        &lt;!&ndash;        if given == "form1" and wt_sol and vol_sol and eq_wt &ndash;&gt;-->
-<!--        {% if given == 'form1'  and flag1 %}-->
+<!--        {% if flag1 %}-->
 
 <!--        <div class="card c1" id="triangle_law_of_cosines">-->
 <!--            <div class="card-header">-->
-
+<!--                {% if given == 'form1' %}-->
 <!--                <h2 class="h2">Steps to Find Angle A :</h2>-->
+<!--                {% elif given == 'form2' %}-->
+<!--                <h2 class="h2">Steps to Find Angle B :</h2>-->
+<!--                {% else %}-->
+<!--                <h2 class="h2">Steps to Find Angle C :</h2>-->
+<!--                {% endif %}-->
 <!--            </div>-->
 
 <!--            <div class="card-body">-->
 <!--                <strong>Formula:-</strong><br>-->
+<!--                {% if given == 'form1' %}-->
 <!--                <p class="btn btn-outline-secondary active">Angle A = cos<sup>-1</sup>[(b<sup>2</sup> + c<sup>2</sup> - a<sup>2</sup>) / 2*b*c ]-->
 <!--                    </p>-->
+<!--                {% elif given == 'form2' %}-->
+<!--                <p class="btn btn-outline-secondary active">Angle B = cos<sup>-1</sup>[(a<sup>2</sup> + c<sup>2</sup> - b<sup>2</sup>) / 2*a*c ]-->
+<!--                    </p>-->
+<!--                {% else %}-->
+<!--                <p class="btn btn-outline-secondary active">Angle C= cos<sup>-1</sup>[(a<sup>2</sup> + b<sup>2</sup> - c<sup>2</sup>) / 2*a*b ]-->
+<!--                    </p>-->
+<!--                {% endif %}-->
 <!--                <br>-->
 <!--                <strong>where:</strong>-->
 <!--                <ul>-->

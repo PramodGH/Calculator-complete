@@ -1,82 +1,76 @@
-{% extends 'calculator/base.html'%}
-{% load static %}
-{% block meta %}
-<!-- HTML Defaults Broweser -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<!-- Online Calculator Guru Site Fevicon -->
-<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
-      type="icon">
-<!-- Online Calculator Guru Project Style Sheet -->
-{%block css%}
-<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
-{%endblock css%}
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!-- Meta Title, Description and Canonical URL Starts --->
-<title>Factorial Calculator | Free Calculator to combinations replacement</title>
-<meta name="description"
-      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
-<link rel="canonical" href="{{request.build_absolute_uri}}">
-<!-- Meta Title, Description and Canonical URL ENDS --->
+{%extends 'calculator/base.html'%}
+{%load static%}
+  {%block meta%}
+    <!-- HTML Defaults Broweser -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Online Calculator Guru Site Fevicon -->
+    <link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png" type="icon">
+    <!-- Online Calculator Guru Project Style Sheet -->
+    {%block css%}
+    <link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+    {%endblock%}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Meta Title, Description and Canonical URL Starts --->
+    <title>Free Even Permutations Calculator | How to Calculate Even Permutations?</title>
+    <meta name="description" content="Avail Even Permutations Calculator to find the Even Permutations of a number n where n>2 quickly. Get procedure to find Even Permutations using formula."/>
+    <link rel="canonical" href="{{request.build_absolute_uri}}">
+    <!-- Meta Title, Description and Canonical URL ENDS --->
 
-<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
-<!--  FACEBOOK CONFIGURATION STARTS  -->
-<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
-<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta property="og:description" content="Angular Resolution Calculator"/>
-<meta content="" property="og:site_name"/>
-<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
-      property="og:image"/>
-<meta property="og:image:type" content="image/png"/>
-<meta property="og:image:height" content="435"/>
-<meta property="og:image:width" content="354"/>
-<!--  FACEBOOK CONFIGURATION ENDS  -->
-<!-- TWITTER CARD CONFIGURATION STARTS  -->
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
-<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta name="twitter:description"
-      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
-<meta name="twitter:image:src"
-      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
-<meta property="twitter:image:height" content="435"/>
-<meta property="twitter:image:width" content="354"/>
-<!-- TWITTER CARD CONFIGURATION ENDS  -->
-<!--  LINKEDIN CONFIGURATION STARTS-->
-<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta property='og:image'
-      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
-<meta property='og:description' content="Angular Resolution Calculator."/>
-<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
-<!-- end of linkedin CONFIGURATIONS ENDS -->
-<!-- OPEN GRAPH CONFIGURATION ENDS -->
-<!-- FAQ SCHEMA STARTS -->
-
-{%endblock  %}
-{% block content %}
-{% if  flag %}
-<script>
-        $(document).ready(function () {
-            $("#hassle").click();
-        });
-</script>
-<button type="button" hidden id="hassle" onclick="location.href='#even-permutations'">ans1</button>
-{% endif %}
-
-<div class="container" style="height: auto !important;">
-    <div class="card c1">
-        <div class="card-header">
-            <h1 class="h1">Even Permutations Calculator</h1>
-        </div>
-        <div class="card-body">
-            {% if messages %}
+    <!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+	<!--  FACEBOOK CONFIGURATION STARTS  -->
+        <meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+        <meta property="og:title" content="Free Even Permutations Calculator | How to Calculate Even Permutations?"/>
+        <meta property="og:description" content="Avail Even Permutations Calculator to find the Even Permutations of a number n where n>2 quickly. Get procedure to find Even Permutations using formula."/>
+        <meta content="" property="og:site_name" />
+        <meta  content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Even-Permutations-Calculator.jpeg" property="og:image" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:height" content="435" />
+        <meta property="og:image:width" content="354" />
+        <!--  FACEBOOK CONFIGURATION ENDS  -->
+        <!-- TWITTER CARD CONFIGURATION STARTS  -->
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+        <meta name="twitter:title" content="Free Even Permutations Calculator | How to Calculate Even Permutations?"/>
+        <meta name="twitter:description" content="Avail Even Permutations Calculator to find the Even Permutations of a number n where n>2 quickly. Get procedure to find Even Permutations using formula."/>
+        <meta name="twitter:image:src" content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Even-Permutations-Calculator.jpeg"/>
+        <meta property="twitter:image:height" content="435"/>
+        <meta property="twitter:image:width" content="354"/>
+        <!-- TWITTER CARD CONFIGURATION ENDS  -->
+        <!--  LINKEDIN CONFIGURATION STARTS-->
+        <meta property='og:title' content="Free Even Permutations Calculator | How to Calculate Even Permutations?"/>
+        <meta property='og:image' content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Even-Permutations-Calculator.jpeg"/>
+        <meta property='og:description' content="Avail Even Permutations Calculator to find the Even Permutations of a number n where n>2 quickly. Get procedure to find Even Permutations using formula."/>
+        <meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+        <!-- end of linkedin CONFIGURATIONS ENDS -->
+    <!-- OPEN GRAPH CONFIGURATION ENDS -->
+    <!-- FAQ SCHEMA STARTS -->
+    <script type="application/ld+json">{"@context": "https://schema.org","@type": "FAQPage","mainEntity": [{"@type": "Question","name":"1.
+        What is the formula to find Even Permutations?
+        ","acceptedAnswer": {"@type": "Answer","text":" Formula to find Even Permutations is n!/2 for n> 2."}	}, {"@type": "Question","name":"2.
+        How to use Even Permutations Calculator?
+        ","acceptedAnswer": {"@type": "Answer","text":" All you need to do is simply enter the input number n and click on the calculate button to avail the result in a matter of seconds."}	}, {"@type": "Question","name":"3.
+        Where do I get detailed steps to find Even Permutations?
+        ","acceptedAnswer": {"@type": "Answer","text":" You can get detailed steps to find Even Permutations on our page."}	}, {"@type": "Question","name":"4.
+        Which website is best for Even Permutations Calculator?
+        ","acceptedAnswer": {"@type": "Answer","text":" Onlinecalculator.guru is a trusted portal to find the best Even Permutations Calculator that makes your related calculations much simple."}	}]}</script>
+    {%endblock%}
+    {%block content%}
+    <div class="container">
+        <div class="card c1">
+            <div class="card-header">
+                <h1 class="h1">Even Permutations Calculator</h1>
+            </div>
+            <div class="card-body">
+                <p>Make use of the Even Permutations Calculator to determine the even permutations for a given set of numbers. Simply type the input number for which you want to find the Even Permutation and tap on the calculate button next to the input field and avail the result in no time.</p>
+<!-------       Error and Form-->
+                {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
                 <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
@@ -85,10 +79,8 @@
             </ul>
             {% endif %}
 
-<!--            form part-->
             <form action="{% url 'even-permutations' %}" method="POST" id="my_form">
                 {% csrf_token %}
-<!--                Input part-->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <p class="input-group-text" id="basic-addon1">n (elements) :</p>
@@ -99,27 +91,22 @@
 
                 <div>
                     <div class=" center col mt-2 ">
-
                         <center>
                             <button type="submit" class="btn btn-primary">Calculate</button>
                             <a href="{% url 'even-permutations' %}" class="btn btn-warning">Reset</a>
                         </center>
-                    </div>
+                    </div><br>
                 </div>
 
             </form>
+<!---------------- End Form-->
 
+                <p><strong>Even Permutations Calculator: </strong>Do you feel the concept of Even Permutations difficult to understand? Don't Fret! as you can take the help of our easy to use tool. To help you we have covered everything all about Even Permutations, Formula, detailed steps to find Even Permutations by hand. For a better understanding of the concept, we even listed the solved examples.</p>
+            </div>
         </div>
-    </div>
-</div>
-</div>
 
-{% if not flag %}
-<br><br><br><br><br>
-{% endif %}
-
-    <div id="clear">
-        <div class="container" style="height: auto !important;">
+<!--        Result calculation-->
+           <div id="clear">
         {% if flag %}
         <div class="card" id="even-permutations">
             <div class="card-header">
@@ -127,7 +114,6 @@
             </div>
 
             <div class="card-body">
-
                 <strong>Even Permutaions formula:-</strong>
                 <br>
                 <p class="btn btn-outline-secondary active">Even Permutaions(n) = n!/2 </p>
@@ -152,10 +138,59 @@
             </div>
 
         </div>
-
-        {% endif %}
-
+               {% endif %}
     </div>
-</div>
-{% endblock %}
+<!--        End result calculation-->
 
+    <div class="card">
+	    <div class="card-header">
+            <h2 class="h2">Procedure to Calculate Even Permutations</h2>
+        </div>
+	    <div class="card-body">
+            <p>Go through the simple and easy guidelines to determine the Even Permutations. These instructions will make it easy for you to evaluate the Even Permutations. They are outlined as such</p>
+            <ul>
+                <li>Firstly, find the factorial of the given number.</li>
+                <li>Remember the number should be greater than 2 i.e. n &gt;2</li>
+                <li>Later divide the factorial obtained by 2 i.e. n!/ 2 to get the Even Permutations.</li>
+                <li>The resultant obtained is Even Permutations.</li>
+           </ul>
+<p><strong>Example: Calculate Even Permutations for n =6?</strong></p>
+<p><strong>Solution:</strong></p>
+<p>Given n = 6</p>
+<p>Formula to find the Even Permutations = n!/ 2 for n &gt; 2</p>
+<p>Substituting the value of n in the formula we get as follows</p>
+<p>Even Permutations = 6!/2</p>
+<p>= (6*5*4*3*2*1)/2</p>
+<p>= 720/2</p>
+<p>= 360</p>
+<p>Therefore, the number of ways that can be arranged for n = 6 is 360.</strong></p>
+<img src="{% static 'images/Discrete_Mathematics/Even-Permutations-Calculator.jpeg' %}" alt="Even Permutations Calculator">
+    </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+    <h3 class="h3">FAQs on Even Permutations Calculator</h3>
+  	    </div>
+  	    <div class="card-body">
+      	<!-- Question & Answer Starts --->
+        <p class="question"><strong>1. What is the formula to find Even Permutations?</strong></p>
+     	<p class="answer">Formula to find Even Permutations is n!/2 for n&gt; 2.</p><hr>
+     	<p class="question"><strong>2. How to use Even Permutations Calculator?</strong></p>
+     	<p class="answer">All you need to do is simply enter the input number n and click on the calculate button to avail the result in a matter of seconds.</p><hr>
+        <p class="question"><strong>3. Where do I get detailed steps to find Even Permutations?</strong></p>
+        <p class="answer">You can get detailed steps to find Even Permutations on our page.</p><hr>
+        <p class="question"><strong>4. Which website is best for Even Permutations Calculator?</strong></p>
+     	<p class="answer"><a href="https://onlinecalculator.guru/">Onlinecalculator.guru</a> is a trusted portal to find the best Even Permutations Calculator that makes your related calculations much simple.</p><hr>
+    	</div>
+    </div>
+    </div>
+
+{% if  flag %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#even-permutations'">ans1</button>
+{% endif %}
+{%endblock%}

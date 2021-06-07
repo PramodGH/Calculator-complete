@@ -6,6 +6,7 @@ urlpatterns = [
     # path('', views.home, name='home'),
     path('factorial/', views.factorial, name='factorial'),
     path('combinations/', views.combinations, name='combinations'),
+    path('permutations/', views.permutations, name='permutations'),
 
     path('even-permutations/', views.evenPermutaions, name='even-permutations'),
     path('odd-permutations/', views.oddPermutaions, name='odd-permutations'),

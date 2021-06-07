@@ -1,93 +1,86 @@
 {%extends 'calculator/base.html'%}
 {%load static%}
-{%block meta%}
-<!-- HTML Defaults Broweser -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<!-- Online Calculator Guru Site Fevicon -->
-<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
-      type="icon">
-<!-- Online Calculator Guru Project Style Sheet -->
-{%block css%}
-<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
-{%endblock css%}
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!-- Meta Title, Description and Canonical URL Starts --->
-<title>Factorial Calculator | Free Calculator to find Factorial</title>
-<meta name="description"
-      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
-<link rel="canonical" href="{{request.build_absolute_uri}}">
-<!-- Meta Title, Description and Canonical URL ENDS --->
+  {%block meta%}
+    <!-- HTML Defaults Broweser -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Online Calculator Guru Site Fevicon -->
+    <link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png" type="icon">
+    <!-- Online Calculator Guru Project Style Sheet -->
+    {%block css%}
+    <link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+    {%endblock%}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Meta Title, Description and Canonical URL Starts --->
+    <title>Free Online Factorial Calculator | How to Calculate Factorial of a Number?</title>
+    <meta name="description" content="Factorial Calculator determines the Factorial of a Number in a short span of time on providing the input number. Get detailed steps to calculate Factorial."/>
+    <link rel="canonical" href="{{request.build_absolute_uri}}">
+    <!-- Meta Title, Description and Canonical URL ENDS --->
 
-<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
-<!--  FACEBOOK CONFIGURATION STARTS  -->
-<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
-<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta property="og:description" content="Angular Resolution Calculator"/>
-<meta content="" property="og:site_name"/>
-<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
-      property="og:image"/>
-<meta property="og:image:type" content="image/png"/>
-<meta property="og:image:height" content="435"/>
-<meta property="og:image:width" content="354"/>
-<!--  FACEBOOK CONFIGURATION ENDS  -->
-<!-- TWITTER CARD CONFIGURATION STARTS  -->
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
-<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta name="twitter:description"
-      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
-<meta name="twitter:image:src"
-      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
-<meta property="twitter:image:height" content="435"/>
-<meta property="twitter:image:width" content="354"/>
-<!-- TWITTER CARD CONFIGURATION ENDS  -->
-<!--  LINKEDIN CONFIGURATION STARTS-->
-<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta property='og:image'
-      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
-<meta property='og:description' content="Angular Resolution Calculator."/>
-<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
-<!-- end of linkedin CONFIGURATIONS ENDS -->
-<!-- OPEN GRAPH CONFIGURATION ENDS -->
-<!-- FAQ SCHEMA STARTS -->
+    <!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+	<!--  FACEBOOK CONFIGURATION STARTS  -->
+        <meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+        <meta property="og:title" content="Free Online Factorial Calculator | How to Calculate Factorial of a Number?"/>
+        <meta property="og:description" content="Factorial Calculator determines the Factorial of a Number in a short span of time on providing the input number. Get detailed steps to calculate Factorial."/>
+        <meta content="" property="og:site_name" />
+        <meta  content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Factorial-Calculator.jpeg" property="og:image" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:height" content="435" />
+        <meta property="og:image:width" content="354" />
+        <!--  FACEBOOK CONFIGURATION ENDS  -->
+        <!-- TWITTER CARD CONFIGURATION STARTS  -->
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+        <meta name="twitter:title" content="Free Online Factorial Calculator | How to Calculate Factorial of a Number?"/>
+        <meta name="twitter:description" content="Factorial Calculator determines the Factorial of a Number in a short span of time on providing the input number. Get detailed steps to calculate Factorial."/>
+        <meta name="twitter:image:src" content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Factorial-Calculator.jpeg"/>
+        <meta property="twitter:image:height" content="435"/>
+        <meta property="twitter:image:width" content="354"/>
+        <!-- TWITTER CARD CONFIGURATION ENDS  -->
+        <!--  LINKEDIN CONFIGURATION STARTS-->
+        <meta property='og:title' content="Free Online Factorial Calculator | How to Calculate Factorial of a Number?"/>
+        <meta property='og:image' content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Factorial-Calculator.jpeg"/>
+        <meta property='og:description' content="Factorial Calculator determines the Factorial of a Number in a short span of time on providing the input number. Get detailed steps to calculate Factorial."/>
+        <meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+        <!-- end of linkedin CONFIGURATIONS ENDS -->
+    <!-- OPEN GRAPH CONFIGURATION ENDS -->
+    <!-- FAQ SCHEMA STARTS -->
+    <script type="application/ld+json">{"@context": "https://schema.org","@type": "FAQPage","mainEntity": [{"@type": "Question","name":"1.
+        What is meant by Factorial?
+        ","acceptedAnswer": {"@type": "Answer","text":" Factorial is a function that multiplies the number by every number below it."}	}, {"@type": "Question","name":"2.
+        What is the symbol used to represent Factorial?
+        ","acceptedAnswer": {"@type": "Answer","text":" Factorial is represented using the exclamation mark !."}	}, {"@type": "Question","name":"3.
+        How to use Factorial Calculator?
+        ","acceptedAnswer": {"@type": "Answer","text":" All you need to do is simply enter the input number and click on the calculate button to avail the Factorial in no time."}	}, {"@type": "Question","name":"4.
+        How do you calculate a Factorial?
+        ","acceptedAnswer": {"@type": "Answer","text":" You can calculate factorial by multiplying the number by every number below it."}	}]}</script>
+    {%endblock%}
+    {%block content%}
+    <div class="container">
+        <div class="card c1">
+            <div class="card-header">
+                <h1 class="h1">Factorial Calculator</h1>
+            </div>
+            <div class="card-body">
+                <p>Free Online Tool Factorial Calculator displays the Factorial of a number "n" you enter. All you need to do is provide the input number in the specified input section and click on the calculate button to get the resultant factorial in a matter of seconds.</p>
+<!-- -----       Error messges  ---------->
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                           style="color:red">{{ message }}</p>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
 
-{%endblock meta %}
-
-{% block content %}
-{% if  flag %}
-<script>
-        $(document).ready(function () {
-            $("#hassle").click();
-        });
-</script>
-<button type="button" hidden id="hassle" onclick="location.href='#factorial'">ans1</button>
-{% endif %}
-
-<div class="container" style="height: auto !important;">
-    <div class="card c1">
-        <div class="card-header">
-            <h1 class="h1">Factorial Calculator</h1>
-        </div>
-        <div class="card-body">
-            {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
-                   style="color:red">{{ message }}</p>
-                {% endfor %}
-            </ul>
-            {% endif %}
-
-<!--            form part-->
-            <form action="{% url 'factorial' %}" method="POST" id="my_form">
+<!-------------    Form    -------->
+                <form action="{% url 'factorial' %}" method="POST" id="my_form">
                 {% csrf_token %}
 <!--                Input part-->
                 <div class="input-group mb-3">
@@ -100,37 +93,29 @@
 
                 <div>
                     <div class=" center col mt-2 ">
-
                         <center>
                             <button type="submit" class="btn btn-primary">Calculate</button>
                             <a href="{% url 'factorial' %}" class="btn btn-warning">Reset</a>
                         </center>
-                    </div>
+                    </div><br>
                 </div>
 
             </form>
+<!------------ End Form  ----->
 
+                <p><strong>Factorial Calculator: </strong>Do you feel difficulty in finding the Factorial of a Number manually? Not Anymore! as you can make use of our online tool to get the output in no time. By the end of this article, you will know what is a factorial, formula, and how to find it. Get to know the detailed procedure for finding the Factorial of a Number. Check out the Solved Examples for getting a good hold of the concept Factorial.</p>
+            </div>
         </div>
-    </div>
-</div>
-</div>
 
-{% if not flag %}
-<br><br><br><br><br>
-{% endif %}
-
-<!--summary of result and how it's evaluated-->
-<div id="clear">
-    <div class="container" style="height: auto !important;">
+<!-------------   Calculation div  ---------->
+        <div id="clear">
         {% if result %}
-
-        <div class="card c1" id="factorial">
+        <div class="card" id="factorial">
             <div class="card-header">
                 <h3 class="h2">Steps to Find Factorial</h3>
             </div>
 
             <div class="card-body">
-
                 <strong>Factorial formula:-</strong>
                 <br>
                 <br>
@@ -150,17 +135,73 @@
                     <p>{{value}}! = {{ result }}</p>
                 {% else %}
                     <p>{{value}}! = {{ output }}</p>
-<!--                    <p>{{value}}! = {{ result }}</p>-->
+                  <!-- <p>{{value}}! = {{ result }}</p>-->
                 {% endif %}
-
-<!--                Fianl answer-->
 <!--                <center><b id="formula" style="font-size:25px;">Factorial({{value}}) = {{result}} </b></center>-->
                 <h5><strong>Factorial({{value}}) = {{result}} <sup>{{power_of_result}}</sup> </h5></strong></h5>
 
             </div>
         </div>
         {% endif %}
-
     </div>
+
+<!--------------   Calculation div End-->
+    <div class="card">
+	    <div class="card-header">
+            <h2 class="h2">What is meant by Factorial?</h2>
+        </div>
+	    <div class="card-body">
+            <p>Factorial of a Number(n) is defined as the Product of all Positive Integers which is equal to n. You can also say that factorial is a function that multiplies the number by every number below it. It is represented using the Exclamation Mark "!". It is extensively used in Probability, Permutations, Combinations, etc. </p>
+        </div>
+    </div>
+    <div class="card">
+  	    <div class="card-header">
+      	<h3 class="h3">How to find Factorial of a Number?</h3>
+  	    </div>
+  	    <div class="card-body">
+              <p>Follow the simple and easy guidelines listed below to determine the Factorial of a Number. By adhering to the below instructions you will arrive at the solution easily. They are as such</p>
+              <ul>
+                <li>The first and foremost step is to determine the number you want to compute the factorial for.</li>
+                <li>Make a list of the sequence of numbers to be multiplied i.e. the numbers that descended sequentially from the factorial number down to 1.</li>
+                <li>Multiply the numbers together.</li>
+           </ul>
+<p><strong>Example: Find the Factorial of 8!?</strong></p>
+<p><strong>Solution:</strong></p>
+<p>The Number we need to find the Factorial is 8!</p>
+<p>Formula for  n! = n * (n-1)!</p>
+<p>List out the numbers  that descended sequentially from factorial number down to 1</p>
+<p>8! = 8*(8-1)!</p>
+<p>= 8*7*6*5*4*3*2*1</p>
+<p>= 40320</p>
+<p>Therefore, Factorial of 8! is 40320</p>
+<p>Get instant help regarding the various math concepts all under one roof at <a href="https://onlinecalculator.guru/">Onlinecalculator.guru</a> and clear all your queries.</p>
+<img src="{% static 'images/Discrete_Mathematics/Factorial-Calculator.jpeg' %}" alt="Factorial Calculator">
 </div>
-{% endblock content %}
+    </div>
+    <div class="card">
+        <div class="card-header">
+    <h3 class="h3">FAQs on Factorial Calculator</h3>
+  	    </div>
+  	    <div class="card-body">
+      	<!-- Question & Answer Starts --->
+        <p class="question"><strong>1. What is meant by Factorial?</strong></p>
+     	<p class="answer">Factorial is a function that multiplies the number by every number below it.</p><hr>
+     	<p class="question"><strong>2. What is the symbol used to represent Factorial?</strong></p>
+     	<p class="answer">Factorial is represented using the exclamation mark !. </p><hr>
+        <p class="question"><strong>3. How to use Factorial Calculator?</strong></p>
+        <p class="answer">All you need to do is simply enter the input number and click on the calculate button to avail the Factorial in no time.</p><hr>
+        <p class="question"><strong>4. How do you calculate a Factorial?</strong></p>
+     	<p class="answer">You can calculate factorial by multiplying the number by every number below it.</p><hr>
+    	</div>
+    </div>
+    </div>
+
+{% if  flag %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#factorial'">ans1</button>
+{% endif %}
+{%endblock%}

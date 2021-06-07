@@ -1,100 +1,84 @@
-{% extends 'calculator/base.html'%}
-{% load static %}
-{% block meta %}
-<!-- HTML Defaults Broweser -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<!-- Online Calculator Guru Site Fevicon -->
-<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
-      type="icon">
-<!-- Online Calculator Guru Project Style Sheet -->
-{%block css%}
-<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
-{%endblock css%}
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!-- Meta Title, Description and Canonical URL Starts --->
-<title>Factorial Calculator | Free Calculator to combinations replacement</title>
-<meta name="description"
-      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
-<link rel="canonical" href="{{request.build_absolute_uri}}">
-<!-- Meta Title, Description and Canonical URL ENDS --->
 
-<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
-<!--  FACEBOOK CONFIGURATION STARTS  -->
-<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
-<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta property="og:description" content="Angular Resolution Calculator"/>
-<meta content="" property="og:site_name"/>
-<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
-      property="og:image"/>
-<meta property="og:image:type" content="image/png"/>
-<meta property="og:image:height" content="435"/>
-<meta property="og:image:width" content="354"/>
-<!--  FACEBOOK CONFIGURATION ENDS  -->
-<!-- TWITTER CARD CONFIGURATION STARTS  -->
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
-<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta name="twitter:description"
-      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
-<meta name="twitter:image:src"
-      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
-<meta property="twitter:image:height" content="435"/>
-<meta property="twitter:image:width" content="354"/>
-<!-- TWITTER CARD CONFIGURATION ENDS  -->
-<!--  LINKEDIN CONFIGURATION STARTS-->
-<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta property='og:image'
-      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
-<meta property='og:description' content="Angular Resolution Calculator."/>
-<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
-<!-- end of linkedin CONFIGURATIONS ENDS -->
-<!-- OPEN GRAPH CONFIGURATION ENDS -->
-<!-- FAQ SCHEMA STARTS -->
+{%extends 'calculator/base.html'%}
+{%load static%}
+  {%block meta%}
+    <!-- HTML Defaults Broweser -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Online Calculator Guru Site Fevicon -->
+    <link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png" type="icon">
+    <!-- Online Calculator Guru Project Style Sheet -->
+    {%block css%}
+    <link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+    {%endblock%}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Meta Title, Description and Canonical URL Starts --->
+    <title>Combinations Replacement Calculator | Find Combinations with Repetition</title>
+    <meta name="description" content="Combinations Replacement Calculator gives the different combinations for n distinct objects chosen r at a time where repetitions are allowed in no time."/>
+    <link rel="canonical" href="{{request.build_absolute_uri}}">
+    <!-- Meta Title, Description and Canonical URL ENDS --->
 
-{%endblock  %}
-{% block content %}
-<style>
-    input {
-        text-align: right;
-    }
+    <!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+	<!--  FACEBOOK CONFIGURATION STARTS  -->
+        <meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+        <meta property="og:title" content="Combinations Replacement Calculator | Find Combinations with Repetition"/>
+        <meta property="og:description" content="Combinations Replacement Calculator gives the different combinations for n distinct objects chosen r at a time where repetitions are allowed in no time."/>
+        <meta content="" property="og:site_name" />
+        <meta  content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Combinations-Replacement-Calculator.jpeg" property="og:image" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:height" content="435" />
+        <meta property="og:image:width" content="354" />
+        <!--  FACEBOOK CONFIGURATION ENDS  -->
+        <!-- TWITTER CARD CONFIGURATION STARTS  -->
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+        <meta name="twitter:title" content="Combinations Replacement Calculator | Find Combinations with Repetition"/>
+        <meta name="twitter:description" content="Combinations Replacement Calculator gives the different combinations for n distinct objects chosen r at a time where repetitions are allowed in no time."/>
+        <meta name="twitter:image:src" content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Combinations-Replacement-Calculator.jpeg"/>
+        <meta property="twitter:image:height" content="435"/>
+        <meta property="twitter:image:width" content="354"/>
+        <!-- TWITTER CARD CONFIGURATION ENDS  -->
+        <!--  LINKEDIN CONFIGURATION STARTS-->
+        <meta property='og:title' content="Combinations Replacement Calculator | Find Combinations with Repetition"/>
+        <meta property='og:image' content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Combinations-Replacement-Calculator.jpeg"/>
+        <meta property='og:description' content="Combinations Replacement Calculator gives the different combinations for n distinct objects chosen r at a time where repetitions are allowed in no time."/>
+        <meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+        <!-- end of linkedin CONFIGURATIONS ENDS -->
+    <!-- OPEN GRAPH CONFIGURATION ENDS -->
+    <!-- FAQ SCHEMA STARTS -->
+    <script type="application/ld+json">{"@context": "https://schema.org","@type": "FAQPage","mainEntity": [{"@type": "Question","name":"1.
+        What is the formula for Combinations with Repetition?
+        ","acceptedAnswer": {"@type": "Answer","text":" The formula for Combinations with Repetition is (r+n-1)!/(r! * (n-1)!)"}	}, {"@type": "Question","name":"2.
+        What is meant by Combination with Replacement or Repetition?
+        ","acceptedAnswer": {"@type": "Answer","text":" The number of ways to choose a sample of r elements from a set of n distinct objects where order does not matter and replacements are allowed."}	}, {"@type": "Question","name":"3.
+        How to Calculate Combinations with Replacement?
+        ","acceptedAnswer": {"@type": "Answer","text":" Simply substitute the values of n, r in the formula for Combinations with Replacement and solve for equations respectively."}	}, {"@type": "Question","name":"4.
+        How to use Combinations Replacement Calculator?
+        ","acceptedAnswer": {"@type": "Answer","text":" Just input the corresponding data like n total number of items or objects, r sample elements value in the respective fields and click on the calculate button to get the different combinations with replacement."}	}]}</script>
+    {%endblock%}
+    {%block content%}
+    <div class="container">
+        <div class="card c1">
+            <div class="card-header">
+                <h1 class="h1">Combinations Replacement Calculator</h1>
+            </div>
+            <div class="card-body">
+                <p>Utilize the user-friendly tool Combinations Replacement Calculator and get the different combinations of a set instantly. Simply enter the input values of n, r in the respective input fields, and click the calculate button to get the result in a fraction of seconds along with detailed work.</p>
 
-</style>
-
-{% if flag  %}
-<script>
-    $(document).ready(function () {
-        $("#hassle").click();
-    });
-</script>
-
-<button type="button" hidden id="hassle" onclick="location.href='#combination_replacement'">ans1</button>
-{% endif %}
-
-
-<div class="container" style="height: auto !important;">
-    <div class="card c1">
-        <div class="card-header">
-            <h1 class="h1">Combinations Replacement Calculator</h1>
-        </div>
-        <div class="card-body">
-            <!--            {% if messages %}-->
-            <ul class="messages">
-                {% for message in messages %}
+                <!------ Error message ---->
+                 {% for message in messages %}
                 <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
                    style="color:red">{{ message }}</p>
                 {% endfor %}
-            </ul>
-            <!--            {% endif %}-->
 
-            <form action="{% url 'combinations-replacement' %}" method="POST" id="my_form">
+                <!-------  Form  -->
+                <form action="{% url 'combinations-replacement' %}" method="POST" id="my_form">
                 {% csrf_token %}
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -119,19 +103,18 @@
                             <button type="submit" class="btn btn-primary">Calculate</button>
                             <a href="{% url 'combinations-replacement' %}" class="btn btn-warning">Reset</a>
                         </center>
-                    </div>
+                    </div><br>
                 </div>
 
             </form>
 
+
+                <p><strong>Combinations Replacement Calculator: </strong>Have you ever wondered how many different combinations can be made out of a set of elements? Don't Fret as you can take the help of the online tool for Combinations over here. It might be tedious to list out every single possible combination and find the total. Thus, to overcome all such tedious calculations we have provided a quite user-friendly tool that displays the possible number of combinations in no time. Get the Combination Definition, Formula, Detailed steps to calculate Combinations with Replacement and Solved Examples in the coming modules.</p>
+            </div>
         </div>
-    </div>
 
-{% if not flag %}
-<br><br><br>
-{% endif %}
-
-    <div id="clear">
+<!--        Result calculations-->
+         <div id="clear">
         {% if result %}
         <div class="card" id="combination_replacement">
             <div class="card-header">
@@ -139,7 +122,6 @@
             </div>
 
             <div class="card-body">
-
                 <strong>Combinations Replacement formula:-</strong>
                 <br>
                 <p class="btn btn-outline-secondary active">C<sup>R</sup>(n,r) = (n+r−1)! <span>&#247;</span> (r! * (n−1)!)
@@ -155,7 +137,6 @@
                 <p>n = {{n}}</p>
                 <p>r = {{r}}</p>
 
-
                 <strong>Put values into formula</strong>
 
                 <p>C<sup>R</sup>({{n}},{{r}}) = ({{n}}+{{r}}-1)! / ({{r}}! * ({{n}}-1)! )</p>
@@ -163,23 +144,64 @@
                 <p>{{r}}! = {{output2}} = <strong>{{result2}}<sup>{{power2}}</sup></strong> </p>
                 <p>({{n}} - 1)! = {{in2}}! = {{output3}} = <strong>{{result3}}<sup>{{power3}}</sup></strong> </p>
 
-                <!--                <p>C<sup>R</sup>({{n}},{{r}}) = {{output1}} / (({{output2}}) ✕ ({{output3}}))</p>-->
                 <p>C<sup>R</sup>({{n}},{{r}}) = {{result1}}<sup>{{power1}}</sup> / ({{result2}}<sup>{{power2}}</sup> * {{result3}}<sup>{{power3}}</sup>)</p>
-
-<!--                <center><b id="formula" style="font-size:25px;">Combination replacement C<sup>R</sup>({{n}},{{r}}) =-->
-<!--                    {{result}} </b></center>-->
                 <strong>Combination replacement C<sup>R</sup>({{n}},{{r}}) = {{result}}<sup>{{power}}</sup></h5></strong>
 
-
-
-
             </div>
-
         </div>
-
         {% endif %}
-
     </div>
-</div>
-{% endblock %}
+<!--        End result calculations-->
 
+    <div class="card">
+	    <div class="card-header">
+            <h2 class="h2">Procedure to find Combinations with Replacement</h2>
+        </div>
+	    <div class="card-body">
+            <p>Let us consider Combinations in which repetitions are allowed. That means each time you take an element from the set of n distinct objects you put it back to the set. You might feel the concept of Combinations with Replacement a bit complicated. Luckily, don't worry as we have listed the formula below.</p>
+            <p><strong>C<sup>R</sup>(n, r) or C'(n,r) = (r+n-1)!/(r! * (n-1)!)</strong></p>
+            <p>Where C'(n,r)) is the number of combinations with repetition or replacement</p>
+            <p>n is the total number of elements in the set,</p>
+            <p>and r is the number of elements you choose from this set.</p>
+<p>Plugin the values of n, r in the corresponding formula, and simplify the equation further to get the number of Combinations with Replacement.</p>
+<p><strong>Example: Consider there are five flavors of ice cream butterscotch, vanilla, strawberry, chocolate, banana. You can have three scoops. How many variations are possible and we can repeat?</strong></p>
+<p><strong>Solution:</strong></p>
+<p>From the given data n = 5</p>
+<p>r =3</p>
+<p>We know the formula for Combination with Replacement is C'(n,r) = (r+n-1)!/(r! * (n-1)!)</p>
+<p>= (3+5-1)!/(3!*(5-1)!)</p>
+<p>=(7)!/(3!*(4)!)</p>
+<p>= 35</p>
+<p>Therefore there are 35 ways of having three scoops from five different flavors.</p>
+<p>Seek help regarding Permutations, Combinations, Permutation Replacement, Combination Replacement concepts all under one roof at <a href="https://onlinecalculator.guru/">Onlinecalculator.guru</a> and clarify your concerns.</p>
+<img src="{% static 'images/Discrete_Mathematics/Combinations-Replacement-Calculator.jpeg' %}" alt="Combinations Replacement Calculator">
+</div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+    <h3 class="h3">FAQs on Combinations Replacement Calculator</h3>
+  	    </div>
+  	    <div class="card-body">
+      	<!-- Question & Answer Starts --->
+        <p class="question"><strong>1. What is the formula for Combinations with Repetition?</strong></p>
+     	<p class="answer">The formula for Combinations with Repetition is (r+n-1)!/(r! * (n-1)!)</p><hr>
+     	<p class="question"><strong>2. What is meant by Combination with Replacement or Repetition?</strong></p>
+     	<p class="answer">The number of ways to choose a sample of r elements from a set of n distinct objects where order does not matter and replacements are allowed.</p><hr>
+        <p class="question"><strong>3. How to Calculate Combinations with Replacement?</strong></p>
+        <p class="answer">Simply substitute the values of n, r in the formula for Combinations with Replacement and solve for equations respectively.</p><hr>
+        <p class="question"><strong>4.  How to use Combinations Replacement Calculator?</strong></p>
+     	<p class="answer">Just input the corresponding data like n total number of items or objects, r sample elements value in the respective fields and click on the calculate button to get the different combinations with replacement.</p><hr>
+    	</div>
+    </div>
+    </div>
+
+{% if flag  %}
+<script>
+    $(document).ready(function () {
+        $("#hassle").click();
+    });
+</script>
+
+<button type="button" hidden id="hassle" onclick="location.href='#combination_replacement'">ans1</button>
+{% endif %}
+{%endblock%}

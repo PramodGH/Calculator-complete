@@ -1,84 +1,77 @@
+
 {%extends 'calculator/base.html'%}
 {%load static%}
-{%block meta%}
-<!-- HTML Defaults Broweser -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<!-- Online Calculator Guru Site Fevicon -->
-<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
-      type="icon">
-<!-- Online Calculator Guru Project Style Sheet -->
-{%block css%}
-<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
-{%endblock css%}
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!-- Meta Title, Description and Canonical URL Starts --->
-<title>Factorial Calculator | Free Calculator to find Factorial</title>
-<meta name="description"
-      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
-<link rel="canonical" href="{{request.build_absolute_uri}}">
-<!-- Meta Title, Description and Canonical URL ENDS --->
-
-<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
-<!--  FACEBOOK CONFIGURATION STARTS  -->
-<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
-<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta property="og:description" content="Angular Resolution Calculator"/>
-<meta content="" property="og:site_name"/>
-<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
-      property="og:image"/>
-<meta property="og:image:type" content="image/png"/>
-<meta property="og:image:height" content="435"/>
-<meta property="og:image:width" content="354"/>
-<!--  FACEBOOK CONFIGURATION ENDS  -->
-<!-- TWITTER CARD CONFIGURATION STARTS  -->
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
-<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta name="twitter:description"
-      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
-<meta name="twitter:image:src"
-      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
-<meta property="twitter:image:height" content="435"/>
-<meta property="twitter:image:width" content="354"/>
-<!-- TWITTER CARD CONFIGURATION ENDS  -->
-<!--  LINKEDIN CONFIGURATION STARTS-->
-<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
-<meta property='og:image'
-      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
-<meta property='og:description' content="Angular Resolution Calculator."/>
-<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
-<!-- end of linkedin CONFIGURATIONS ENDS -->
-<!-- OPEN GRAPH CONFIGURATION ENDS -->
-<!-- FAQ SCHEMA STARTS -->
-
-{%endblock meta %}
-
-{% block content %}
-{% if  flag %}
-<script>
-        $(document).ready(function () {
-            $("#hassle").click();
-        });
-</script>
-<button type="button" hidden id="hassle" onclick="location.href='#permutations-replacement'">ans1</button>
-{% endif %}
-
-
-<div class="container" style="height: auto !important;">
-    <div class="card c1">
-        <div class="card-header">
-            <h1 class="h1">Permutations Replacement Calculator</h1>
-        </div>
-        <div class="card-body">
-            {% if messages %}
+  {%block meta%}
+    <!-- HTML Defaults Broweser -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Online Calculator Guru Site Fevicon -->
+    <link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png" type="icon">
+    <!-- Online Calculator Guru Project Style Sheet -->
+    {%block css%}
+    <link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+    {%endblock%}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Meta Title, Description and Canonical URL Starts --->
+    <title>Permutations Replacement Calculator | Formula for Permutation Repetition</title>
+    <meta name="description" content="Utilize the Permutations Replacement Calculator to choose sample r elements from a set of n elements. Just provide the input values & get the possible ways in no time."/>
+    <link rel="canonical" href="{{request.build_absolute_uri}}">
+    <!-- Meta Title, Description and Canonical URL ENDS --->
+ 
+    <!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+	<!--  FACEBOOK CONFIGURATION STARTS  -->
+        <meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+        <meta property="og:title" content="Permutations Replacement Calculator | Formula for Permutation Repetition"/>
+        <meta property="og:description" content="Utilize the Permutations Replacement Calculator to choose sample r elements from a set of n elements. Just provide the input values & get the possible ways in no time."/>
+        <meta content="" property="og:site_name" />
+        <meta  content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Permutations-Replacement-Calculator.jpeg" property="og:image" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:height" content="435" />
+        <meta property="og:image:width" content="354" />
+        <!--  FACEBOOK CONFIGURATION ENDS  -->
+        <!-- TWITTER CARD CONFIGURATION STARTS  -->
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+        <meta name="twitter:title" content="Permutations Replacement Calculator | Formula for Permutation Repetition"/>
+        <meta name="twitter:description" content="Utilize the Permutations Replacement Calculator to choose sample r elements from a set of n elements. Just provide the input values & get the possible ways in no time."/>
+        <meta name="twitter:image:src" content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Permutations-Replacement-Calculator.jpeg"/>
+        <meta property="twitter:image:height" content="435"/>
+        <meta property="twitter:image:width" content="354"/>
+        <!-- TWITTER CARD CONFIGURATION ENDS  -->
+        <!--  LINKEDIN CONFIGURATION STARTS-->
+        <meta property='og:title' content="Permutations Replacement Calculator | Formula for Permutation Repetition"/>
+        <meta property='og:image' content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Permutations-Replacement-Calculator.jpeg"/>
+        <meta property='og:description' content="Utilize the Permutations Replacement Calculator to choose sample r elements from a set of n elements. Just provide the input values & get the possible ways in no time."/>
+        <meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+        <!-- end of linkedin CONFIGURATIONS ENDS -->
+    <!-- OPEN GRAPH CONFIGURATION ENDS -->
+    <!-- FAQ SCHEMA STARTS -->
+    <script type="application/ld+json">{"@context": "https://schema.org","@type": "FAQPage","mainEntity": [{"@type": "Question","name":"1. 
+        What is the formula for Permutations Replacement?
+        ","acceptedAnswer": {"@type": "Answer","text":" The formula for Permutations Replacement is PR(n,r)=nr"}	}, {"@type": "Question","name":"2. 
+        How to use Permutations Replacement Calculator?
+        ","acceptedAnswer": {"@type": "Answer","text":" Simply enter the inputs i.e. n total number of distinct objects, r sample elements to choose in the respective input fields, and click on the calculate button to avail result in a matter of seconds."}	}, {"@type": "Question","name":"3. 
+        Does order matter in Permutations?
+        ","acceptedAnswer": {"@type": "Answer","text":" Order does matter in Permutations."}	}, {"@type": "Question","name":"4. 
+        What does n, r stand for in the formula of Permutation?
+        ","acceptedAnswer": {"@type": "Answer","text":" n is the total number of elements in the set, and r is the number of elements you choose from this set."}	}]}</script>
+    {%endblock%}
+    {%block content%}
+    <div class="container">
+        <div class="card c1">
+            <div class="card-header">
+                <h1 class="h1">Permutations Replacement Calculator</h1>
+            </div>
+            <div class="card-body">
+                <p>Take the help of the free tool for Permutations Replacement and get different ways of arrangement easily. Simply, enter the set of n distinct objects, sample elements r in the input fields of the Permutations Replacement Calculator and tap on the calculate button to avail the output effortlessly along with a detailed process.</p>
+<!-------     Error messages-->
+                 {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
                 <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
@@ -86,6 +79,7 @@
                 {% endfor %}
             </ul>
             {% endif %}
+
             <form action="{% url 'permutations-replacement' %}" method="POST" id="my_form">
                 {% csrf_token %}
                 <div class="input-group mb-3">
@@ -102,9 +96,7 @@
                     </div>
                     <input style="margin-top: 5px;width:100%" id="r" name="r" value="{{r}}" required=""
                            oninput="validateNumber(this);" class="form-control" type="number" required width="48">
-
                 </div>
-                <!--  calculations :-->
 
                     <div class=" center col mt-2 ">
 
@@ -113,21 +105,19 @@
                             <a href="{% url 'permutations-replacement' %}" class="btn btn-warning">Reset</a>
                         </center>
                     </div>
+                <br>
             </form>
 
+<!--              End form  --------->
+                <p><strong>Permutations Replacement Calculator: </strong>Tired of solving the problems on Permutations manually and find them difficult? Don't bother as you can take the help of an online tool for permutation replacement and get different ways of arrangement instantly. Check out the step by step process to find the Permutations with Replacement, Formula in the further modules. Have a glance at the solved examples and know how to solve related problems.</p>
+            </div>
         </div>
-    </div>
-</div>
-</div>
 
-{% if not flag %}
-<br><br><br>
-{% endif %}
+<!-----------------Calculation Result part-->
+        <div id="clear">
 
-<div id="clear">
-    <div class="container" style="height: auto !important;">
         {% if flag %}
-        <div class="card c1" id="permutations-replacement">
+        <div class="card " id="permutations-replacement">
             <div class="card-header">
                 <h3 class="h2">Steps to Find Permutaions Replacement </h3>
             </div>
@@ -144,7 +134,6 @@
                     <li>P - the number of permutations.</li>
                     <li>n - the total number of elements in the set.</li>
                     <li>r - the number of elements you choose from this set.</li>
-<!--                    <li>For n ≥ r ≥ 0</li>-->
                 </ul>
 
                 <strong>Input values are:-</strong>
@@ -160,7 +149,55 @@
             </div>
         </div>
         {% endif %}
-
-    </div>
 </div>
-{% endblock content %}
+<!---------- Calculation result part_   ------>
+    <div class="card">
+	    <div class="card-header">
+            <h2 class="h2">How to Calculate Permutations Replacement?</h2>
+        </div>
+	    <div class="card-body">
+           <p>In Permutations Replacement, a sample of r elements is taken from a set of n distinct objects, order matters, and replacements are allowed.</p>
+<p>If we pick r elements from a set having a size of n then each element r can be chosen n ways. The entire sequence of r elements is called a string and can be chosen in n x n x n x n ..... x n = n<sup>r</sup> ways.</p>
+<p><strong>P<sup>R</sup>(n,r)=n<sup>r</sup></strong></p>
+<p>Where p is the number of permutations.</p>
+<p>n is the total number of elements in the set,</p>
+<p>and r is the number of elements you choose from this set.</p>
+<p>Plugin the values of n, r and solve the equation to get the possible ways.</p>
+<p><strong>Example: Choose a sequence of 2 Letters from an Alphabet Size of 4 Letters {a,b,c,d} where repetitions are allowed?</strong></p>
+<p><strong>Solution:</strong></p>
+<p>From the given data n = 4 r = 2</p>
+<p>The formula for Permutations Replacement or Repetition is P<sup>R</sup>(n,r)=n<sup>r</sup></p>
+<p>Substituting the values of n, r in the formula and we get the equation as follows</p>
+<p>P<sup>R</sup>(4, 2) = 4<sup>2</sup> = 16</p>
+<p>Therefore, there are 16 ways to choose a sequence of 2 letters from an Alphabet Size of 4 Letters {a,b,c,d}.</p>
+<p>Seek help regarding Permutations, Combinations, Permutation Replacement, Combination Replacement concepts all under one roof at <a href="https://onlinecalculator.guru/">Onlinecalculator.guru</a> and clarify your concerns.</p>
+<img src="{% static 'images/Discrete_Mathematics/Permutations-Replacement-Calculator.jpeg' %}" alt="Permutations Replacement Calculator">   
+</div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+    <h3 class="h3">FAQs on Permutations Replacement Calculator</h3>
+  	    </div>
+  	    <div class="card-body">
+      	<!-- Question & Answer Starts --->
+        <p class="question"><strong>1. What is the formula for Permutations Replacement?</strong></p>
+     	<p class="answer">The formula for Permutations Replacement is P<sup>R</sup>(n,r)=n<sup>r</sup></p><hr>
+     	<p class="question"><strong>2. How to use Permutations Replacement Calculator?</strong></p>
+     	<p class="answer">Simply enter the inputs i.e. n total number of distinct objects, r sample elements to choose in the respective input fields, and click on the calculate button to avail result in a matter of seconds.</p><hr>  
+        <p class="question"><strong>3. Does order matter in Permutations?</strong></p>
+        <p class="answer">Order does matter in Permutations.</p><hr>
+        <p class="question"><strong>4. What does n, r stand for in the formula of Permutation?</strong></p>
+     	<p class="answer">n is the total number of elements in the set, and r is the number of elements you choose from this set.</p><hr>
+    	</div>
+    </div>
+    </div>
+
+{% if  flag %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#permutations-replacement'">ans1</button>
+{% endif %}
+{%endblock%}

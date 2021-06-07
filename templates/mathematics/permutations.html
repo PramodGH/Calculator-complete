@@ -1,0 +1,215 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+  {%block meta%}
+    <!-- HTML Defaults Broweser -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Online Calculator Guru Site Fevicon -->
+    <link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png" type="icon">
+    <!-- Online Calculator Guru Project Style Sheet -->
+    {%block css%}
+    <link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+    {%endblock%}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Meta Title, Description and Canonical URL Starts --->
+    <title>Free Online Permutations Calculator | How to find the Permutation nPr?</title>
+    <meta name="description" content="Permutations Calculator computes the number of possible permutations when selecting r items from a set of n elements. Get Permutations Formula, definition."/>
+    <link rel="canonical" href="{{request.build_absolute_uri}}">
+    <!-- Meta Title, Description and Canonical URL ENDS --->
+
+    <!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+	<!--  FACEBOOK CONFIGURATION STARTS  -->
+        <meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+        <meta property="og:title" content="Free Online Permutations Calculator | How to find the Permutation nPr?"/>
+        <meta property="og:description" content="Permutations Calculator computes the number of possible permutations when selecting r items from a set of n elements. Get Permutations Formula, definition."/>
+        <meta content="" property="og:site_name" />
+        <meta  content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Permutations-Calculator.jpeg" property="og:image" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:height" content="435" />
+        <meta property="og:image:width" content="354" />
+        <!--  FACEBOOK CONFIGURATION ENDS  -->
+        <!-- TWITTER CARD CONFIGURATION STARTS  -->
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+        <meta name="twitter:title" content="Free Online Permutations Calculator | How to find the Permutation nPr?"/>
+        <meta name="twitter:description" content="Permutations Calculator computes the number of possible permutations when selecting r items from a set of n elements. Get Permutations Formula, definition."/>
+        <meta name="twitter:image:src" content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Permutations-Calculator.jpeg"/>
+        <meta property="twitter:image:height" content="435"/>
+        <meta property="twitter:image:width" content="354"/>
+        <!-- TWITTER CARD CONFIGURATION ENDS  -->
+        <!--  LINKEDIN CONFIGURATION STARTS-->
+        <meta property='og:title' content="Free Online Permutations Calculator | How to find the Permutation nPr?"/>
+        <meta property='og:image' content="https://onlinecalculator.guru/static/images/Discrete_Mathematics/Permutations-Calculator.jpeg"/>
+        <meta property='og:description' content="Permutations Calculator computes the number of possible permutations when selecting r items from a set of n elements. Get Permutations Formula, definition."/>
+        <meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+        <!-- end of linkedin CONFIGURATIONS ENDS -->
+    <!-- OPEN GRAPH CONFIGURATION ENDS -->
+    <!-- FAQ SCHEMA STARTS -->
+    <script type="application/ld+json">{"@context": "https://schema.org","@type": "FAQPage","mainEntity": [{"@type": "Question","name":"1.
+        What is the formula to find Permutations?
+        ","acceptedAnswer": {"@type": "Answer","text":" The formula to find Permutations is P(n, r) = n!/(n-r)!"}	}, {"@type": "Question","name":"2.
+        How to use Permutations Calculator?
+        ","acceptedAnswer": {"@type": "Answer","text":" Just provide the number of objects n, the sample of elements r in the respective input fields, and click on the calculate button to get Permutations in a matter of seconds."}	}, {"@type": "Question","name":"3.
+        How do you calculate Permutations?
+        ","acceptedAnswer": {"@type": "Answer","text":" Substitute the values of n, r given accordingly in the formula for Permutations, and solve the equation to get Permutations easily."}	}, {"@type": "Question","name":"4.
+        What is n, r in Permutation Formula?
+        ","acceptedAnswer": {"@type": "Answer","text":" n is the total number of elements in the set and r is the total number of elements you choose from the set."}	}, {"@type": "Question","name":"5.
+        Does Order Matter in Permutation?
+        ","acceptedAnswer": {"@type": "Answer","text":" Yes, Order does matter in Permutation."}	}]}</script>
+    {%endblock%}
+    {%block content%}
+    <div class="container">
+        <div class="card c1">
+            <div class="card-header">
+                <h1 class="h1">Permutations Calculator</h1>
+            </div>
+            <div class="card-body">
+                <p>Make use of the handy tool for Permutations and determine the number of permutations in a set. Simply enter the inputs n, r in the specified input sections, and click on the calculate button next to the input section to find the output in a matter of seconds.</p>
+
+
+<!---------------      Error messages ---------->
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                       style="color:red">{{ message }}</p>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+<!---------------    Form ------->
+            <form action="{% url 'permutations' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <p class="input-group-text" id="basic-addon1">n (objects)</p>
+                    </div>
+                    <input style="margin-top: 5px;width:100%" id="n" name="n" value="{{n}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" min="0" required width="48">
+
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <p class="input-group-text" id="basic-addon1">r (sample) :</p>
+                    </div>
+                    <input style="margin-top: 5px;width:100%" id="r" name="r" value="{{r}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" min="0" required width="48">
+                </div>
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'permutations' %}" class="btn btn-warning">Reset</a>
+                        </center>
+                    </div><br>
+                </div>
+            </form>
+<!---------------- End Form-->
+
+                <p><strong>Permutations Calculator: </strong>Scared of solving problems on Permutations and find them tricky? Don't bother as you can make use of the online tool over here to get the number of permutations in a set in no time. Continue reading the article to know about the Permutation definition, Formula, Detailed Steps to Calculate Permutations, etc. For the sake of your convenience, we even listed enough examples to make you familiar with the concept better.</p>
+            </div>
+        </div>
+
+<!---------       Result calculations-->
+        <div id="clear">
+         {% if flag %}
+        <div class="card " id="permutations">
+            <div class="card-header">
+                <h3 class="h2">Steps to Find Permutations </h3>
+            </div>
+
+            <div class="card-body">
+                <strong>Permutations Formula:-</strong>
+                <br>
+                <p class="btn btn-outline-secondary active">P(n,r) = n! <span>&#247;</span> (n−r)!</p>
+                <br>
+
+                <strong>Where:</strong>
+                <ul>
+                    <li>n - The set or population</li>
+                    <li>r - Subset of n or sample set</li>
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>n = {{n}}</p>
+                <p>r = {{r}}</p>
+
+                <strong>Put values into formula</strong>
+
+                <p>Permutations P({{n}},{{r}}) = {{n}}! / ({{n}}-{{r}})! </p>
+                <p>{{n}}! = {{output1}} = <strong>{{result1}}<sup>{{power1}}</sup></strong> </p>
+                <p>({{n}} - {{r}})! = {{output3}} = <strong> {{result3}}<sup>{{power3}}</sup></strong> </p>
+
+                <p>P({{n}},{{r}}) = {{result1}}<sup>{{power1}}</sup> / {{result3}}<sup>{{power3}}</sup></p>
+
+<!--                <center><b id="formula" style="font-size:25px;">Combinations C({{n}},{{r}})  = {{result}} </b></center>-->
+                <strong>Permutations P({{n}},{{r}}) = {{result}}<sup>{{power}}</sup></strong>
+
+            </div>
+        </div>
+        {% endif %}
+    </div>
+<!--------      End Result calculation-->
+
+
+    <div class="card">
+	    <div class="card-header">
+            <h2 class="h2">Procedure to find Permutations</h2>
+        </div>
+	    <div class="card-body">
+            <p>A permutation is a number of ways in which you can select r elements out of a set containing n distinct objects in which order matters. Don't worry as you can use the formula to calculate the Permutations instantly.</p>
+            <p><strong>P(n,r) = n!/(n-r)! </strong>for n ≥ r ≥ 0</p>
+            <p>Where P is the number of permutations in the set</p>
+            <p>n is the total number of elements in the set</p>
+            <p>r is the total number of items you choose from the set and the exclamation mark '!' is the factorial.</p>
+            <p>Remember that as per the permutations formula the number of permutations for choosing one element is simply n. However, if you have to select all the elements formula becomes P(n, n) = n!</p>
+<p><strong>Example: Find the number of different permutations of a box containing 5 distinct color balls taken 2 at a time?</strong></p>
+<p><strong>Solution:</strong></p>
+<p>As per the data given n = 5</p>
+<p>r = 2</p>
+<p>we know the formula for permutation is <sup>n</sup>P<sub>r</sub>= n!/(n-r)!</p>
+<p>Applying the given data in the Formula of Permutations we get the equation as such</p>
+<p><sup>5</sup>P<sub>2</sub> = 5!/(5-2)!</p>
+<p>= 5!/3!</p>
+<p>= 20</p>
+<p>Therefore, the number of different permutations of a box containing 5 distinct color balls taken 2 at a time is 20.</p>
+<p>Get familiar with the concepts of physics, chemistry, maths all under one roof at <a href="https://onlinecalculator.guru/">Onlinecalculator.guru</a> and clarify your concerns during your homework or assignments.</p>
+<img src="{% static 'images/Discrete_Mathematics/Permutations-Calculator.jpeg' %}" alt="Permutations Calculator">
+</div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+    <h3 class="h3">FAQs on Permutations Calculator</h3>
+  	    </div>
+  	    <div class="card-body">
+      	<!-- Question & Answer Starts --->
+        <p class="question"><strong>1. What is the formula to find Permutations?</strong></p>
+     	<p class="answer">The formula to find Permutations is P(n, r) = n!/(n-r)!</p><hr>
+     	<p class="question"><strong>2.  How to use Permutations Calculator?</strong></p>
+     	<p class="answer">Just provide the number of objects n, the sample of elements r in the respective input fields, and click on the calculate button to get Permutations in a matter of seconds.</p><hr>
+        <p class="question"><strong>3. How do you calculate Permutations?</strong></p>
+        <p class="answer">Substitute the values of n, r given accordingly in the formula for Permutations, and solve the equation to get Permutations easily.</p><hr>
+        <p class="question"><strong>4. What is n, r in Permutation Formula?</strong></p>
+     	<p class="answer">n is the total number of elements in the set and r is the total number of elements you choose from the set.</p><hr>
+        <p class="question"><strong>5. Does Order Matter in Permutation?</strong></p>
+     	<p class="answer">Yes, Order does matter in Permutation.</p><hr>
+    </div>
+    </div>
+    </div>
+
+{% if  flag %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#permutations'">ans1</button>
+{% endif %}
+
+{%endblock%}

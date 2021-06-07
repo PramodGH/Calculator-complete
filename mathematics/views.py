@@ -54,21 +54,17 @@ def combinations(request):
         n = int(request.POST['n'])
         r = int(request.POST['r'])
 
-        print("n ---", n, type(n))
-        print("r ---", r, type(r))
+        # print("n ---", n, type(n))
+        # print("r ---", r, type(r))
+
         # for wrong inputs
         if r > n:
-            messages.error(request, '"n" should be > than or = "r"')
+            messages.error(request, 'n should be > than or = r')
             return render(request, 'mathematics/combinations.html')
-        # elif n < 0 or r < 0:
-        #     messages.error(request, 'Please enter vaild data, values should be non-negative')
-        #     return render(request, 'mathematics/combinations.html')
 
         result1, output1 = fact(n)
         result2, output2 = fact(r)
-
         result3, output3 = fact(n - r)
-        # print("reult1-------------", result1)
 
         power = ''
         result = result1 // (result2 * result3)  # Final answer
@@ -83,13 +79,11 @@ def combinations(request):
             result2, power2 = power_raise(result2)
         if result3 > 10000000:
             result3, power3 = power_raise(result3)
-        # print("reult3-------------", result3)
 
         context = {
             'result': result,
             'power': power, 'power1': power1, 'power2': power2, 'power3': power3,
             'result1': result1, 'result2': result2, 'result3': result3,
-            # 'r1':r1, 'r2':r2, 'r3':r3,
 
             'output1': output1,  # output to show each factorial value and how it's evaluated
             'output2': output2,
@@ -101,7 +95,6 @@ def combinations(request):
 
         }
         return render(request, 'mathematics/combinations.html', context)
-
     else:
         return render(request, 'mathematics/combinations.html', {'flag': False})
 
@@ -162,6 +155,49 @@ def combinations_replacement(request):
         return render(request, 'mathematics/combinationsReplacement.html', {'flag': False})
 
 
+# permutations
+def permutations(request):
+    if request.method == 'POST':
+        n = int(request.POST['n'])
+        r = int(request.POST['r'])
+
+        # for wrong inputs
+        if r > n:
+            messages.error(request, 'n should be > than or = r')
+            return render(request, 'mathematics/permutations.html')
+
+        result1, output1 = fact(n)
+        result3, output3 = fact(n - r)
+
+        power = ''
+        result = result1 / result3  # Final answer
+        if result > 10000000:
+            result, power = power_raise(result)
+
+        power1, power3 = '', ''
+        if result1 > 10000000:
+            result1, power1 = power_raise(result1)
+
+        if result3 > 10000000:
+            result3, power3 = power_raise(result3)
+
+        context = {
+            'result': result,
+            'power': power, 'power1': power1,  'power3': power3,
+            'result1': result1, 'result3': result3,
+
+            'output1': output1,  # output to show each factorial value and how it's evaluated
+            'output3': output3,
+
+            'n': n,  # Input values
+            'r': r,
+            'flag': True
+
+        }
+        return render(request, 'mathematics/permutations.html', context)
+    else:
+        return render(request, 'mathematics/permutations.html')
+
 # permutations - Replacement
 def permutations_replacement(request):
     if request.method == 'POST':
@@ -194,10 +230,10 @@ def permutations_replacement(request):
         return render(request, 'mathematics/permutationsReplacement.html', context)
 
     else:
-        return render(request, 'mathematics/permutationsReplacement.html', {'flag': False})
+        return render(request, 'mathematics/permutationsReplacement.html')
 
 
-# odd Permutations
+# even Permutations
 def evenPermutaions(request):
     if request.method == 'POST':
         n = int(request.POST['n'])
