@@ -1,0 +1,273 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Power With Displacement Calculator | Free Calculator to find Power With Displacement</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Power With Displacement Calculator | Free Calculator to find Power With Displacement"/>
+<meta property="og:description" content="Power With Displacement Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Power With Displacement Calculator | Free Calculator to find Power With Displacement"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Power With Displacement Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag  %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#powerWithDisplacement'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Power With Displacement Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'power-with-displacement' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Force(F)</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="force" type="number" step="any" name="force"
+                           value="{{force}}" 
+                           oninput="validateNumber(this);" class="form-control" required width="48">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">N</span>
+                        </div>
+                   
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Displacement(D)</span>
+                </div>
+
+                <input style="margin-top: 5px;width:100%" id="displacement" type="number" step="any" name="displacement"
+                       value="{{displacement}}" 
+                       oninput="validateNumber(this);" class="form-control" required width="48">
+
+                       <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">meters</span>
+                    </div>
+
+                <!-- <select class="select form-control" id="inlineFormInputGroup" name="displacement_op">
+
+                    {% if displacement_op == 'mm' %}
+                        <option value="mm" selected="selected">millimeters(mm)</option>
+                        {% else %}
+                        <option value="mm">millimeters(mm)</option>
+                        {% endif %}
+
+                        {% if displacement_op == 'cm' %}
+                        <option value="cm" selected="selected">centimeters(cm)</option>
+                        {% else %}
+                        <option value="cm">centimeters(cm)</option>
+                        {% endif %}
+
+                        {% if displacement_op == 'm' %}
+                        <option value="m" selected="selected">meters(m)</option>
+                        {% else %}
+                        <option value="m">meters(m)</option>
+                        {% endif %}
+
+                        {% if displacement_op == 'km' %}
+                        <option value="km" selected="selected">kilometers(km)</option>
+                        {% else %}
+                        <option value="km">kilometers(km)</option>
+                        {% endif %}
+
+                        {% if displacement_op == 'in' %}
+                        <option value="in" selected="selected">inches(in)</option>
+                        {% else %}
+                        <option value="in">inches(in)</option>
+                        {% endif %}
+
+                        {% if displacement_op == 'ft' %}
+                        <option value="ft" selected="selected">feet(ft)</option>
+                        {% else %}
+                        <option value="feet">feet(ft)</option>
+                        {% endif %}
+
+                        {% if displacement_op == 'yd' %}
+                        <option value="yd" selected="selected">yards(yd)</option>
+                        {% else %}
+                        <option value="yd">yards(yd)</option>
+                        {% endif %}
+
+                        {% if displacement_op == 'mi' %}
+                        <option value="mi" selected="selected">miles(mi)</option>
+                        {% else %}
+                        <option value="mi">miles(mi)</option>
+                        {% endif %}
+
+                </select>                -->
+                
+                    </div>
+
+                    <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Time(T)</span>
+                </div>
+            
+
+            <input style="margin-top: 5px;width:100%" id="time" type="number" step="any" name="time" min='0'
+                   value="{{time}}" class="form-control" required width="48">
+
+                   <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Seconds</span>
+                </div>
+
+            <!-- <select class="select form-control" id="inlineFormInputGroup" name="time_op">
+
+
+                {% if time_op == 'deg' %}
+                <option value="deg" selected="selected">degrees(deg)</option>
+                {% else %}
+                <option value="deg">degrees(deg)</option>
+                {% endif %}
+
+                {% if time_op == 'rad' %}
+                <option value="rad" selected="selected">radians(rad)</option>
+                {% else %}
+                <option value="rad">radians(rad)</option>
+                {% endif %}
+
+            </select> -->
+        </div>
+                
+
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'power-with-displacement' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+            <div class="card c1" id="powerWithDisplacement">          
+           
+            <div class="card-body">
+                <strong>What is power with displacement ?</strong>
+                <p>Power with respect to displacement states the amount of work done with a force to cause the displacement of the object in a particular time.
+                     Power is defined as the rate of the work done. It is denoted by symbol ‘P’. The unit of power is Watt (W).</p>
+ 
+
+                <strong> Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">Power(P) = (Force*Displacement)/Time</p> <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        F - Force applied
+                    </li>
+                    <li>
+                        D - Displacement of object
+                    </li>
+                    <li>
+                        T - Time taken
+                    </li>
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Force(F) = {{ force }} {{force_op}}</p>
+                <p>Displacement(D) = {{ displacement }} {{displacement_op}}</p>
+                <p>Time(T) = {{ time }} {{time_op}}</p>
+
+                <strong>Put values into formula</strong>
+
+                <p>Power(P) = ({{force}}*{{displacement}}) / {{time}}</p>
+                <p>Power(P) = {{f_into_dis}}/{{time}}</p>
+                <strong>Power(P) = {{power}} W</strong>
+
+                
+
+            </div>
+        </div>
+        {% endif %}
+</div>
+</div>
+{% endblock content %}

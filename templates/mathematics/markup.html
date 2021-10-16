@@ -1,0 +1,378 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+    type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style2.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Markup Calculator | Free Calculator to Markup </title>
+<meta name="description"
+    content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps." />
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property="og:description" content="Markup Calculator" />
+<meta content="" property="og:site_name" />
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+    property="og:image" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="435" />
+<meta property="og:image:width" content="354" />
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator" />
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta name="twitter:description"
+    content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps." />
+<meta name="twitter:image:src"
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property="twitter:image:height" content="435" />
+<meta property="twitter:image:width" content="354" />
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Markup Calculator | Free Calculator to find Markup"/>
+<meta property='og:image'
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property='og:description' content="Angular Resolution Calculator." />
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if flag1 or flag2 or flag3 %}
+<script>
+    $(document).ready(function () {
+        $("#hassle").click();
+    });
+
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#markup'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Markup Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                    style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="{% url 'markup' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Choose Option</span>
+                    </div>
+
+
+                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"
+                    id="inlineFormInputGroup" onchange="this.form.submit()">
+
+                        {% if given == 'form1' %}
+                        <option value='form1' selected="selected">Find Initial Price | Using Markup and Final Price
+                        </option>
+                        {% else %}
+                        <option value='form1'>Find Initial Price | Using Markup and Final Price
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form2' %}
+                        <option value='form2' selected="selected">Find Markup | Using Initial Price and Final Price
+                        </option>
+                        {% else %}
+                        <option value='form2'>Find Markup | Using Initial Price and Final Price
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form3' %}
+                        <option value='form3' selected="selected">Find Final Price | Using Initial Price and Markup
+                        </option>
+                        {% else %}
+                        <option value='form3'>Find Final Price | Using Initial Price and Markup
+                        </option>
+                        {% endif %}
+
+                    </select>
+                </div>
+
+                <!-- {% if given != "form1" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Initial Price</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="initial_price" type="number" step="any"
+                        name="initial_price" min="0" value="{{initial_price}}" required class="form-control" width="48">
+                </div>
+                {% endif %}
+
+                {% if given != "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Markup</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="markup" type="number" step="any" name="markup" min="0"
+                        value="{{markup}}" required class="form-control" width="48">
+                </div>
+                {% endif %}
+
+                {% if given != "form3" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Final Price</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="final_price" type="number" step="any"
+                        name="final_price" min="0" value="{{final_price}}" required class="form-control" width="48">
+                </div>
+                {% endif %} -->
+
+                {% if given == "form1" %}
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Markup</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="markup" type="number" step="any" name="markup" min="0"
+                        value="{{markup}}" required class="form-control" width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Final Price</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="final_price" type="number" step="any"
+                        name="final_price" min="0" value="{{final_price}}" required class="form-control" width="48">
+                </div>
+
+               
+                {% endif %}
+
+                {% if given == "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Initial Price</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="initial_price" type="number" step="any"
+                        name="initial_price" min="0" value="{{initial_price}}" required class="form-control" width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Final Price</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="final_price" type="number" step="any"
+                        name="final_price" min="0" value="{{final_price}}" required class="form-control" width="48">
+                </div>
+                {% endif %}
+
+                {% if given == "form3" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Initial Price</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="initial_price" type="number" step="any"
+                        name="initial_price" min="0" value="{{initial_price}}" required class="form-control" width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Markup</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="markup" type="number" step="any" name="markup" min="0"
+                        value="{{markup}}" required class="form-control" width="48">
+                </div>
+
+                {% endif %}
+
+
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'markup' %}" class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag1 %}
+
+        <div class="card c1" id="markup">
+            <div class="card-body">
+                <p>A good was sold for ${{final_price}} using a {{markup}}% markup on the cost. How much did the good
+                    cost?</p>
+
+                <strong> Setup Markup Equation</strong><br>
+                <p class="btn btn-outline-secondary active">Markup amount = Original Price x (1 + Markup %)</p><br>
+
+                <strong>Divide each side of the equation by 1 + Markup % to isolate Original Price:</strong>
+                <div>
+                    <span class="frac"><span>Markup Amount</span><span class="symbol">/</span><span class="bottom">1 +
+                            Markup %</span></span>&nbsp;=
+                    <span class="frac"><span>Original Price</span><span class="symbol"></span><span class="bottom">1 +
+                            Markup %</span></span>
+
+                </div>
+
+                <div>
+                    <span><span>Original Price</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>Markup Amount</span><span class="symbol">/</span><span class="bottom">1 +
+                            Markup %</span></span>
+                </div>
+
+
+                <strong>Input values are:-</strong>
+                <p>Markup = {{markup}} </p>
+                <p>Final Price = {{final_price}} </p>
+
+                <strong>Plugging in our known values, we get:</strong>
+                <div>
+                    <span><span>Original Price</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>${{markup_amt}}</span><span class="symbol">/</span><span
+                            class="bottom">{{one_plus_markup}}</span></span>
+                </div>
+                <strong>Original Price = ${{orginal_price_output}}</strong>
+
+            </div>
+        </div>
+        {% endif %}
+
+        <!--         if given == "form2" ------------>
+        {% if flag2 %}
+
+        <div class="card c1" id="markup">
+            <div class="card-body">
+                <p>A good is bought wholesale for ${{initial_price}} and then sold for ${{final_price}}. What is the
+                    markdown rate?</p>
+
+                <strong>Input values are:-</strong>
+                <p>Initial Price = {{initial_price}} </p>
+                <p>Final Price = {{final_price}} </p>
+
+                <div>
+                    <strong>
+                        Calculate Markdown Amount:
+                    </strong>
+                    <p>Markdown Amount = Final Price - Original Price</p>
+                    <p>Markdown Amount = ${{final_price}} - ${{initial_price}}</p>
+                    <p>Markdown Amount = $({{diff_fin_inital}})</p>
+                </div><br>
+
+                <div>
+                    <strong>Calculate Markdown Rate:</strong>
+                    <p>Let us define our rate as (x) </p>
+                    <p>Markdown Amount = Original Price (x)</p>
+                </div>
+
+                <strong>Divide each side by Original Price to isolate x:</strong>
+                <div>
+                    <span><span>x</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>Markup Amount</span><span class="symbol">/</span><span
+                            class="bottom">Original Price</span></span>
+                </div>
+                <br>
+                <div>
+                    <strong>Plugging in our known values, we get:</strong>
+                    <div>
+                        <span><span>x</span><span></span><span class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>${{diff_fin_inital}}</span><span class="symbol">/</span><span
+                                class="bottom">{{initial_price}}</span></span>
+                    </div>
+                    <strong>x = ${{x_output}}</strong><br><br>
+                </div>
+
+
+                <strong>Conver to Percentage : </strong>
+                <p>Markdown Percentage = 100 x {{x_output}} = {{percentage_output}}%</p>
+
+            </div>
+        </div>
+        {% endif %}
+
+
+        <!-----------Flag 3 result-->
+        {% if flag3 %}
+
+        <div class="card c1" id="markup">
+            <div class="card-body">
+                <p>A good was sold using a markup rate of {{markup}}%. Find the selling price of the good that cost the
+                    retailer ${{initial_price}} ?</p>
+
+                <strong>Input values are:-</strong>
+                <p>Initial Price = {{initial_price}} </p>
+                <p>Markup = {{markup}} </p>
+
+                <div>
+                    <strong>
+                        Calculate Markdown Amount:
+                    </strong>
+                    <p>Markdown Amount = Original Price x Markup %</p>
+                    <p>Markdown Amount = ${{initial_price}} x ${{markup}}%</p>
+                    <p>Markdown Amount = $({{mul_init_markup}})</p>
+                </div><br>
+
+                <div>
+                    <strong>Calculateselling price:</strong>
+                    <p>Selling Price = Original Price + Markup Amount</p>
+                    <p>Selling Price = ${{initial_price}} + ${{mul_init_markup}}</p>
+                    <p>Selling Price = ${{sell_price_output}}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+    </div>
+</div>
+{% endblock content %}

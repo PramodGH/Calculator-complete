@@ -1,0 +1,372 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Neutralization Calculator | Free Calculator to find Capacitance</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag1 or flag2 or flag3 or flag4 %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#sum-of-linear-number-sequence'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Sum of linear number sequence Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="{% url 'sum-of-linear-number-sequence' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Choose Option</span>
+                    </div>
+
+
+                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"
+                            id="inlineFormInputGroup" onchange="this.form.submit()">
+
+                        {% if given == 'form1' %}
+                        <option value='form1' selected="selected">Find Initial Value | Using Difference, Periods, Final Value
+                        </option>
+                        {% else %}
+                        <option value='form1'>Find Initial Value | Using Difference, Periods, Final Value
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form2' %}
+                        <option value='form2' selected="selected">Find Difference | Using Initial Value, Periods, Final Value
+                        </option>
+                        {% else %}
+                        <option value='form2'>Find Difference | Using Initial Value, Periods, Final Value
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form3' %}
+                        <option value='form3' selected="selected">Find Periods | Using Initial Value, Difference, Final Value
+                        </option>
+                        {% else %}
+                        <option value='form3'>Find Periods | Using Initial Value, Difference, Final Value
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form4' %}
+                        <option value='form4' selected="selected">Find Final Vlaue | Using Initial Value, Difference, Periods
+                        </option>
+                        {% else %}
+                        <option value='form4'>Find Final Vlaue | Using Initial Value, Difference, Periods
+                        </option>
+                        {% endif %}
+                    </select>
+                </div>
+
+                {% if given != "form1" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Initial Value</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="init_value" type="number" step="any" name="init_value"
+                           value="{{init_value}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+                {% endif %}
+
+                {% if given != "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Difference</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="diff" type="number" step="any" name="diff"
+                           value="{{diff}}"
+                           required="" oninput="validateNumber(this);" class="form-control"  required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+                {% if given != "form3" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Periods</span>
+                    </div>
+                    <input style="margin-top: 5px;width:100%" id="periods" type="number" step="any"
+                           name="periods" value="{{periods}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="text" required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+                {% if given != "form4" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Final Value</span>
+                    </div>
+                    <input style="margin-top: 5px;width:100%" id="fin_value" type="number" step="any" name="fin_value"
+                           value="{{fin_value}}"
+                           oninput="validateNumber(this);" class="form-control" required width="48"
+                           >
+                </div>
+
+                {% endif %}
+
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'sum-of-linear-number-sequence' %}" class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag1 %}
+
+        <div class="card c1" id="sum-of-linear-number-sequence">
+            <div class="card-body">
+                <strong> Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">Initial value = Final value - (periods-1)* Difference</p><br>
+
+                <p class="btn btn-outline-secondary active">S<sub>n</sub> = (n/2) * (a+l) </p><br>
+<!--                <p class="btn btn-outline-secondary active">S<sub>n</sub> = (n/2) * (2a+(n-1)d) </p><br>-->
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        n - nth value in sequence
+                    </li>
+                     <li>
+                        a - initial value of sequence
+                    </li>
+                     <li>
+                        d - difference in each value
+                    </li>
+                    <li>
+                        l - last value in sequence
+                    </li>
+                </ul>
+
+
+                <strong>Input values are:-</strong>
+                <p>Periods = {{periods}} </p>
+                <p>Difference = {{diff}} </p>
+                <p>Final value = {{fin_value}} </p>
+
+                <strong>Initial value</strong> = {{init_value_result}}<br>
+                <strong>Sum</strong> = {{sum}}<br>
+                <strong>Sequence</strong> = {{sequence}}
+
+            </div>
+        </div>
+        {% endif %}
+
+        <!--         if given == "form2" and vol_sol and norm and wt_sol -->
+         {% if flag2 %}
+
+        <div class="card c1" id="sum-of-linear-number-sequence">
+            <div class="card-body">
+                <strong> Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">Difference = Final Value / (Initial value + (Periods - 1))</p><br>
+
+                <p class="btn btn-outline-secondary active">S<sub>n</sub> = (n/2) * (a+l) </p><br>
+<!--                <p class="btn btn-outline-secondary active">S<sub>n</sub> = (n/2) * (2a+(n-1)d) </p><br>-->
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        n - nth value in sequence
+                    </li>
+                     <li>
+                        a - initial value of sequence
+                    </li>
+                     <li>
+                        d - difference in each value
+                    </li>
+                    <li>
+                        l - last value in sequence
+                    </li>
+                </ul>
+
+
+                <strong>Input values are:-</strong>
+                <p>Initial Value = {{init_value}} </p>
+                <p>Periods = {{periods}} </p>
+                <p>Final value = {{fin_value}} </p>
+
+                <strong>Difference</strong> = {{diff_result}}<br>
+                <strong>Sum</strong>= {{sum}}<br>
+                <strong>Sequence</strong> = {{sequence}}
+
+            </div>
+        </div>
+        {% endif %}
+
+
+<!-----------Volume of solvent result-->
+{% if flag3 %}
+
+        <div class="card c1" id="sum-of-linear-number-sequence">
+            <div class="card-body">
+                <strong> Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">Periods = ((Final value - Initial value)/ Difference) + 1</p><br>
+
+                <p class="btn btn-outline-secondary active">S<sub>n</sub> = (n/2) * (a+l) </p><br>
+<!--                <p class="btn btn-outline-secondary active">S<sub>n</sub> = (n/2) * (2a+(n-1)d) </p><br>-->
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        n - nth value in sequence
+                    </li>
+                     <li>
+                        a - initial value of sequence
+                    </li>
+                     <li>
+                        d - difference in each value
+                    </li>
+                    <li>
+                        l - last value in sequence
+                    </li>
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Initial Value = {{init_value}} </p>
+                <p>Difference = {{diff}} </p>
+                <p>Final value = {{fin_value}} </p>
+
+                <strong>Periods</strong> = {{ periods_result }}<br>
+                <strong>Sum</strong> = {{sum}}<br>
+                <strong>Sequence</strong> = {{sequence}}
+
+            </div>
+        </div>
+        {% endif %}
+
+{% if flag4 %}
+
+        <div class="card c1" id="sum-of-linear-number-sequence">
+            <div class="card-body">
+                <strong> Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">Final value = Initial value + (Periods - 1)*Difference</p><br>
+                <p class="btn btn-outline-secondary active">S<sub>n</sub> = (n/2) * (a+l) </p><br>
+<!--                <p class="btn btn-outline-secondary active">S<sub>n</sub> = (n/2) * (2a+(n-1)d) </p><br>-->
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        n - nth value in sequence
+                    </li>
+                     <li>
+                        a - initial value of sequence
+                    </li>
+                     <li>
+                        d - difference in each value
+                    </li>
+                    <li>
+                        l - last value in sequence
+                    </li>
+                </ul>
+
+
+                <strong>Input values are:-</strong>
+                <p>Initial Value = {{init_value}} </p>
+                <p>Difference = {{diff}} </p>
+                <p>Periods = {{periods}} </p>
+
+                <strong>Final Value</strong> = {{fin_value_result}}<br>
+                <strong>Sum</strong> = {{sum}}<br>
+                <strong>Sequence</strong> = {{sequence}}
+
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

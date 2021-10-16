@@ -1,0 +1,202 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Midpoint Calculator | Free Calculator to find Midpoint</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag  %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#midpoint'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Midpoint Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'midpoint' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" >First point coordinates</span>
+                    </div></div>
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >x<sub>1</sub></span>
+
+                    <input style="margin-top: 5px;width:100%" id="x1" type="number" step="any" name="x1"
+                           value="{{x1}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >y<sub>1</sub></span>
+                    </div>
+
+                     <input style="margin-top: 5px;width:100%" id="y1" type="number" step="any" name="y1"
+                           value="{{y1}}" required=""
+                           class="form-control" type="text" required width="48">
+                            </div>
+                            <br>
+
+
+<!--                second point coordinates -->
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" >Second point coordinates</span>
+                    </div></div>
+                <div>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >x<sub>2</sub></span>
+
+                    <input style="margin-top: 5px;width:100%" id="x2" type="number" step="any" name="x2"
+                           value="{{x2}}" required=""
+                            class="form-control" required width="48">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >y<sub>2</sub></span>
+                    </div>
+
+                     <input style="margin-top: 5px;width:100%" id="y2" type="number" step="any" name="y2"
+                           value="{{y2}}" required=""
+                           oninput="validateNumber(this);" class="form-control"  required width="48">
+                            </div>
+
+                    </div>
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class="center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'midpoint' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+            <div class="card c1" id="midpoint">
+            <div class="card-header">
+                <h2 class="h2">Steps to find Midpoint :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:</strong><br>
+                <p class="btn btn-outline-secondary active">X midpoint = (x₁ + x₂)/2</p> <br>
+                <p class="btn btn-outline-secondary active">Y midpoint = (y₁ + y₂)/2</p> <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        x1 - x coordinate of 1st point
+                    </li>
+                    <li>
+                        y1 - y coordinate of 1st point
+                    </li>
+                    <li>
+                        x2 - x coordinate of 2nd point
+                    </li>
+                    <li>
+                        y2 - y coordinate of 2nd point
+                    </li>
+                </ul>
+
+                <strong>Input values are:</strong>
+                <p>x1 = {{ x1 }}</p>
+                <p>y1 = {{ y1 }}</p>
+                <p>x2 = {{ x2 }}</p>
+                <p>y2 = {{ y2 }}</p>
+
+                <strong>Result :</strong>
+                    <p>x midpoint = ({{x1}} + {{x2}})/2 = {{x_midpoint}}</p>
+                    <p>y midpoint = ({{y1}} + {{y2}})/2 = {{y_midpoint}}</p>
+
+            </div>
+        </div>
+        {% endif %}
+</div>
+</div>
+{% endblock content %}

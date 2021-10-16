@@ -1,0 +1,321 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Neutralization Calculator | Free Calculator to find Capacitance</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag1 or flag2 %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#arctan'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Arctan Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'arctan' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Choose Option to calculate</span>
+                    </div>
+
+                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"
+                            id="inlineFormInputGroup" onchange="this.form.submit()">
+
+                        {% if given == 'form1' %}
+                        <option value='form1' selected="selected">Find y | Using x
+                        </option>
+                        {% else %}
+                        <option value='form1'>Find y | Using x
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form2' %}
+                        <option value='form2' selected="selected">Find x | Using y
+                        </option>
+                        {% else %}
+                        <option value='form2'>Find x | Using y
+                        </option>
+                        {% endif %}
+
+                    </select>
+                </div>
+
+<!----------    form1    ----->
+                {% if given == "form1" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="x" type="number" step="any" name="x"
+                           value="{{x}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                {% endif %}
+
+                {% if given == "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="y" type="number" step="any" name="y"
+                           value="{{y}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                    <select class="select form-control" id="inlineFormInputGroup" name="y_op">
+
+                        {% if y_op == 'deg' %}
+                        <option value="deg" selected="selected">degrees(deg)</option>
+                        {% else %}
+                        <option value="deg">degrees(deg)</option>
+                        {% endif %}
+
+                        {% if y_op == 'rad' %}
+                        <option value="rad" selected="selected">radians(rad)</option>
+                        {% else %}
+                        <option value="rad">radians(rad)</option>
+                        {% endif %}
+
+                        {% if y_op == 'gon' %}
+                        <option value="gon" selected="selected">gradians(gon)</option>
+                        {% else %}
+                        <option value="gon">gradians(gon)</option>
+                        {% endif %}
+
+                        {% if y_op == 'tr' %}
+                        <option value="tr" selected="selected">turns(tr)</option>
+                        {% else %}
+                        <option value="tr">turns(tr)</option>
+                        {% endif %}
+
+                        {% if y_op == 'arcmin' %}
+                        <option value="arcmin" selected="selected">minutes of arc(arcmin)</option>
+                        {% else %}
+                        <option value="arcmin">minutes of arc(arcmin)</option>
+                        {% endif %}
+
+                        {% if y_op == 'arcsec' %}
+                        <option value="arcsec" selected="selected">seconds of arc(arcsec)</option>
+                        {% else %}
+                        <option value="arcsec">seconds of arc(arcsec)</option>
+                        {% endif %}
+
+                        {% if y_op == 'mrad' %}
+                        <option value="mrad" selected="selected">miliradians(mrad)</option>
+                        {% else %}
+                        <option value="mrad">miliradians(mrad)</option>
+                        {% endif %}
+
+                        {% if y_op == 'μrad' %}
+                        <option value="μrad" selected="selected">microradians(μrad)</option>
+                        {% else %}
+                        <option value="μrad">microradians(μrad)</option>
+                        {% endif %}
+
+<!--                        {% if y_op == '*π rad' %}-->
+<!--                        <option value="*π rad" selected="selected">π radians(*π rad)</option>-->
+<!--                        {% else %}-->
+<!--                        <option value="*π rad">π radians(*π rad)</option>-->
+<!--                        {% endif %}-->
+
+                    </select>
+                </div>
+                {% endif %}
+
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'arctan' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% if not flag1 or not flag2 %}
+<br><br>
+{% endif%}
+
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+        <!--        if given == "form1" and wt_sol and vol_sol and eq_wt -->
+
+
+<!--        Flag1-->
+        {% if flag1 %}
+            <div class="card c1" id="arctan">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find y :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong> Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">y = arctan(x)
+                    </p>
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        x - value of tan y
+                        y - tan inverse of x
+                    </li>
+
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>x = {{x}} </p>
+
+                <strong>Put values into formula</strong>
+                <p>y = arctan({{x}})</p>
+
+                <!----       summary in all units -->
+                <details>
+                        <summary> tan<sup>−1</sup>({{x}}) in other units</summary>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <th>Units</th>
+                                <th>Values</th>
+                            </thead>
+                            <tbody>
+                                {% for key, value in all_conversions.items %}
+                                <tr>
+                                    <td> {{ key }} </td>
+                                    <td> {{ value }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </details><br>
+
+                <h5><strong>y = {{result}} radian</strong></h5>
+
+            </div>
+        </div>
+        {% endif %}
+
+<!--        Form2-->
+         {% if flag2 %}
+            <div class="card c1" id="arctan">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find x :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong> Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">x = tan(y)
+                    </p>
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        x - value of tan y
+                         </li>
+                    <li>
+                        y - tan inverse of x
+                    </li>
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>y = {{y}} </p>
+
+                <strong>Put values into formula</strong>
+                <p>x = tan({{y}}) </p>
+                <strong>x = {{result}} </strong>
+
+            </div>
+        </div>
+        {% endif %}
+
+
+</div>
+</div>
+{% endblock content %}

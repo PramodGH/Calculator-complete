@@ -1,0 +1,373 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+    type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style2.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Equivalent Annual Cost Calculator | Free Calculator to find Equivalent Annual Cost </title>
+<meta name="description"
+    content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps." />
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property="og:description" content="Angular Resolution Calculator" />
+<meta content="" property="og:site_name" />
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+    property="og:image" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="435" />
+<meta property="og:image:width" content="354" />
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator" />
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta name="twitter:description"
+    content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps." />
+<meta name="twitter:image:src"
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property="twitter:image:height" content="435" />
+<meta property="twitter:image:width" content="354" />
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property='og:image'
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property='og:description' content="Angular Resolution Calculator." />
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if flag %}
+<script>
+    $(document).ready(function () {
+        $("#hassle").click();
+    });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#equivalent-annual-cost'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important; ">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Midpoint Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                    style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <!----------   Form  --------->
+            <form action="{% url 'equivalent-annual-cost' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                <div class="input-group mb-3" style="margin-left:auto">
+                    <div>
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Item A</th>
+                                    <th scope="col">Item B</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="td-data">Investment Cost</td>
+                                    <td class="td-data">
+                                        <input style="margin-top: 5px;width:100%" id="invst_cost_a" type="number"
+                                            step="any" name="invst_cost_a" value="{{invst_cost_a}}" class="form-control"
+                                            required width="25">
+                                    </td>
+                                    <td class="td-data">
+                                        <input style="margin-top: 5px;width:100%" id="invst_cost_b" type="number"
+                                            step="any" name="invst_cost_b" value="{{invst_cost_b}}" class="form-control"
+                                            required width="25">
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td class="td-data">Expected Lifetime</td>
+                                    <td class="td-data">
+                                        <input style="margin-top: 5px;width:100%" id="expec_lftm_a" type="number"
+                                            step="any" name="expec_lftm_a" value="{{expec_lftm_a}}" required=""
+                                            class="form-control" required width="25">
+                                    </td>
+                                    <td class="td-data">
+                                        <input style="margin-top: 5px;width:100%" id="expec_lftm_b" type="number"
+                                            step="any" name="expec_lftm_b" value="{{expec_lftm_b}}" required=""
+                                            class="form-control" required width="25">
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td class="td-data">Maintenance Cost</td>
+                                    <td class="td-data">
+                                        <input style="margin-top: 5px;width:100%" id="main_cost_a" type="number"
+                                            step="any" name="main_cost_a" value="{{main_cost_a}}" required=""
+                                            class="form-control" required width="25">
+                                    </td>
+                                    <td class="td-data">
+                                        <input style="margin-top: 5px;width:100%" id="main_cost_b" type="number"
+                                            step="any" name="main_cost_b" value="{{main_cost_b}}" class="form-control"
+                                            required width="25">
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <!--                second point coordinates -->
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Enter Cost of Capital</span>
+                    </div>
+                    <input style="margin-top: 5px;width:100%" id="cost_of_cap" type="number" step="any"
+                        name="cost_of_cap" value="{{cost_of_cap}}" class="form-control" required width="48">
+                </div>
+
+
+
+                <!----------    Calculate, Reset part-->
+                <div>
+                    <div class="center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'equivalent-annual-cost' %}" class="btn btn-warning"
+                                style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+        <div class="card c1" id="equivalent-annual-cost">
+            <!-- <div class="card-header">
+                <h2 class="h2">Steps to find Midpoint :</h2>
+            </div> -->
+
+            <div class="card-body">
+
+                <p>Item A has an investment cost of ${{invst_cost_a}}, a lifetime of {{expec_lftm_a}} periods,
+                    with a maintenance cost per period of ${{main_cost_a}}</p>
+
+                <p>Item B has an investment cost of ${{invst_cost_b}}, a lifetime of {{expec_lftm_b}} periods,
+                    with a maintenance cost per period of ${{main_cost_b}}</p>
+
+                <p>
+                    Calculate the Equivalent Annual Cost (EAC) for each Item using a cost of capital of {{cost_of_cap}}%
+                    and determine a conclusion
+                </p>
+
+                <b>Calculate v:</b>
+                <div>
+                    <span><span>v</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>1</span><span class="symbol">/</span><span class="bottom">(1+Cost of
+                            Capital)
+                        </span></span>
+                </div>
+                <div>
+                    <span><span>v</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>1</span><span class="symbol">/</span><span class="bottom">(1+
+                            {{cost_of_cap_in_percent}})
+                        </span></span>
+                </div>
+                <div>
+                    <span><span>v</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>1</span><span class="symbol">/</span><span
+                            class="bottom">{{cost_of_cap_in_percent_pls1}}
+                        </span></span>
+                </div>
+                <p>v = {{v_result}} </p>
+                <br>
+
+                <!-- for item 1st-------- -->
+                <div>
+                    <b>Calculate Discount Factor for Item 1:</b>
+                    <div>
+                        <span><span><b>a</b><sub>{{expec_lftm_a}}|{{cost_of_cap_in_percent}}</sub></span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>(1 - v<sup>Asset Lifetime</sup>)</span><span
+                                class="symbol"></span><span class="bottom">Cost of Capital
+                            </span></span>
+                    </div>
+                    <div>
+                        <span><span><b>a</b><sub>{{expec_lftm_a}}|{{cost_of_cap_in_percent}}</sub></span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>(1 - {{v_result}}<sup>{{expec_lftm_a}}</sup>)</span><span
+                                class="symbol"></span><span class="bottom">{{cost_of_cap_in_percent}}
+                            </span></span>
+                    </div>
+                    <div>
+                        <span><span><b>a</b><sub>{{expec_lftm_a}}|{{cost_of_cap_in_percent}}</sub></span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>(1 - {{v_power_lifetime_a}})</span><span class="symbol"></span><span
+                                class="bottom">{{cost_of_cap_in_percent}}
+                            </span></span>
+                    </div>
+                    <div>
+                        <span><span><b>a</b><sub>{{expec_lftm_a}}|{{cost_of_cap_in_percent}}</sub></span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>{{sub_a}}</span><span class="symbol"></span><span
+                                class="bottom">{{cost_of_cap_in_percent}}
+                            </span></span>
+                    </div>
+                    <b>a<sub>{{expec_lftm_a}}|{{cost_of_cap_in_percent}}</sub> = {{disc_fact_a}}</b>
+                    <br><br>
+
+                    <b>Calculate Discounted Investment for Item 1:</b>
+                    <div>
+                        <span><span>Discounted Investment for Item 1</span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>Investment Cost</span><span class="symbol"></span><span
+                                class="bottom"><b>a</b><sub>{{expec_lftm_a}}|{{cost_of_cap_in_percent}}</sub>
+                            </span></span>
+                    </div>
+                    <div>
+                        <span><span>Discounted Investment for Item 1</span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>${{invst_cost_a}}</span><span class="symbol"></span><span
+                                class="bottom">{{disc_fact_a}}
+                            </span></span>
+                    </div>
+                    <p>Discounted Investment for Item 1 = ${{disc_inv_a}}</p>
+                    <br>
+
+                    <b>Calculate EAC for Item 1</b>
+                    <p>EAC1 = Discounted Investment + Maintenance Cost</p>
+                    <p>EAC1 = ${{disc_inv_a}} + ${{main_cost_a}}</p>
+                    <p>EAC1 = ${{sum_disInv_main_cost_a}}</p>
+                    
+
+                </div><br>
+
+                <!-- for item 2nd ---------------- -->
+                <div>
+                    <b>Calculate Discount Factor for Item 2:</b>
+                    <div>
+                        <span><span><b>a</b><sub>{{expec_lftm_b}}|{{cost_of_cap_in_percent}}</sub></span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>(1 - v<sup>Asset Lifetime</sup>)</span><span
+                                class="symbol"></span><span class="bottom">Cost of Capital
+                            </span></span>
+                    </div>
+                    <div>
+                        <span><span><b>a</b><sub>{{expec_lftm_b}}|{{cost_of_cap_in_percent}}</sub></span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>(1 - {{v_result}}<sup>{{expec_lftm_a}}</sup>)</span><span
+                                class="symbol"></span><span class="bottom">{{cost_of_cap_in_percent}}
+                            </span></span>
+                    </div>
+                    <div>
+                        <span><span><b>a</b><sub>{{expec_lftm_b}}|{{cost_of_cap_in_percent}}</sub></span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>(1 - {{v_power_lifetime_b}})</span><span class="symbol"></span><span
+                                class="bottom">{{cost_of_cap_in_percent}}
+                            </span></span>
+                    </div>
+                    <div>
+                        <span><span><b>a</b><sub>{{expec_lftm_b}}|{{cost_of_cap_in_percent}}</sub></span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>{{sub_b}}</span><span class="symbol"></span><span
+                                class="bottom">{{cost_of_cap_in_percent}}
+                            </span></span>
+                    </div>
+                    <b>a<sub>{{expec_lftm_b}}|{{cost_of_cap_in_percent}}</sub> = {{disc_fact_b}}</b>
+                    <br><br>
+
+                    <b>Calculate Discounted Investment for Item 2:</b>
+                    <div>
+                        <span><span>Discounted Investment for Item 2</span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>Investment Cost</span><span class="symbol"></span><span
+                                class="bottom"><b>a</b><sub>{{expec_lftm_b}}|{{cost_of_cap_in_percent}}</sub>
+                            </span></span>
+                    </div>
+                    <div>
+                        <span><span>Discounted Investment for Item 2</span><span></span><span
+                                class="bottom"></span></span>&nbsp;=
+                        <span class="frac"><span>${{invst_cost_b}}</span><span class="symbol"></span><span
+                                class="bottom">{{disc_fact_a}}
+                            </span></span>
+                    </div>
+                    <p>Discounted Investment for Item 2 = ${{disc_inv_b}}</p>
+                    <br>
+
+                    <b>Calculate EAC for Item 2</b>
+                    <p>EAC2 = Discounted Investment + Maintenance Cost</p>
+                    <p>EAC2 = ${{disc_inv_b}} + ${{main_cost_b}}</p>
+                    <p>EAC2 = ${{sum_disInv_main_cost_b}}</p>
+
+                </div>
+
+                <b>Determine Conclusion:</b>
+                <p>We invest in Machine {{low}} since it has the lower EAC</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

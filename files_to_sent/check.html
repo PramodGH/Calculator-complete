@@ -1,0 +1,324 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Quarter Mile Calculator | Free Calculator find Quarter Mile</title>
+<meta name="description"
+      content="Cartesian-to-Polar Calculator makes it easy for you to determine the value o coordinates"/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Cartesian to polar Calculator | Free Calculator to find Cartesian to polar values"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Cartesian to polar Calculator | Free Calculator to find cartesian to polar values"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Quarter Mile Calculator</h1>
+        </div>
+        <div class="card-body">
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}                
+            </ul>
+            {% endif %}
+
+            <form action="{% url 'quarter-mile' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+
+                    <input style="margin-top: 5px;width:100%" id="weight" type="number" step="any" min="0" name="weight"
+                           value="{{weight}}"class="form-control" required   width="48"> 
+
+
+
+                <!----------  ---------->
+
+
+                <div class="input-group mb-3">              
+
+                <select id="wt_op" name="wt_op" style="margin-top: 5px;width:100%" class="select form-control"
+                           onchange="this.form.submit()">
+
+                        {% if wt_op == 'lb' %}
+                        <option value='lb' selected="selected">pounds(lb)
+                        </option>
+                        {% else %}
+                        <option value='lb'>pounds(lb)
+                        </option>
+                        {% endif %}
+
+                        {% if wt_op == 'kg' %}
+                        <option value='kg' selected="selected">kilogram(kg)
+                        </option>
+                        {% else %}
+                        <option value='kg'>kilogram(kg)
+                        </option>
+                        {% endif %}
+
+                        {% if wt_op == 't' %}
+                        <option value='t' selected="selected">matric tons(t)
+                        </option>
+                        {% else %}
+                        <option value='t'>matric tons(t)
+                        </option>
+                        {% endif %}
+
+                        {% if wt_op == 'US tons' %}
+                        <option value='US tons' selected="selected">US short tons(US ton)
+                        </option>
+                        {% else %}
+                        <option value='US tons'>US short tons(US ton)
+                        </option>
+                        {% endif %}
+
+                        {% if wt_op == 'Long tons' %}
+                        <option value='US tons' selected="selected">imperical tons(Long ton)
+                        </option>
+                        {% else %}
+                        <option value='Long tons'>imperical tons(Long ton)
+                        </option>
+                        {% endif %}
+
+                    </select>
+                     </div>
+
+
+                <div class="input-group mb-3">                   
+
+
+                <select id="pv_op" name="pv_op" style="margin-top: 5px;width:100%" class="select form-control"
+                           onchange="this.form.submit()">
+
+                        {% if pv_op == 'hpm' %}
+                        <option value='hpm' selected="selected">metric horsepower(hp(m))
+                        </option>
+                        {% else %}
+                        <option value='hpm'>metric horsepower(hp(M))
+                        </option>
+                        {% endif %}
+
+                        {% if pv_op == 'w' %}
+                        <option value='w' selected="selected">watt(W)
+                        </option>
+                        {% else %}
+                        <option value='w'>watt(W)
+                        </option>
+                        {% endif %}
+
+                        {% if pv_op == 'kw' %}
+                        <option value='kw' selected="selected">kilowatt(kW)
+                        </option>
+                        {% else %}
+                        <option value='kw'>kilowatt(kW)
+                        </option>
+                        {% endif %}
+
+                    {% if pv_op == 'mw' %}
+                        <option value='mw' selected="selected">megawatt(mW)
+                        </option>
+                        {% else %}
+                        <option value='mw'>megawatt(mW)
+                        </option>
+                        {% endif %}
+
+                        {% if pv_op == 'hpl' %}
+                        <option value='hpl' selected="selected">mechanical horsepower(hp(l))
+                        </option>
+                        {% else %}
+                        <option value='hpl'>mechanical horsepower(hp(l))
+                        </option>
+                        {% endif %}
+
+                    </select>
+                </div>
+
+
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'quarter-mile' %}" class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!--Result part --------->
+
+<div id="clear">
+    <div class="container" style="height: auto !important;">        
+       
+        {% if flag %}
+
+        <div class="card c1" id="quarter-mile">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Quarter Mile:</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">ET = 6.290 * (weight / power)¹ᐟ³</p>
+                <p class="btn btn-outline-secondary active">Final speed = 224 * (power / weight)¹ᐟ³</p>
+                <br>
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        ET is the elapsed time over a quarter-mile distance
+                    </li>
+                    <li>
+                        final speed is the speed of the vehicle at the quarter-mile mark
+                    </li>
+                    <li>
+                       6.290 is an empirically derived constant
+                    </li>
+                    <li>
+                        224 is an empirically derived constant
+                    </li>
+                    <li>
+                        weight is the total weight of the vehicle (including the driver) in pounds
+                    </li>
+                    <li>
+                        power is the peak engine power at the clutch (net power) in horsepower
+                    </li>
+
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>weight  = {{weight}} {{wt_op}}</p>
+                <p>Power = {{power}} {{pv_op}} </p>
+
+
+                <strong>Put values into formula</strong>
+                <p>ET = 6.290 * ({{weight}} / {{power}})¹ᐟ³</p>
+                <p>ET = 6.290 * ({{div_of_wt_pow}})¹ᐟ³= {{elapsed_time}}</p>
+                <br>
+                <p>Final speed = 224 * ({{power}} / {{weight}})¹ᐟ³</p>
+                <p>Final speed = 224 * ({{div_of_pow_wt}})¹ᐟ³ = {{final_speed}}</p>
+
+                <strong>Result </strong>
+                <p>ET = {{elapsed_time}} seconds</p>
+
+                      <details>
+                        <summary>ET in different units</summary>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <th>Units</th>
+                                <th>Values</th>
+                            </thead>
+                            <tbody>
+                                {% for key, value in coversionSecToOther.items %}
+                                <tr>
+                                    <td> {{ key }} </td>
+                                    <td> {{ value }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </details><br>
+
+
+                <p>Final speed = {{final_speed}} miles per hour</p>
+                    
+                <!-- sumarry part----------- -->
+                <details>
+                        <summary>Final speed in different units</summary>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <th>Units</th>
+                                <th>Values</th>
+                            </thead>
+                            <tbody>
+                                {% for key, value in conversionHpmToOther.items %}
+                                <tr>
+                                    <td> {{ key }} </td>
+                                    <td> {{ value }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </details><br>
+
+            </div>
+        </div>
+        {% endif %}      
+
+
+</div>
+</div>
+{% endblock content %}
+
+
+
+{% if  flag %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#quarter-mile'">ans1</button>
+{% endif %}

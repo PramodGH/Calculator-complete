@@ -1,0 +1,595 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Hyperbola Calculator | Free Calculator to find Hyperbola</title>
+<meta name="description"
+      content="Hyperbola Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Hyperbola Calculator | Free Calculator to Hyperbola"/>
+<meta property="og:description" content="Hyperbola Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Parallel line Calculator | Free Calculator to find Parallel line"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+<style>
+    .put-underline{
+    text-decoration: underline}
+    .cls-size:
+    { style="width: 200px;
+    }
+</style>
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag  %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#hyperbola'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Hyperbola Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'hyperbola' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                <div>
+                    <table>
+                    <tbody>
+                    <tr>
+                        <td style="border-bottom: solid 2px black;" >
+                            <input style="width: 100px;" step="any" min="0" required type="number" name = 'num1' value="{{num1}}">
+
+                            <select name="first_choice">
+                               {% if first_choice == 'x' %}
+                            <option value="x" selected="selected">x</option>
+                            {% else %}
+                            <option value="x">x</option>
+                            {% endif %}
+
+                            {% if first_choice == 'y' %}
+                            <option value="y" selected="selected">y</option>
+                            {% else %}
+                            <option value="y">y</option>
+                            {% endif %}
+                            </select><sup>2</sup>
+                        </td>
+<!--                        <td>&nbsp;</td>-->
+                        <td >
+                            -
+                        </td>
+<!--                        <td>&nbsp;</td>-->
+                        <td style="border-bottom: solid 2px black;" >
+                            <input style="width: 100px;" step="any" required type="number" min="0" name = 'num2' value="{{num2}}">
+                            <select name="second_choice" >
+                            {% if second_choice == 'x' %}
+                            <option value="x" selected="selected">x</option>
+                            {% else %}
+                            <option value="x">x</option>
+                            {% endif %}
+
+                            {% if second_choice == 'y' %}
+                            <option value="y" selected="selected">y</option>
+                            {% else %}
+                            <option value="y">y</option>
+                            {% endif %}
+                             </select><sup>2</sup>
+                        </td>
+                        <td>&nbsp; = </td>
+                        <td><input style="width: 100px;" step="any" min="0" required type="number" name = 'rhs' value="{{rhs}}"></td>
+                    </tr>
+                    <tr>
+                        <td><input  style="width: 100px;"  type="number" min="0" name='denom1' value="{{denom1}}"></td>
+                        <td>&nbsp;</td>
+                         <td><input  style="width: 100px;" step="any" min="0" required type="number" name = 'denom2' value="{{denom2}}"></td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                </div>
+
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class="center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'hyperbola' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% if not flag%}
+<br><br>
+{% endif %}
+
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+            <div class="card c1" id="hyperbola">
+            <div class="card-header">
+                <h2 class="h2">Calculation of combined work time :</h2>
+            </div>
+                <div class="card-body">
+                <p>Given the hyperbola below, calculate the equation of the asymptotes, intercepts, foci points, eccentricity and other items.</p>
+
+                    <table>
+                    <tbody>
+                    <tr>
+                        <td style="border-bottom: solid 2px black;">{{num1}}{{first_choice}}<sup>2</sup></td>
+                        <td> - </td>
+                        <td style="border-bottom: solid 2px black;">{{num2}}{{second_choice}}<sup>2</sup></td>
+                        <td> = &nbsp;{{rhs}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{denom1}}</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;{{denom2}} </td>
+                    </tr>
+                    </tbody>
+                    </table>
+
+
+                <p>Our y coefficient is not 1, Our x coefficient is not 1</p>
+                <p>we divide all terms by the largest value of Coefficient 1, Coefficient 2, and our right hand term</p>
+                <p>We divide each term by the maximum of {{num1}}, {{num2}}, and {{rhs}} = {{maximum_of_3}}</p>
+                <div>
+                     <table>
+                    <tbody>
+                    <tr>
+                        <td style="border-bottom: solid 2px black;">{{num1}}{{first_choice}}<sup>2</sup></td>
+                        <td> - </td>
+                        <td style="border-bottom: solid 2px black;">{{num2}}{{second_choice}}<sup>2</sup></td>
+                        <td > = &nbsp;</td>
+                        <td style="border-bottom: solid 2px black;"> {{rhs}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{denom1}}  * {{maximum_of_3}}</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;{{denom2}} * {{maximum_of_3}}</td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td>{{maximum_of_3}}</td>
+                    </tr>
+                    </tbody>
+                    </table>
+
+                </div>
+</div>
+
+            <div class="card-body">
+               <p>Simplifying, we get:</p>
+                 <div>
+                     <table>
+                    <tbody>
+                    <tr>
+                        <td style="border-bottom: solid 2px black; padding-left:15%">{{first_choice}}<sup>2</sup></td>
+                        <td> - </td>
+                        <td style="border-bottom: solid 2px black; padding-left:15%">{{second_choice}}<sup>2</sup></td>
+                        <td > = &nbsp;</td>
+                        <td > {{rhs_out_1}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{denom_out_1}}  </td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;{{denom_out_2}} </td>
+<!--                        <td>&nbsp;&nbsp;</td>-->
+<!--                        <td>{{maximum_of_3}}</td>-->
+                    </tr>
+                    </tbody>
+                    </table>
+
+                </div>
+                <br>
+                <h1>{{first_choice}}- this is num1</h1>
+                {% if first_choice == 'x' %}
+                    Since our first variable is x, the hyperbola has a horizontal transverse axis or East-West opening.
+                {% else %}
+                    Since our first variable is y, the hyperbola has a vertical transverse axis or North-South opening
+                {% endif %}
+
+
+                <h3 style="text-align:left;font-size:18px;font-weight:normal;font-family:Arial;font-style:normal;padding-top:0px;">
+                     <u>Determine the equation of the asymptotes:</u>
+                </h3><br>
+                a = √
+                <span style="text-decoration: overline">{{denom_out_1}}</span>
+                <br>
+                a = {{a}}
+                <br><br>
+                b = √
+                <span style="text-decoration: overline">{{denom_out_2}}</span>
+                <br>
+                b = {{b}}
+                <br><br>
+
+                {% if first_choice == 'y' %}
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+
+                            <td>Asymptote 1 &nbsp;&nbsp;=&nbsp;</td>
+                            <td style="border-bottom: solid 2px black">ax</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>b</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Asymptote 1 &nbsp;&nbsp;=&nbsp;</td>
+                            <td style="border-bottom: solid 2px black">{{a}}x</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>{{b}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Asymptote 2 &nbsp;&nbsp;=&nbsp;</td>
+                            <td style="border-bottom: solid 2px black">-ax</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>b</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Asymptote 2 &nbsp;&nbsp;=&nbsp;</td>
+                            <td style="border-bottom: solid 2px black">-{{a}}x</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>{{b}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                {% endif %}
+
+                {% if first_choice == 'x' %}
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+
+                            <td>Asymptote 1 &nbsp;&nbsp;=&nbsp;</td>
+                            <td style="border-bottom: solid 2px black">bx</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>a</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Asymptote 1 &nbsp;&nbsp;=&nbsp;</td>
+                            <td style="border-bottom: solid 2px black">{{b}}x</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>{{a}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Asymptote 2 &nbsp;&nbsp;=&nbsp;</td>
+                            <td style="border-bottom: solid 2px black">-bx</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>a</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Asymptote 2 &nbsp;&nbsp;=&nbsp;</td>
+                            <td style="border-bottom: solid 2px black">-{{b}}x</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>{{a}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                {% endif %}
+
+
+                {% if first_choice == 'y' %}
+                <h3 style="text-align:left;font-size:18px;font-weight:normal;font-family:Arial;font-style:normal;padding-top:0px;">
+                     <u>Determine y-intercepts:</u>
+                </h3>
+                y-intercepts = ±a
+                <br>
+                y-intercepts = ±{{a}}
+                <br>
+                y-intercepts =(0, {{a}}) and (0, -{{a}})
+                <br><br>
+
+                {% else %}
+
+                <h3 style="text-align:left;font-size:18px;font-weight:normal;font-family:Arial;font-style:normal;padding-top:0px;">
+                     <u>Determine x-intercepts:</u>
+                </h3>
+                x-intercepts = ±a
+                <br>
+                x-intercepts = ±{{a}}
+                <br>
+                x-intercepts =(0, {{a}}) and ({{a}}, 0)
+                <br><br>
+
+
+                {% endif %}
+
+                <h3 style="text-align:left;font-size:18px;font-weight:normal;font-family:Arial;font-style:normal;padding-top:0px;">
+                     <u>Determine the foci:</u>
+                </h3>
+                Our foci are at (0,c) and (0,-c) where <br>
+                a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup> <br>
+                Therefore, c = √
+                <span >a<sup>2</sup> + b<sup>2</sup></span><br><br>
+
+                c = √
+                <span  style="text-decoration: overline">({{a}}<sup>2</sup>  + {{b}}<sup>2</sup>)</span>
+
+                <br><br>
+                c = √
+                <span style="text-decoration: overline">{{sqr_sqrt1}} + {{sqr_sqrt2}}</span><br>
+
+                <br>
+                c = √
+                 <span style="text-decoration: overline">{{sum_of_sqr_sqrt}}</span><br><br>
+                  c = {{c}}
+                <br><vr></vr>
+                Therefore, our foci are at (0,{{c}}) and (0,-{{c}})
+                <br><br>
+
+                 <h3 style="text-align:left;font-size:18px;font-weight:normal;font-family:Arial;font-style:normal;padding-top:0px;">
+                     <u>Calculate eccentricity ε:</u>
+                </h3>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>ε &nbsp;= </td>
+                            <td style="border-bottom: solid 2px black">c</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>a</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>ε &nbsp;= </td>
+                            <td style="border-bottom: solid 2px black">{{c}}</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>{{a}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <strong>ε = {{eccentricity}}</strong><br><br>
+
+                <h3 style="text-align:left;font-size:18px;font-weight:normal;font-family:Arial;font-style:normal;padding-top:0px;">
+                     <u>Calculate latus rectum:</u>
+                </h3>
+
+                 <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Latus Rectum &nbsp;=</td>
+                            <td style="border-bottom: solid 2px black">2b<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>a</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Latus Rectum &nbsp;= </td>
+                            <td style="border-bottom: solid 2px black">2({{b}})<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>{{a}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                 <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Latus Rectum &nbsp;= &nbsp;</td>
+                            <td style="border-bottom: solid 2px black">2({{sqr_sqrt2}})</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>{{a}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Latus Rectum &nbsp;= &nbsp;</td>
+                            <td style="border-bottom: solid 2px black">{{num_of_lr}}</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>{{a}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                <strong>Latus Rectum = {{result_lr}}
+                    <br><br>
+
+                    <h3 style="text-align:left;font-size:18px;font-weight:normal;font-family:Arial;font-style:normal;padding-top:0px;">
+                     <u>Calculate semi-latus rectum l:</u>
+                </h3>
+
+                     <table>
+                        <tbody>
+                        <tr>
+                            <td>l &nbsp;= &nbsp;</td>
+                            <td style="border-bottom: solid 2px black">Latus Rectum</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>2</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>l &nbsp;= &nbsp;</td>
+                            <td style="border-bottom: solid 2px black">{{result_lr}}</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>2</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <strong>l = {{semi_lr_result}}</strong>
+
+            </div>
+        </div>
+        {% endif %}
+</div>
+</div>
+{% endblock content %}

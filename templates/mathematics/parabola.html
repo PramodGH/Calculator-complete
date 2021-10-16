@@ -1,0 +1,845 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Parabola Calculator | Free Calculator to find Parabola</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag1 or flag2 or flag3 or flag4 or flag5 or flag6 %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#parabola'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Parabola Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'parabola' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">What to input ?</span>
+                    </div>
+
+                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"
+                            id="inlineFormInputGroup" onchange="this.form.submit()">
+
+                        {% if given == 'form1' %}
+                        <option value='form1' selected="selected">Standard Form
+                        </option>
+                        {% else %}
+                        <option value='form1'>Standard Form
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form2' %}
+                        <option value='form2' selected="selected">Vertex Form
+                        </option>
+                        {% else %}
+                        <option value='form2'>Vertex Form
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form3' %}
+                        <option value='form3' selected="selected">Vertex and Directrix
+                        </option>
+                        {% else %}
+                        <option value='form3'>Vertex and Directrix
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form4' %}
+                        <option value='form4' selected="selected">Vertex and Focus
+                        </option>
+                        {% else %}
+                        <option value='form4'>Vertex and Focus
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form5' %}
+                        <option value='form5' selected="selected">Vertex and Point
+                        </option>
+                        {% else %}
+                        <option value='form5'>Vertex and Point
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form6' %}
+                        <option value='form6' selected="selected">Focus and Directrix
+                        </option>
+                        {% else %}
+                        <option value='form6'>Focus and Directrix
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form7' %}
+                        <option value='form7' selected="selected">Three Points
+                        </option>
+                        {% else %}
+                        <option value='form7'>Three Points
+                        </option>
+                        {% endif %}
+                    </select>
+                </div>
+
+<!----------    form1     ----->
+                {% if given == "form1" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Standard form: y = ax<sup>2</sup> + bx + c</span>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >a</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f1_a" type="number" step="any" name="f1_a"
+                           value="{{f1_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">b</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f1_b" type="number" step="any"  name="f1_b"
+                           value="{{f1_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >c</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f1_c" type="number" step="any"  name="f1_c"
+                           value="{{f1_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                {% endif %}
+
+                {% if given == "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Vertex form: y = a(x-h)² + k</span>
+                    </div>
+                </div>
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >a</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f2_a" type="number" step="any" name="f2_a"
+                           value="{{f2_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">h</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f2_h" type="number" step="any" name="f2_h"
+                           value="{{f2_h}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">k</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f2_k" type="number" step="any"  name="f2_k"
+                           value="{{f2_k}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                {% endif %}
+
+                {% if given == "form3" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Vertex P(h,k) and directrix (y=…)</span>
+                    </div></div>
+
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >h</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f3_h" type="number" step="any" name="f3_h"
+                           value="{{f3_h}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >k</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f3_k" type="number" step="any" name="f3_k"
+                           value="{{f3_k}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y = </span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f3_y" type="number" step="any" name="f3_y"
+                           value="{{f3_y}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                {% endif %}
+
+
+
+                {% if given == "form4" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Vertex P(h,k)</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">h</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f4_h" type="number" step="any" name="f4_h"
+                           value="{{f4_h}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">k</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f4_k" type="number" step="any" min="0" name="f4_k"
+                           value="{{f4_k}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Focus Q(xₒ,yₒ)</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >xₒ</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f4_x" type="number" step="any" name="f4_x"
+                           value="{{f4_x}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >yₒ</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f4_y" type="number" step="any" min="0" name="f4_y"
+                           value="{{f4_y}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+
+                {% endif %}
+
+                 {% if given == "form5" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Vertex P(h,k)</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">h</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f5_h" type="number" step="any" name="f5_h"
+                           value="{{f5_h}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">k</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f5_k" type="number" step="any" name="f5_k"
+                           value="{{f5_k}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Point P₁(x₁,y₁) of the parabola</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >x₁</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f5_x1" type="number" step="any" name="f5_x1"
+                           value="{{f5_x1}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >y₁</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f5_y1" type="number" step="any"  name="f5_y1"
+                           value="{{f5_y1}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+
+                {% endif %}
+
+                 {% if given == "form6" %}
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Focus Q(xₒ,yₒ) and directrix (y=…)</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >xₒ</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f6_x" type="number" step="any" name="f6_x"
+                           value="{{f6_x}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >yₒ</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f6_y" type="number" step="any" name="f6_y"
+                           value="{{f6_y}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >y</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f6_y1" type="number" step="any" name="f6_y1"
+                           value="{{f6_y1}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+
+                {% endif %}
+
+
+                {% if given == "form7" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">P₁(x₁,y₁)</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x₁</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f7_x1" type="number" step="any" name="f7_x1"
+                           value="{{f7_x1}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y₁</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f7_y1" type="number" step="any" name="f7_y1"
+                           value="{{f7_y1}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >P₂(x₂,y₂)</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >x₂</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f7_x2" type="number" step="any" name="f7_x2"
+                           value="{{f7_x2}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >y₂</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f7_y2" type="number" step="any" min="0" name="f7_y2"
+                           value="{{f7_y2}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >P₃(x₃,y₃)</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >x₃</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f7_x3" type="number" step="any" name="f7_x3"
+                           value="{{f7_x3}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >y₃</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="f7_y3" type="number" step="any" name="f7_y3"
+                           value="{{f7_y3}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+
+                {% endif %}
+
+
+
+<!----------    fraction yes no part-->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Show results using fractions ?</span>
+                    </div>
+                <select class="select form-control" id="inlineFormInputGroup" name="yes_no">
+                        {% if yes_no == 'yes' %}
+                        <option value="no" selected="selected">Yes</option>
+                        {% else %}
+                        <option value="no">Yes</option>
+                        {% endif %}
+                        {% if angle_unit == 'no' %}
+                        <option value="no" selected="selected">No</option>
+                        {% else %}
+                        <option value="no">no</option>
+                        {% endif %}
+                </select>
+                </div>
+
+
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'parabola' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag2 %}
+        <div class="card c1" id="parabola">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Perabola :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:-</strong><br>
+
+                <p class="btn btn-outline-secondary active">y = a(x-h)² + k</p>
+
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        a - the same as the a coefficient in the standard form
+                    </li>
+                    <li>
+                        h - the x-coordinate of the parabola vertex; and
+                    </li>
+                    <li>
+                       k - the y-coordinate of the parabola vertex.
+                    </li>
+
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>a = {{f2_a}}</p>
+                <p>h = {{f2_h}}</p>
+                <p>k = {{f2_k}}</p>
+
+                <strong>Put values into formula</strong>
+                    <p>y = {{f2_a}}(x-{{f2_h}})² + {{f2_k}}  </p>
+<!--                or  y = {{f2_a}}(x - {{f2_h}})² + {{f2_k}}-->
+                    <p>y = {{result}}</p>
+
+                <strong>Characteristic Points</strong>
+                <p>Vertex P({{vertex_x}}, {{vertex_y}})</p>
+                <p>Focus Q({{focus_x}}, {{focus_y}})</p>
+                <p>Y-intercept Y(0, {{y_intercept}})</p>
+                <p>Directrix: y = {{directrix}}</p>
+                <p>Axis of symmetry: x = {{vertex_x}}</p>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% if flag1 %}
+        <div class="card c1" id="parabola">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Perabola :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">y = ax<sup>2</sup> + bx + c</p>
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        a - the  a coefficient in the standard form
+                    </li>
+                    <li>
+                        b - the b coefficient in the standard form
+                    </li>
+                    <li>
+                       c - the c coefficient in the standard form
+                    </li>
+
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>a = {{f1_a}}</p>
+                <p>b = {{f1_b}}</p>
+                <p>c = {{f1_c}}</p>
+
+
+                <strong>Put values into formula</strong>
+                    <p>y = {{f1_a}}x<sup>2</sup> + {{f1_b}}x + {{f1_c}}</p>
+<!--                    <p>y = {{result}}</p>-->
+
+                <strong>Characteristic Points</strong>
+                <p>Vertex P({{vertex_x}}, {{vertex_y}})</p>
+                <p>Focus Q({{focus_x}}, {{focus_y}})</p>
+                <p>Y-intercept Y(0, {{f1_c}})</p>
+                <p>Directrix: y = {{directrix}}</p>
+                <p>Axis of symmetry: x = {{vertex_x}}</p>
+
+
+
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+
+            </div>
+        </div>
+        {% endif %}
+
+         {% if flag3 %}
+        <div class="card c1" id="parabola">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Parabola :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:-</strong><br>
+
+                <p class="btn btn-outline-secondary active">y = a(x-h)² + k</p>
+
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        a - the same as the a coefficient in the standard form
+                    </li>
+                    <li>
+                        h - the x-coordinate of the parabola vertex; and
+                    </li>
+                    <li>
+                       k - the y-coordinate of the parabola vertex.
+                    </li>
+
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>a = {{a}}</p>
+                <p>h = {{h}}</p>
+                <p>k = {{k}}</p>
+
+
+
+                <strong>Put values into formula</strong>
+                    <p>y = {{f2_a}}(x-{{f2_h}})² + {{f2_k}}  </p>
+<!--                or  y = {{f2_a}}(x - {{f2_h}})² + {{f2_k}}-->
+                    <p>y = {{result}}</p>
+
+                <strong>Characteristic Points</strong>
+                <p>Vertex P({{vertex_x}}, {{vertex_y}})</p>
+                <p>Focus Q({{focus_x}}, {{focus_y}})</p>
+                <p>Y-intercept Y(0, {{y_intercept}})</p>
+                <p>Directrix: y = {{directrix}}</p>
+                <p>Axis of symmetry: x = {{vertex_x}}</p>
+
+            </div>
+        </div>
+        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------  Flag 4 -> form4 -> side a-->
+        {% if flag4 %}
+            <div class="card c1" id="parabola">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find side a :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong> Formula:-</strong>
+                <p class="btn btn-outline-secondary active">Side a = &Sqrt;b<sup>2</sup> + c<sup>2</sup> - 2*b*c*cosA
+                    </p>
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        A - Angle A of triangle
+                    </li>
+                    <li>
+                        b - Side b of triangle
+                    </li>
+                    <li>
+                       c - Side c of triangle
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Angle A = {{angle_a}} {{angle_unit}}</p>
+                <p>Side b = {{side_b}} {{length_unit}}</p>
+                <p>Side c = {{side_c}} {{length_unit}}</p>
+
+
+                <strong>Put values into formula</strong>
+                <p>Side a = &Sqrt;{{side_b}}<sup>2</sup> + {{side_c}}<sup>2</sup> - 2*{{side_b}}*{{side_c}}*cos({{angle_a}})</p>
+                <strong>Side a = {{result}} {{length_unit}} </strong>
+
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+
+            </div>
+        </div>
+        {% endif %}
+
+<!------       Form5 -> flag5 -> side b-->
+        {% if flag5 %}
+            <div class="card c1" id="triangle_law_of_cosines">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find side b :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong> Formula:-</strong>
+                <p class="btn btn-outline-secondary active">Side b = &Sqrt;a<sup>2</sup> + c<sup>2</sup> - 2*a*c*cosB
+                    </p>
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        B- Angle B of triangle
+                    </li>
+                    <li>
+                        a - Side a of triangle
+                    </li>
+                    <li>
+                       c - Side c of triangle
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Angle B = {{angle_b}} {{angle_unit}}</p>
+                <p>Side a= {{side_a}} {{length_unit}}</p>
+                <p>Side c = {{side_c}} {{length_unit}}</p>
+
+                <strong>Put values into formula</strong>
+                <p>Side b = &Sqrt;{{side_a}}<sup>2</sup> + {{side_c}}<sup>2</sup> - 2*{{side_a}}*{{side_c}}*cos({{angle_b}})</p>
+                <strong>Side b = {{result}} {{length_unit}} </strong>
+
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+
+            </div>
+        </div>
+        {% endif %}
+
+<!--        Form6 -> flag6 - > side c-->
+        {% if flag6 %}
+            <div class="card c1" id="triangle_law_of_cosines">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find side c :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong> Formula:-</strong>
+                <p class="btn btn-outline-secondary active">Side c = &Sqrt;a<sup>2</sup> + b<sup>2</sup> - 2*a*b*cosC
+                    </p>
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        C - Angle C of triangle
+                    </li>
+                    <li>
+                        a - Side a of triangle
+                    </li>
+                    <li>
+                       b - Side b of triangle
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Angle C = {{angle_c}} {{angle_unit}}</p>
+                <p>Side a = {{side_a}} {{length_unit}}</p>
+                <p>Side b = {{side_b}} {{length_unit}}</p>
+
+
+                <strong>Put values into formula</strong>
+                <p>Side c = &Sqrt;{{side_a}}<sup>2</sup> + {{side_b}}<sup>2</sup> - 2*{{side_a}}*{{side_b}}*cos({{angle_c}})</p>
+                <strong>Side c = {{result}} {{length_unit}} </strong>
+
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+
+            </div>
+        </div>
+        {% endif %}
+
+
+</div>
+</div>
+{% endblock content %}

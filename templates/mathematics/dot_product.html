@@ -1,0 +1,235 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Dot product Calculator | Free Calculator to find Dot product</title>
+<meta name="description"
+      content="Dot product Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Dot product Calculator | Free Calculator to find Dot product"/>
+<meta property="og:description" content="Dot product Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Dot product Calculator | Free Calculator to find Dot product"/>
+<meta name="twitter:description"
+      content="Dot product Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Dot product Calculator | Free Calculator to find Dot product"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Dot product Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag  %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#dot-product'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Dot product Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'dot-product' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" >Vector a</span>
+                    </div></div>
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >x<sub>1</sub></span>
+                    <input style="margin-top: 5px;width:100%" id="x1" type="number" step="any" name="x1"
+                           value="{{x1}}" required=""
+                            class="form-control" required width="48">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >y<sub>1</sub></span>
+                    </div>
+                     <input style="margin-top: 5px;width:100%" id="y1" type="number" step="any" name="y1"
+                           value="{{y1}}" required=""
+                           class="form-control" type="text" required width="48">
+
+                             <div class="input-group-prepend">
+                            <span class="input-group-text" >z<sub>1</sub></span>
+                             </div>
+                    <input style="margin-top: 5px;width:100%" id="z1" type="number" step="any" name="z1"
+                           value="{{z1}}" required=""
+                            class="form-control" required width="48">
+                            </div>
+                            <br>
+<!--                second point coordinates -->
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" >Vector b</span>
+                    </div></div>
+                <div>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >x<sub>2</sub></span>
+
+                    <input style="margin-top: 5px;width:100%" id="x2" type="number" step="any" name="x2"
+                           value="{{x2}}" required=""
+                            class="form-control" required width="48">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >y<sub>2</sub></span>
+                    </div>
+
+                     <input style="margin-top: 5px;width:100%" id="y2" type="number" step="any" name="y2"
+                           value="{{y2}}" required=""
+                            class="form-control"  required width="48">
+
+
+<!--                            <div class="input-group-prepend">-->
+                            <span class="input-group-text" >z<sub>2</sub></span>
+
+                    <input style="margin-top: 5px;width:100%" id="z2" type="number" step="any" name="z2"
+                           value="{{z2}}" required=""
+                            class="form-control" required width="48">
+                            </div>
+                    </div>
+
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class="center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'dot-product' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+            <div class="card c1" id="dot-product">
+            <div class="card-header">
+                <h2 class="h2">Steps to find Dot Product :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:</strong><br>
+                <p class="btn btn-outline-secondary active">cosα = a·b / (|a| * |b|)</p> <br>
+                <p class="btn btn-outline-secondary active">a·b = x₁ * x₁ + y₂ * y₂ + z₃ * z₃</p> <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        x1, x2, x3 - coordinate of vector a
+                    </li>
+                    <li>
+                        x2, y2, z2 - coordinate of vector b
+                    </li>
+                    <li>
+                        a, b - vectors' magnitudes
+                    </li>
+                    <li>
+                        cosα - angle between vector
+                    </li>
+                </ul>
+
+                <strong>Input values are:</strong>
+                <p>x1 = {{ x1 }}, y1 = {{ y1 }}, z1 = {{ z1 }}, </p>
+                <p>x2 = {{ x2 }}, y2 = {{ y2 }}, z2= {{z2}}</p>
+
+                <strong>Put values into formula:</strong>
+                <p>a·b = {{x1}}*({{x2}}) + {{y1}}*({{y2}}) + {{z1}}*({{z2}}) = {{dotProduct}}</p>
+                <p>cosα  = {{dotProduct}}/({{a_vector}}*{{b_vector}}) = {{angle_result}}</p>
+
+                <strong>Result :</strong>
+                    <p>a·b = {{dotProduct}}</p>
+                    <p>cosα  = {{angle_result}}</p>
+
+                <details>
+                        <summary>Angle between vector in different units</summary>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <th>Units</th>
+                                <th>Values</th>
+                            </thead>
+                            <tbody>
+                                {% for key, value in all_conversions.items %}
+                                <tr>
+                                    <td> {{ key }} </td>
+                                    <td> {{ value }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </details><br>
+
+            </div>
+        </div>
+        {% endif %}
+</div>
+</div>
+{% endblock content %}

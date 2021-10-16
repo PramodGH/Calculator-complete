@@ -1,0 +1,299 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Neutralization Calculator | Free Calculator to find Capacitance</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag  %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#spherical-capacitor'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Spherical Capacitor Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'spherical-capacitor' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+
+
+<!--                First part-->
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text">Inner Sphere Radius</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="isr" type="number" step="any" name="isr"
+                           value="{{isr}}" required=""
+                           oninput="validateNumber(this);" class="form-control" required width="48">
+                    <select class="select form-control" id="inlineFormInputGroup" name="isr_op">
+
+                        {% if isr_op == 'mm' %}
+                        <option value="mm" selected="selected">millimeters(mm)</option>
+                        {% else %}
+                        <option value="mm">millimeters(mm)</option>
+                        {% endif %}
+
+                        {% if isr_op == 'cm' %}
+                        <option value="cm" selected="selected">centimeters(cm)</option>
+                        {% else %}
+                        <option value="cm">centimeters(cm)</option>
+                        {% endif %}
+
+                        {% if isr_op == 'm' %}
+                        <option value="m" selected="selected">meters(m)</option>
+                        {% else %}
+                        <option value="m">meters(m)</option>
+                        {% endif %}
+
+                        {% if isr_op == 'km' %}
+                        <option value="km" selected="selected">kilometers(km)</option>
+                        {% else %}
+                        <option value="km">kilometers(km)</option>
+                        {% endif %}
+
+                        {% if isr_op == 'in' %}
+                        <option value="in" selected="selected">inches(in)</option>
+                        {% else %}
+                        <option value="in">inches(in)</option>
+                        {% endif %}
+
+                        {% if isr_op == 'ft' %}
+                        <option value="ft" selected="selected">feet(ft)</option>
+                        {% else %}
+                        <option value="feet">feet(ft)</option>
+                        {% endif %}
+
+                        {% if isr_op == 'yd' %}
+                        <option value="yd" selected="selected">yards(yd)</option>
+                        {% else %}
+                        <option value="yd">yards(yd)</option>
+                        {% endif %}
+
+                        {% if isr_op == 'mi' %}
+                        <option value="mi" selected="selected">miles(mi)</option>
+                        {% else %}
+                        <option value="mi">miles(mi)</option>
+                        {% endif %}
+
+                    </select>
+
+                </div>
+
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Outer Sphere Radius</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="osr" type="number" step="any" name="osr"
+                           value="{{osr}}" required=""
+                           oninput="validateNumber(this);" class="form-control" required width="48">
+                    <select class="select form-control" id="inlineFormInputGroup" name="osr_op">
+
+                        {% if osr_op == 'mm' %}
+                        <option value="mm" selected="selected">millimeters(mm)</option>
+                        {% else %}
+                        <option value="mm">millimeters(mm)</option>
+                        {% endif %}
+
+                        {% if isr_op == 'cm' %}
+                        <option value="cm" selected="selected">centimeters(cm)</option>
+                        {% else %}
+                        <option value="cm">centimeters(cm)</option>
+                        {% endif %}
+
+                        {% if osr_op == 'm' %}
+                        <option value="m" selected="selected">meters(m)</option>
+                        {% else %}
+                        <option value="m">meters(m)</option>
+                        {% endif %}
+
+                        {% if osr_op == 'km' %}
+                        <option value="km" selected="selected">kilometers(km)</option>
+                        {% else %}
+                        <option value="km">kilometers(km)</option>
+                        {% endif %}
+
+                        {% if osr_op == 'in' %}
+                        <option value="in" selected="selected">inches(in)</option>
+                        {% else %}
+                        <option value="in">inches(in)</option>
+                        {% endif %}
+
+                        {% if osr_op == 'ft' %}
+                        <option value="ft" selected="selected">feet(ft)</option>
+                        {% else %}
+                        <option value="feet">feet(ft)</option>
+                        {% endif %}
+
+                        {% if osr_op == 'yd' %}
+                        <option value="yd" selected="selected">yards(yd)</option>
+                        {% else %}
+                        <option value="yd">yards(yd)</option>
+                        {% endif %}
+
+                        {% if isr_op == 'mi' %}
+                        <option value="mi" selected="selected">miles(mi)</option>
+                        {% else %}
+                        <option value="mi">miles(mi)</option>
+                        {% endif %}
+                    </select>
+                </div>
+
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'spherical-capacitor' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+            <div class="card c1" id="sperical-capacitor">
+            <div class="card-header">
+                <h2 class="h2">Steps to find cofunction :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong> Formula:-</strong><br>
+                <p>C = 4 * π * ε0 * εk / (1/a - 1/b)</p>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>C is the capacitance measured in farads (symbol: F)</li>
+                    <li>ε0 is the vacuum permittivity - a constant value of 8.85 × 10^(−12) F/m (farads per meter)</li>
+                    <li>εk is the relative permittivity. It is dimensionless</li>
+                    <li>a is the radius of the inner sphere</li>
+                    <li>b is the radius of the outer sphere</li>
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p> Inner Spherical Radius = {{ isr }} {{isr_op}}</p>
+                <p> Outer Spherical Radius = {{ osr }} {{osr_op}}</p>
+
+                <strong>Put values into formula</strong>
+                    <p>ε0 = 8.85 × 10<sup>−12</sup> </p>
+                    <p>εk = 1</p>
+                    <p>C = 4 * π * ε0 * εk / (1/{{isr}} - 1/{{osr}})</p>
+                    <p></p>
+
+                <h5><strong>Result = {{result}}</strong></h5>
+
+                <!----       summary in all units -->
+                <details>
+                        <summary>Result in other units</summary>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <th>Units</th>
+                                <th>Values</th>
+                            </thead>
+                            <tbody>
+                                {% for key, value in all_conversions.items %}
+                                <tr>
+                                    <td> {{ key }} </td>
+                                    <td> {{ value }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </details><br>
+
+
+            </div>
+        </div>
+        {% endif %}
+
+
+
+</div>
+</div>
+{% endblock content %}

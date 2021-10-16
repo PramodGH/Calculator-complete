@@ -1,0 +1,433 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Resonant Frequency Calculator | Free Calculator to Resonant Frequency</title>
+<meta name="description"
+      content="Cartesian-to-Polar Calculator makes it easy for you to determine the value o coordinates"/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Cartesian to polar Calculator | Free Calculator to find Cartesian to polar values"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Cartesian to polar Calculator | Free Calculator to find cartesian to polar values"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag1 or flag2 %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#resonant-frequency'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Resonant Frequency Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="{% url 'resonant-frequency' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" >Choose option to calculate </span>
+                    </div>
+
+                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"
+                           onchange="this.form.submit()">
+
+                        {% if given == 'form1' %}
+                        <option value='form1' selected="selected">Calculate Resonant Frequency Using
+                            Capacitance(C) and Inductance(L)
+                        </option>
+                        {% else %}
+                        <option value='form1'>Calculate Resonant Frequency Using
+                            Capacitance(C) and Inductance(I)
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form2' %}
+                        <option value='form2' selected="selected">Calculate Capacitance(C) Using
+                             Resonant Frequency(f) and Inductance(L)
+                        </option>
+                        {% else %}
+                        <option value='form2'>Calculate Capacitance(C) Using
+                             Resonant Frequency(f) and Inductance(L)
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form3' %}
+                        <option value='form3' selected="selected">Calculate Inductance(L) Using Capacitance(C)
+                            and Resonant Frequency(f)
+                        </option>
+                        {% else %}
+                        <option value='form3'>Calculate Inductance(L) Using Capacitance(C)
+                            and Resonant Frequency(f)
+                        </option>
+                        {% endif %}
+
+                    </select>
+                </div>
+
+<!----------     forms different options : ---------->
+
+                {% if given != "form1" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Capacitance (C)</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="cap" type="number" step="any" name="cap"
+                           value="{{cap}}"class="form-control" required   width="48">
+
+
+                <select id="cap_op" name="cap_op" style="margin-top: 5px;width:100%" class="select form-control"
+                           onchange="this.form.submit()">
+
+                        {% if cap_op == 'f' %}
+                        <option value='f' selected="selected">farads(F)</option>
+                        {% else %}
+                        <option value='f'>Farads (F)
+                        </option>
+                        {% endif %}
+
+                        {% if cap_op == 'mf' %}
+                        <option value='mf' selected="selected">millifarads(mF)
+                        </option>
+                        {% else %}
+                        <option value='mf'>millifarads(mF)
+                        </option>
+                        {% endif %}
+
+                    {% if cap_op == 'μf' %}
+                        <option value='μf' selected="selected">microfarads(μf)
+                        </option>
+                        {% else %}
+                        <option value='μf'>microfarads(μf)
+                        </option>
+                        {% endif %}
+
+                        {% if cap_op == 'nf' %}
+                        <option value='nf' selected="selected">nanofarads(nF)
+                        </option>
+                        {% else %}
+                        <option value='nf'>nanofarads(nF)
+                        </option>
+                        {% endif %}
+
+                        {% if cap_op == 'pf' %}
+                        <option value='nf' selected="selected">picofarads(pF)
+                        </option>
+                        {% else %}
+                        <option value='pf'>picofarads(pF)
+                        </option>
+                        {% endif %}
+
+                    </select>
+                     </div>
+                {% endif %}
+
+
+                 {% if given != "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Inductance(L)</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="indt" type="number" step="any" name="indt"
+                           value="{{indt}}"class="form-control" required   width="48">
+
+
+                <select id="indt_op" name="indt_op" style="margin-top: 5px;width:100%" class="select form-control"
+                           onchange="this.form.submit()">
+
+                        {% if indt_op == 'h' %}
+                        <option value='h' selected="selected">Henries(H)
+                        </option>
+                        {% else %}
+                        <option value='h'>Henries(H)
+                        </option>
+                        {% endif %}
+
+                        {% if indt_op == 'mH' %}
+                        <option value='mH' selected="selected">minihanries(mH)
+                        </option>
+                        {% else %}
+                        <option value='mH'>minihanries(mH)
+                        </option>
+                        {% endif %}
+
+                        {% if indt_op == 'μH' %}
+                        <option value='μH' selected="selected">microhenries(μH)
+                        </option>
+                        {% else %}
+                        <option value='μH'>microhenries(μH)
+                        </option>
+                        {% endif %}
+
+                        {% if indt_op == 'nH' %}
+                        <option value='nH' selected="selected">nanohenries(nH)
+                        </option>
+                        {% else %}
+                        <option value='nH'>nanohenries(nH)
+                        </option>
+                        {% endif %}
+
+                    </select>
+                     </div>
+                {% endif %}
+
+
+
+
+                 {% if given != "form3" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Resonant frequency(f)</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="rf" type="number" step="any" name="rf"
+                           value="{{rf}}"class="form-control" required   width="48">
+
+
+                <select id="rf_op" name="rf_op" style="margin-top: 5px;width:100%" class="select form-control"
+                           onchange="this.form.submit()">
+
+                        {% if rf_op == 'Hz' %}
+                        <option value='Hz' selected="selected">Hertx(Hz)
+                        </option>
+                        {% else %}
+                        <option value='Hz'>Hertx(Hz)
+                        </option>
+                        {% endif %}
+
+                        {% if rf_op == 'kHz' %}
+                        <option value='Hz' selected="selected">kiloHertx(kHz)
+                        </option>
+                        {% else %}
+                        <option value='kHz'>kiloHertx(kHz)
+                        </option>
+                        {% endif %}
+
+                        {% if rf_op == 'MHz' %}
+                        <option value='MHz' selected="selected">megaHertx(MHz)
+                        </option>
+                        {% else %}
+                        <option value='MHz'>megaHertx(MHz)
+                        </option>
+                        {% endif %}
+
+                        {% if rf_op == 'GHz' %}
+                        <option value='GHz' selected="selected">gigaHertz(GHz)
+                        </option>
+                        {% else %}
+                        <option value='GHz'>gigaHertz(GHz)
+                        </option>
+                        {% endif %}
+
+                        {% if rf_op == 'THz' %}
+                        <option value='THz' selected="selected">teraHertz(THz)
+                        </option>
+                        {% else %}
+                        <option value='THz'>teraHertz(THz)
+                        </option>
+                        {% endif %}
+
+                        {% if rf_op == 'rpm' %}
+                        <option value='rpm' selected="selected">resolution per minutes(rpm)
+                        </option>
+                        {% else %}
+                        <option value='rpm'>resolution per minutes(rpm)
+                        </option>
+                        {% endif %}
+
+                    </select>
+                     </div>
+                {% endif %}
+
+
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'resonant-frequency' %}" class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+        <!--        if given == "form1" and wt_sol and vol_sol and eq_wt -->
+        {% if flag1 %}
+
+        <div class="card c1" id="resonant-frequency">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Resonant Frequency(f):</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">f = 1 / (2 * π * √(L * C))</p>
+                <br>
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        f - resonant frequency
+                    </li>
+                    <li>
+                       L - circuit inductance
+                    </li>
+                    <li>
+                        C - circuit capacitance
+                    </li>
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Capacitance(C) = {{cap}}</p>
+                <p>Inductance(L) = {{indt}}</p>
+
+                <details>
+                        <summary>θ in different units</summary>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <th>Units</th>
+                                <th>Values</th>
+                            </thead>
+                            <tbody>
+                                {% for key, value in all_conversions.items %}
+                                <tr>
+                                    <td> {{ key }} </td>
+                                    <td> {{ value }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </details><br>
+
+                <strong>Put values into formula</strong>
+                <p>r = √({{x}}² + {{y}}²)</p>
+                <p>θ = arctan ({{y}}/{{x}}) </p>
+
+                <strong>Result </strong>
+                <p>r = {{r_result}}</p>
+                <p>θ = {{t_result}}</p>
+
+            </div>
+        </div>
+        {% endif %}
+
+        <!--         if given == "form2" -->
+        {% if flag2 %}
+
+        <div class="card c1" id="cartesian-to-polar">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find x, y</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula :-</strong><br>
+                <p class="btn btn-outline-secondary active">x = r * cos θ </p><br>
+                <p class="btn btn-outline-secondary active">y = r * sin θ</p><br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        (x, y) are the Cartesian coordinates.
+                    </li>
+                    <li>
+                       (r, θ) are the polar coordinates.
+                    </li>
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>r = {{r}}</p>
+                <p>θ = {{t}}</p>
+
+                <strong>Put values into formula</strong>
+                <p>x = {{r}} * cos({{t}}) = {{x_result}}</p>
+                <p>y = {{r}} * sin({{t}}) = {{y_result}}</p>
+
+                 <strong>Result </strong>
+                <p>x = {{x_result}}</p>
+                <p>y = {{y_result}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+</div>
+</div>
+{% endblock content %}

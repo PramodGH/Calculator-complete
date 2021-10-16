@@ -1,0 +1,603 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+    type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style2.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Variation Equations Calculator</title>
+<meta name="description"
+    content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps." />
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property="og:description" content="Angular Resolution Calculator" />
+<meta content="" property="og:site_name" />
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+    property="og:image" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="435" />
+<meta property="og:image:width" content="354" />
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator" />
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta name="twitter:description"
+    content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps." />
+<meta name="twitter:image:src"
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property="twitter:image:height" content="435" />
+<meta property="twitter:image:width" content="354" />
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property='og:image'
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property='og:description' content="Variation Equations Calculator." />
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if flag %}
+<script>
+    $(document).ready(function () {
+        $("#hassle").click();
+    });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#variation-eq'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Find both numbers Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                    style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <!----------   Form  --------->
+            <form action="{% url 'variation-eq' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                <div class="input-group mb-3">
+                    <span>
+                        <div class="input-group-prepend">
+                            <p class="input-group-text">y </p>
+                        </div>
+                    </span>
+                    &nbsp;
+                    <span>
+                        <select id="given" name="given" style="margin-top: 5px;width:100%; margin-right:0px"
+                            class="select form-control" id="inlineFormInputGroup" onchange="this.form.submit()">
+
+                            {% if given == 'form1' %}
+                            <option value='form1' selected="selected">Varies directly as
+                            </option>
+                            {% else %}
+                            <option value='form1'>Varies directly as
+                            </option>
+                            {% endif %}
+
+                            {% if given == 'form2' %}
+                            <option value='form2' selected="selected">Varies inverely as
+                            </option>
+                            {% else %}
+                            <option value='form2'>Varies inverely as
+                            </option>
+                            {% endif %}
+
+                            {% if given == 'form3' %}
+                            <option value='form3' selected="selected">Varies directly as the square of
+                            </option>
+                            {% else %}
+                            <option value='form3'>Varies directly as the square of
+                            </option>
+                            {% endif %}
+
+                            {% if given == 'form4' %}
+                            <option value='form4' selected="selected">Varies directly as the cube of
+                            </option>
+                            {% else %}
+                            <option value='form4'>Varies directly as the cube of
+                            </option>
+                            {% endif %}
+
+                            {% if given == 'form5' %}
+                            <option value='form5' selected="selected">Varies directly as the square root of
+                            </option>
+                            {% else %}
+                            <option value='form5'>Varies directly as the square root of
+                            </option>
+                            {% endif %}
+
+                            {% if given == 'form6' %}
+                            <option value='form6' selected="selected">Varies inversely as the square of
+                            </option>
+                            {% else %}
+                            <option value='form6'>Varies inversely as the square of
+                            </option>
+                            {% endif %}
+
+                            {% if given == 'form7' %}
+                            <option value='form7' selected="selected">Varies inversely as the cube of
+                            </option>
+                            {% else %}
+                            <option value='form7'>Varies inversely as the cube of
+                            </option>
+                            {% endif %}
+
+                            {% if given == 'form8' %}
+                            <option value='form8' selected="selected">Varies inversely as the square root of
+                            </option>
+                            {% else %}
+                            <option value='form8'>Varies inversely as the square root of
+                            </option>
+                            {% endif %}
+
+                        </select>
+
+                    </span>
+
+                    <span>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend ">
+                                <p class="input-group-text" id="basic-addon1">x </p>
+                            </div>
+                            &nbsp;
+                            <div class="input-group-prepend">
+                                <p class="input-group-text" id="basic-addon1">and y = </p>
+                            </div>
+                            <input style="margin-top: 5px;width:100%" id="y" name="y" value="{{y}}" type="number"
+                                step="any" oninput="validateNumber(this);" class="form-control" required width="48">
+                        </div>
+                    </span>
+
+                    <div class="input-group mb-3">
+                        <span>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <p class="input-group-text" id="basic-addon1"> when x = </p>
+                                </div>
+                                <input style="margin-top: 5px;width:100%" id="x1" name="x1" value="{{x1}}" type="number"
+                                    step="any" oninput="validateNumber(this);" class="form-control" required width="48">
+                            </div>
+                        </span>
+                        <span>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">&nbsp;
+                                    <p class="input-group-text" id="basic-addon1">solve for y when x = </p>
+                                </div>
+                                <input style="margin-top: 5px;width:100%" id="x2" name="x2" value="{{x2}}" step="any"
+                                    oninput="validateNumber(this);" class="form-control" type="number" required
+                                    width="48">
+                            </div>
+                        </span>
+                    </div>
+                </div>
+
+                <!----------    Calculate, Reset part-->
+                <div>
+                    <div class="center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'variation-eq' %}" class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag1 %}
+        <div class="card c1" id="variation-eq">
+
+            <div class="card-body">
+                <p>y varies directly as x, and y = {{y}} when x = {{x1}}, solve for y when x = {{x2}}</p>
+                <p style="border:1px solid black">The statement varies directly as denotes a relationship of y = kx,
+                    where k is a constant</p>
+                <p>Plugging in our initial statement values of y = {{y}} when x = {{x1}}, we get:</p>
+                <p> {{y}} = {{x1}}k</p>
+
+                <strong>Divide each side by {{x1}} to solve for k :</strong>
+                <div>
+                    <span class="frac"><span>{{y}}</span><span class="symbol">/</span><span
+                            class="bottom">{{x1}}</span></span>&nbsp;=
+                    <span class="frac"><span>{{x1}}k</span><span class="symbol"></span><span class="bottom">{{x1}}
+                        </span></span>
+
+                </div>
+                <p>k = {{div_result}}</p>
+
+                <strong>Solve the second part of the variation equation :</strong>
+                <p>Because we have found our relationship constant k = {{div_result}} , we form our new variation
+                    equation:</p>
+                <p>y = {{div_result}}x </p>
+
+                <p>Since we were given that x = {{x2}}, we have</p>
+                <p>y = {{div_result}}({{x2}})</p>
+                <b>y = {{y_result}}</b>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% if flag2 %}
+        <div class="card c1" id="variation-eq">
+
+            <div class="card-body">
+                <p>y varies inversely as x, and y = {{y}} when x = {{x1}}, solve for y when x = {{x2}}</p>
+
+                <p style="border:1px solid black">The statement varies directly as denotes a relationship of y = k/x,
+                    where k is a constant</p>
+                <p>Plugging in our initial statement values of y = {{y}} when x = {{x1}}, we get:</p>
+
+                <div>
+                    <span><span>{{y}}</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>k</span><span class="symbol"></span><span class="bottom">{{x1}}
+                        </span></span>
+
+                </div>
+
+                <p>k = {{y}} x ({{x1}})</p>
+                <p>k = {{k_result}}</p>
+
+                <strong>Solve the second part of the variation equation :</strong>
+                <p>Because we have found our relationship constant k = {{k_result}} , we form our new variation
+                    equation:</p>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span class="bottom">x
+                        </span></span>
+
+                </div>
+                <p>Since we were given that x = {{x2}}, we have</p>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span class="bottom">{{x2}}
+                        </span></span>
+
+                </div>
+
+                <b>y = {{y_result}}</b>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% if flag3 %}
+        <div class="card c1" id="variation-eq">
+
+            <div class="card-body">
+                <p>y varies directly as the square of x, and y = {{y}} when x = {{x1}}, solve for y when x = {{x2}}</p>
+
+                <p style="border:1px solid black">The statement varies directly as denotes a relationship of y =
+                    kx<sup>2</sup>, where k is a constant</p>
+                <p>Plugging in our initial statement values of y = {{y}} when x = {{x1}}, we get:</p>
+
+                <p>{{y}} = k({{x1}})<sup>2</sup></p>
+                <p>{{y}} = {{sqr_of_x1}}k</p>
+
+                <strong>Divide each side by {{sqr_of_y}} to solve for k :</strong>
+                <div>
+                    <span class="frac"><span>{{y}}</span><span class="symbol">/</span><span
+                            class="bottom">{{sqr_of_x1}}k</span></span>&nbsp;=
+                    <span class="frac"><span>{{sqr_of_x1}}k</span><span class="symbol"></span><span
+                            class="bottom">{{sqr_of_x1}}
+                        </span></span>
+
+                </div>
+
+                <p>k = {{k_result}}</p>
+
+
+                <strong>Solve the second part of the variation equation :</strong>
+                <p>Because we have found our relationship constant k = {{k_result}} , we form our new variation
+                    equation:</p>
+                <p>y = {{k_result}}x<sup>2</sup> </p>
+
+
+                <p>Since we were given that x = {{x2}}, we have</p>
+                <p>y = {{k_result}}({{x2}})<sup>2</sup></p>
+                <p>y = {{k_result}}({{sqr_of_x2}})</p>
+
+                <b>y = {{y_result}}</b>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% if flag4 %}
+        <div class="card c1" id="variation-eq">
+
+            <div class="card-body">
+                <p>y varies directly as the cube of x, and y = {{y}} when x = {{x1}}, solve for y when x = {{x2}}</p>
+
+                <p style="border:1px solid black">The statement varies directly as denotes a relationship of y =
+                    kx<sup>3</sup>, where k is a constant</p>
+                <p>Plugging in our initial statement values of y = {{y}} when x = {{x1}}, we get:</p>
+
+                <p>{{y}} = k({{x1}})<sup>3</sup></p>
+                <p>{{y}} = {{cube_of_x1}}k</p>
+
+                <strong>Divide each side by {{cube_of_x1}} to solve for k :</strong>
+                <div>
+                    <span class="frac"><span>{{y}}</span><span class="symbol">/</span><span
+                            class="bottom">{{cube_of_x1}}k</span></span>&nbsp;=
+                    <span class="frac"><span>{{cube_of_x1}}k</span><span class="symbol"></span><span
+                            class="bottom">{{cube_of_x1}}
+                        </span></span>
+
+                </div>
+                <p>k = {{k_result}}</p>
+
+                <strong>Solve the second part of the variation equation :</strong>
+                <p>Because we have found our relationship constant k = {{k_result}} , we form our new variation
+                    equation:</p>
+                <p>y = {{k_result}}x<sup>3</sup> </p>
+
+
+                <p>Since we were given that x = {{x2}}, we have</p>
+                <p>y = {{k_result}}({{x2}})<sup>3</sup></p>
+                <p>y = {{k_result}}({{cube_of_x2}})</p>
+
+                <b>y = {{y_result}}</b>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% if flag5 %}
+        <div class="card c1" id="variation-eq">
+
+            <div class="card-body">
+                <p>y varies directly as the square root of x, and y = {{y}} when x = {{x1}}, solve for y when x = {{x2}}
+                </p>
+
+                <p style="border:1px solid black">The statement directly as the square root of denotes a relationship of
+                    y = k√x, where k is a constant</p>
+                <p>Plugging in our initial statement values of y = {{y}} when x = {{x1}}, we get:</p>
+
+                <p>{{y}} = k√{{x1}}</p>
+                <p>{{y}} = {{sqr_root_of_x1}}k</p>
+
+                <strong>Divide each side by {{sqr_root_of_x1}} to solve for k :</strong>
+                <div>
+                    <span class="frac"><span>{{y}}</span><span class="symbol">/</span><span
+                            class="bottom">{{sqr_root_of_x1}}</span></span>&nbsp;=
+                    <span class="frac"><span>{{sqr_root_of_x1}}k</span><span class="symbol"></span><span
+                            class="bottom">{{sqr_root_of_x1}}
+                        </span></span>
+
+                </div>
+
+                <p>k = {{k_result}}</p>
+
+
+                <strong>Solve the second part of the variation equation :</strong>
+                <p>Because we have found our relationship constant k = {{k_result}} , we form our new variation
+                    equation:</p>
+                <p>y = {{k_result}}√x </p>
+
+
+                <p>Since we were given that x = {{x2}}, we have</p>
+                <p>y = {{k_result}}√({{x2}})
+                <p>y = {{k_result}}({{sqr_root_of_x2}})</p>
+
+                <b>y = {{y_result}}</b>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% if flag6 %}
+        <div class="card c1" id="variation-eq">
+
+            <div class="card-body">
+                <p>y varies inverely as the square of x, and y = {{y}} when x = {{x1}}, solve for y when x = {{x2}}</p>
+
+                <p style="border:1px solid rgb(139, 63, 63)">The statement varies inverely as the square of denotes a
+                    relationship of y = k/x<sup>2</sup> where k is a constant</p>
+                <p>Plugging in our initial statement values of y = {{y}} when x = {{x1}}, we get:</p>
+
+                <div>
+                    <span><span>{{y}}</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>k</span><span class="symbol"></span><span class="bottom">{{x1}}<sup>2</sup>
+                        </span></span>
+
+                </div>
+
+                <p>k = {{y}} x ({{sqr_of_x1}})</p>
+                <p>k = {{k_result}}</p>
+
+                <strong>Solve the second part of the variation equation :</strong>
+                <p>Because we have found our relationship constant k = {{k_result}} , we form our new variation
+                    equation:</p>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span
+                            class="bottom">x<sup>2</sup>
+                        </span></span>
+
+                </div>
+                <p>Since we were given that x = {{x2}}, we have</p>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span
+                            class="bottom">{{x2}}<sup>2</sup>
+                        </span></span>
+
+                </div>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span
+                            class="bottom">{{sqr_of_x2}}
+                        </span></span>
+
+                </div>
+
+                <p>y = {{y_result}}</p>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% if flag7 %}
+        <div class="card c1" id="variation-eq">
+
+            <div class="card-body">
+                <p>y varies inversely as the cube of x, and y = {{y}} when x = {{x1}}, solve for y when x = {{x2}}</p>
+
+                <p style="border:1px solid rgb(139, 63, 63)">The statement varies directly as denotes a relationship of
+                    y = k/x<sup>3</sup>, where k is a constant</p>
+                <p>Plugging in our initial statement values of y = {{y}} when x = {{x1}}, we get:</p>
+
+                <div>
+                    <span><span>{{y}}</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>k</span><span class="symbol"></span><span class="bottom">{{x1}}<sup>3</sup>
+                        </span></span>
+                </div>
+                <div>
+                    <span><span>{{y}}</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>k</span><span class="symbol"></span><span class="bottom">{{cube_of_x1}}
+                        </span></span>
+                </div>
+
+                <p>k = {{y}} x ({{cube_of_x1}})</p>
+                <p>k = {{k_result}}</p>
+
+                <strong>Solve the second part of the variation equation :</strong>
+                <p>Because we have found our relationship constant k = {{k_result}} , we form our new variation
+                    equation:</p>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span
+                            class="bottom">x<sup>3</sup>
+                        </span></span>
+
+                </div>
+                <p>Since we were given that x = {{x2}}, we have</p>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span
+                            class="bottom">{{x2}}<sup>3</sup>
+                        </span></span>
+
+                </div>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span
+                            class="bottom">{{cube_of_x2}}
+                        </span></span>
+
+                </div>
+
+                <p>y = {{y_result}}</p>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% if flag8 %}
+        <div class="card c1" id="variation-eq">
+
+            <div class="card-body">
+                <p>y varies inversely as the square rot of x, and y = {{y}} when x = {{x1}}, solve for y when x = {{x2}}
+                </p>
+
+                <p style="border:1px solid rgb(139, 63, 63)">The statement varies directly as denotes a relationship of
+                    y = k/√x
+                    where k is a constant</p>
+                <p>Plugging in our initial statement values of y = {{y}} when x = {{x1}}, we get:</p>
+
+                <div>
+                    <span><span>{{y}}</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>k</span><span class="symbol"></span><span class="bottom">√{{x1}}
+
+                        </span></span>
+                </div>
+
+                <div>
+                    <span><span>{{y}}</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>k</span><span class="symbol"></span><span class="bottom">{{sqr_root_of_x1}}
+                        </span></span>
+
+                </div>
+
+                <p>k = {{y}} x ({{sqr_root_of_x1}})</p>
+                <p>k = {{k_result}}</p>
+
+                <strong>Solve the second part of the variation equation :</strong>
+                <p>Because we have found our relationship constant k = {{k_result}} , we form our new variation
+                    equation:</p>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span class="bottom">√x
+                        </span></span>
+
+                </div>
+                <p>Since we were given that x = {{x2}}, we have</p>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span class="bottom">√{{x2}}
+                        </span></span>
+
+                </div>
+                <div>
+                    <span><span>y</span><span></span><span class="bottom"></span></span>&nbsp;=
+                    <span class="frac"><span>{{k_result}}</span><span class="symbol"></span><span
+                            class="bottom">{{sqr_root_of_x2}}
+                        </span></span>
+
+                </div>
+
+                <p>y = {{y_result}}</p>
+
+            </div>
+        </div>
+        {% endif %}
+
+
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,299 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style2.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Affine Cipher Calculator </title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#affine-cipher'">ans1</button>
+{% endif %}
+
+
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Affine Cipher</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="{% url 'affine-cipher' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Enter String to be translated</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" name="str_to_translate" id="str_to_translate"
+                           value="{{str_to_translate}}"
+                            class="form-control" type="text" required width="48">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Enter a</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a" type="number" step="any" name="a"
+                           value="{{a}}" class="form-control"  required
+                           width="48">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Enter b</span>
+                    </div>
+                    <input style="margin-top: 5px;width:100%" id="b" name="b" value="{{b}}"class="form-control" type="number" step="any" required
+                           width="48">
+                </div>
+
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Affine Cipher</button>
+                            <a href="{% url 'affine-cipher' %}" class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+
+        <div class="card c1" id="affine-cipher">
+            <div class="card-body">
+              <p>Show the Affine Cipher for {{ str_to_translate }} with a = {{a}} and b = {{b}}</p>
+
+                <strong style="text-decoration: underline">Setup alphabetical numeric representation grid:</strong><br>
+
+<!--                table-->
+                <div>
+                <table class="table table-bordered table-responsive">
+                  <thead>
+                    <tr>
+                        <th scope="col">A</th>
+                        <th scope="col">B</th>
+                        <th scope="col">C</th>
+                        <th scope="col">D</th>
+                        <th scope="col">E</th>
+                        <th scope="col">F</th>
+                        <th scope="col">G</th>
+                        <th scope="col">H</th>
+                        <th scope="col">I</th>
+                        <th scope="col">J</th>
+                        <th scope="col">K</th>
+                        <th scope="col">L</th>
+                        <th scope="col">M</th>
+                        <th scope="col">N</th>
+                        <th scope="col">O</th>
+                        <th scope="col">P</th>
+                        <th scope="col">Q</th>
+                        <th scope="col">R</th>
+                        <th scope="col">S</th>
+                        <th scope="col">T</th>
+                        <th scope="col">U</th>
+                        <th scope="col">V</th>
+                        <th scope="col">W</th>
+                        <th scope="col">X</th>
+                        <th scope="col">Y</th>
+                        <th scope="col">Z</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="td-data">0</td>
+                            <td class="td-data">1</td>
+                            <td class="td-data">2</td>
+                            <td class="td-data">3</td>
+                            <td class="td-data">4</td>
+                            <td class="td-data">5</td>
+                            <td class="td-data">6</td>
+                            <td class="td-data">7</td>
+                            <td class="td-data">8</td>
+                            <td class="td-data">9</td>
+                            <td class="td-data">10</td>
+                            <td class="td-data">11</td>
+                            <td class="td-data">12</td>
+                            <td class="td-data">13</td>
+                            <td class="td-data">14</td>
+                            <td class="td-data">15</td>
+                            <td class="td-data">16</td>
+                            <td class="td-data">17</td>
+                            <td class="td-data">18</td>
+                            <td class="td-data">19</td>
+                            <td class="td-data">20</td>
+                            <td class="td-data">21</td>
+                            <td class="td-data">22</td>
+                            <td class="td-data">23</td>
+                            <td class="td-data">24</td>
+                            <td class="td-data">25</td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+
+                <p>With m = 26 letters, the encryption function is noted below:</p>
+                <p> E(x) = (ax + b) mod m</p>
+
+                <strong style="text-decoration: underline">Now go through each letter and set up the Affine Cipher routine:</strong>
+                <div><br>
+
+<!--                    Looping Part -->
+                    {% for ar,br,c,d,e,f in my_sol %}
+                    <strong style="text-decoration: underline">Letter {{ar}} :</strong>
+                        <p>{{ar}} is letter number {{br}} in the alphabet grid above</p>
+                         <p>With x = {{br}}, we have E({{br}}) = {{a}}({{br}}) + {{b}} = {{c}} + {{b}} = {{d}}</p>
+                         <p>we have (ax+b) mod m = {{ d }} mod 26 = {{e}}</p>
+                        <p>Finally, looking up the letter in our original grid, we have the cipher text for {{ e }} = {{ f }}</p>
+                        <br>
+                    {% endfor %}
+
+
+                    <div>
+                        <table class="table table-bordered table-responsive">
+                          <thead>
+                            <tr>
+                              <th scope="col">Plaintext</th>
+                                {% for i in str_without_spaces %}
+                                    <th scope="col">{{i}}</th>
+                                 {% endfor %}
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <tr>
+                                <td>X</td>
+                              {% for i in no_corres_to_alpha_values %}
+                                <td>{{i}}</td>
+                              {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>{{a}}x + {{b}}</td>
+                              {% for i in final_values %}
+                                <td>{{i}}</td>
+                              {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>({{a}}x + {{b}}) mod 26</td>
+                              {% for i in mod_values %}
+                                <td>{{i}}</td>
+                             {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>Ciphertext</td>
+                                {% for i in no_to_alpha_values %}
+                                <td>{{i}}</td>
+                               {% endfor %}
+                            </tr>
+
+                          </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+<script>
+  function forceInputUppercase(e)
+  {
+    var start = e.target.selectionStart;
+    var end = e.target.selectionEnd;
+    e.target.value = e.target.value.toUpperCase();
+    e.target.setSelectionRange(start, end);
+  }
+  document.getElementById("str_to_translate").addEventListener("keyup", forceInputUppercase, false);
+</script>
+
+
+{% endblock content %}

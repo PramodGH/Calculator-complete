@@ -1,0 +1,742 @@
+{% extends 'calculator/base.html' %}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+    type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Elastic Potential Energy Calculator | Free Calculator to find Elastic Potential Energy</title>
+<meta name="description"
+    content="Elastic Potential Energy Calculator makes it easy for you to determine the theoretical yield value in fraction of seconds with steps." />
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+<meta property="og:title" content="Elastic Potential Energy Calculator | Free Calculator to find Elastic Potential Energy" />
+<meta property="og:description" content="Elastic Potential Energy Calculator" />
+<meta content="" property="og:site_name" />
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Elastic-Potential-Energy-Calculator.jpeg"
+    property="og:image" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="435" />
+<meta property="og:image:width" content="354" />
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator" />
+<meta name="twitter:title" content="Elastic Potential Energy Calculator | Free Calculator to find Elastic Potential Energy" />
+<meta name="twitter:description"
+    content="Elastic Potential Energy Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps." />
+<meta name="twitter:image:src"
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property="twitter:image:height" content="435" />
+<meta property="twitter:image:width" content="354" />
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Elastic Potential Energy Calculator | Free Calculator to find Elastic Potential Energy" />
+<meta property='og:image'
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property='og:description' content="Elastic Potential Energy Calculator." />
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock%}
+
+{%block content%}
+
+<style>
+    input {
+        text-align: right;
+    }
+</style>
+
+{% if u and fc and x  %}
+<script>
+    $(document).ready(function () {
+
+        $("#hassle").click();
+
+
+    });
+
+</script>
+
+<button type="button" hidden id="hassle" onclick="location.href='#get_spring_potential_energy'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Elastic Potential Energy Calculator</h1>
+        </div>
+        <div class="card-body">
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                    style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+
+            <form action="{% url 'expression' %}" method="post" id="my_form">
+                {% csrf_token %}
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><strong>Choose a Calculation</strong></div>
+                        </div>
+                        <select name="given_data" id="inlineFormInputGroup" class="form-control"
+                            onchange="this.form.submit();" autofocus="">
+
+                            {% if given_data == 'form1' %}
+                            <option value="form1" selected="selected"> Find U| Given k and Δx </option>
+                            {% else %}
+                            <option value="form1"> Find U| Given k and Δx </option>
+                            {% endif %}
+
+                            {% if given_data == 'form2' %}
+                            <option value="form2" selected="selected"> Find k| U and Δx </option>
+                            {% else %}
+                            <option value="form2"> Find k| U and Δx</option>
+                            {% endif %}
+
+                            {% if given_data == 'form3' %}
+                            <option value="form3" selected="selected"> Find Δx | Given U and k </option>
+                            {% else %}
+                            <option value="form3">  Find Δx | Given U and k</option>
+                            {% endif %}
+
+
+
+                        </select>
+                    </div>
+
+                    {% if given_data != "form3" %}
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><strong>Spring stretch length(Δx):</strong></div>
+                        </div>
+                        <input type="text" oninput="validateNumber(this);" id="inlineFormInputGroup" required=""
+                            placeholder="Enter number" maxlength="10" class="form-control" name="x" value="{{x}}">
+
+
+                        <select class="select form-control" id="inlineFormInputGroup" name="x_op">
+                            {% if x_op == 'm' %}
+                            <option value="m" selected="selected">meters(m)</option>
+                            {% else %}
+                            <option value="m">meters(m)</option>
+                            {% endif %}
+
+                            {% if x_op == 'cm' %}
+                            <option value="cm" selected="selected">centimeters(cm)</option>
+                            {% else %}
+                            <option value="cm">centimeters(cm)</option>
+                            {% endif %}
+
+                            {% if x_op == 'mm' %}
+                            <option value="mm" selected="selected">millimeters(mm)</option>
+                            {% else %}
+                            <option value="mm">millimeters(mm)</option>
+                            {% endif %}
+
+
+                            {% if x_op == 'in' %}
+                            <option value="in" selected="selected">inches(in)</option>
+                            {% else %}
+                            <option value="in">inches(in)</option>
+                            {% endif %}
+
+                            {% if x_op == 'ft' %}
+                            <option value="ft" selected="selected">feet(ft)</option>
+                            {% else %}
+                            <option value="ft">feet(ft)</option>
+                            {% endif %}
+
+                            {% if x_op == 'yd' %}
+                            <option value="yd" selected="selected">yards(yd)</option>
+                            {% else %}
+                            <option value="yd">yards(yd)</option>
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    {% endif %}
+
+                    {% if given_data != "form2" %}
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><strong>Spring Force Constant(k):</strong></div>
+                        </div>
+                        <input type="text" oninput="validateNumber(this);" id="inlineFormInputGroup" required=""
+                            placeholder="Enter number" maxlength="10" class="form-control" name="fc" value="{{fc}}">
+
+
+                        <select class="select form-control" id="inlineFormInputGroup" name="fc_op">
+
+                            {% if fc_op == 'N/m' %}
+                            <option value="N/m" selected="selected">Newton per meter(N/m)</option>
+                            {% else %}
+                            <option value="N/m">Newton per meter(N/m)</option>
+                            {% endif %}
+
+                        </select>
+                    </div>
+                    {% endif %}
+                    {% if given_data != "form1" %}
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><strong>Spring Potential Energy(U):</strong></div>
+                        </div>
+                        <input type="text" oninput="validateNumber(this);" id="inlineFormInputGroup" required=""
+                           placeholder="Enter number" maxlength="10" class="form-control" name="u" value="{{u}}">
+
+                        <select class="select form-control" id="inlineFormInputGroup" name="u_op">
+                            {% if u_op == 'joules' %}
+                            <option value="joules" selected="selected">joules(J)</option>
+                            {% else %}
+                            <option value="joules">joules(J)</option>
+                            {% endif %}
+
+                             {% if u_op == 'kJ' %}
+                            <option value="kJ" selected="selected">kilojoules(kJ)</option>
+                            {% else %}
+                            <option value="kJ">kilojoules(kJ)</option>
+                            {% endif %}
+
+
+
+                            {% if u_op == 'MJ' %}
+                            <option value="MJ" selected="selected">megajoules(MJ)</option>
+                            {% else %}
+                            <option value="MJ">megajoules(MJ)</option>
+                            {% endif %}
+
+                            {% if u_op == 'Wh' %}
+                            <option value="Wh" selected="selected">watt hours(Wh)</option>
+                            {% else %}
+                            <option value="Wh">watt hours(Wh)</option>
+                            {% endif %}
+
+                            {% if u_op == 'kWh' %}
+                            <option value="kWh" selected="selected">kilowatt hours(kWh)</option>
+                            {% else %}
+                            <option value="kWh">kilowatt hours(kWh)</option>
+                            {% endif %}
+
+                            {% if u_op == 'ft-lb' %}
+                            <option value="ft-lb" selected="selected">foot-pounds(ft-lb)</option>
+                            {% else %}
+                            <option value="ft-lb">foot-pounds(ft-lb)</option>
+                            {% endif %}
+
+                            {% if u_op == 'kcal' %}
+                            <option value="kcal" selected="selected">kilocalories(kcal)</option>
+                            {% else %}
+                            <option value="kcal">kilocalories(kcal)</option>
+                            {% endif %}
+
+                            {% if u_op == 'eV' %}
+                            <option value="eV" selected="selected">electronVolts(eV)</option>
+                            {% else %}
+                            <option value="eV">electronVolts(eV)</option>
+                            {% endif %}
+
+                        </select>
+                    </div>
+
+                    {% endif %}
+
+                    <div class=" center col mt-2 ">
+                        <center><button type="submit" class="btn btn-primary">Calculate</button>
+                            <button type="button" onclick="myFunction()" style="margin-top:5px;"
+                                class="btn btn-danger">Reset</button>
+                        </center>
+                    </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div id="clear">
+    {% if given_data == "form1" and u %}
+    <div class="card" id="get_spring_potential_energy">
+        <div class="card-header">
+            <h2 class="h2">Steps to Find Spring Potential Energy:</h2>
+        </div>
+
+        <div class="card-body">
+
+            <strong>Spring Potential Energy formula:-</strong>
+            <br>
+            <p class="btn btn-outline-secondary active">U = 0.5*k*(Δx)<sup>2</sup></p>
+            <br>
+            <strong>where:</strong>
+                    <ul>
+                        <li>U is Spring Potential Energy(expressed in joules),</li>
+                        <li>k is Spring Force Constant,</li>
+                        <li>Δx is Spring Stretch Length.</li>
+                    </ul>
+
+            <strong>Input values are:-</strong>
+            <p>k = {{fc}} {{fc_op}}</p>
+            <p>Δx = {{x}} {{x_op}}</p>
+
+            {% if x_op == 'cm' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Convert the Spring Stretch Length={{x}}/100</p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            {% if x_op == 'mm' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Convert the Spring Stretch Length={{x}}/10<sup>3</sup></p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            {% if x_op == 'in' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Convert the Spring Stretch Length={{x}}*39.37</p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            {% if x_op == 'ft' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Convert the Spring Stretch Length={{x}}/3.281</p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            {% if x_op == 'yd' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Convert the Spring Stretch Length={{x}}/1.094</p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            <strong>Put values into formula</strong>
+            <p>Spring Potential Energy = 0.5*{{fc}}*{{text_x}}<sup>2</sup></p>
+
+            {% if u == "NaN" %}
+            <p>Spring Potential Energy = {{u}} </p>
+
+            {% else %}
+            <p>SpringPotentialEnergy = {{u}} joules</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if given_data == "form2" and fc %}
+    <div class="card" id="get_spring_force_constant">
+        <div class="card-header">
+            <h2 class="h2">Steps to Find Spring Force Constant:</h2>
+        </div>
+
+        <div class="card-body">
+
+            <strong>Spring Force Constant formula:-</strong>
+            <br>
+            <p class="btn btn-outline-secondary active">k = 2*U/(Δx)<sup>2</sup></p>
+            <br>
+            <strong>where:</strong>
+                    <ul>
+                        <li>U is Spring Potential Energy(expressed in joules),</li>
+                        <li>k is Spring Force Constant,</li>
+                        <li>Δx is Spring Stretch Length.</li>
+                    </ul>
+
+
+
+            <strong>Input values are:-</strong>
+            <p>U = {{u}} {{u_op}}</p>
+            <p>Δx = {{x}} {{x_op}}</p>
+
+            {% if x_op == 'cm' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Spring Stretch Length={{x}}/100</p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            {% if x_op == 'mm' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Spring Stretch Length={{x}}/10<sup>3</sup></p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            {% if x_op == 'in' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Convert the Spring Stretch Length={{x}}*39.37</p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            {% if x_op == 'ft' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Convert the Spring Stretch Length={{x}}/3.281</p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            {% if x_op == 'yd' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Stretch Length {{x}}<b><i>"{{x_op}}"</i></b> to
+                    <b><i>"meters"</i></b></b>
+                </summary>
+                <p>Convert the Spring Stretch Length={{x}}/1.094</p>
+                <p>Spring Stretch Length={{text_x}}</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'kJ' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i> </b>to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*1000</p>
+                <p>Spring Potential Energy={{text_u}}</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'MJ' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i> </b>to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*10<sup>6</sup></p>
+                <p>Spring Potential Energy={{text_u}}</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'Wh' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b> to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*3600</p>
+                <p>Spring Potential Energy={{text_u}}</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'kWh' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b> to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*(3.6e+6)</p>
+                <p>Spring Potential Energy={{text_u}}</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'eV' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b> to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}/(6.242e+18)</p>
+                <p>Spring Potential Energy={{text_u}}</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'kcal' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b> to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*4184</p>
+                <p>Spring Potential Energy={{text_u}}</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'ft-lb' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b>to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*1.356</p>
+                <p>Spring Potential Energy={{text_u}}</p>
+            </details>
+            {% endif %}
+
+            <strong>Put values into formula</strong>
+
+            {% if x_op == 'm' %}
+            <p>Spring Force Constant = 2*{{text_u}}/{{x}}<sup>2</sup></p>
+            {% else %}
+            <p>Spring Force Constant = 2*{{text_u}}/{{text_x}}<sup>2</sup></p>
+            {% endif %}
+
+            {% if fc == "NaN" %}
+            <p>Spring Force Constant = {{fc}} </p>
+
+            {% else %}
+            <p>Spring Force Constant = {{fc}} Newton per meter</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if given_data == "form3" and x %}
+    <div class="card" id="get_spring_stretch_length">
+        <div class="card-header">
+            <h2 class="h2">Steps to Find Spring Stretch Length:</h2>
+        </div>
+
+        <div class="card-body">
+
+            <strong>Spring Stretch length formula:-</strong>
+            <br>
+            <p class="btn btn-outline-secondary active"><span>&#8730;</span>Δx=√ 2*{{u}}/{{fc}}</p>
+            <br>
+            <strong>where:</strong>
+                    <ul>
+                        <li>U is Spring Potential Energy(expressed in joules),</li>
+                        <li>k is Spring Force Constant,</li>
+                        <li>Δx is Spring Stretch Length.</li>
+                    </ul>
+
+            <strong>Input values are:-</strong>
+            <p>U = {{u}} {{u_op}}</p>
+            <p>k = {{fc}} N/m</p>
+
+            {% if u_op == 'kJ' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b> to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*1000</p>
+                <p>Spring Potential Energy={{text_u}} joules</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'MJ' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b> to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*10<sup>6</sup></p>
+                <p>Spring Potential Energy={{text_u}} joules</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'Wh' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i> </b>to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*3600</p>
+                <p>Spring Potential Energy={{text_u}} joules</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'kWh' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b> to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*(3.6e+6)</p>
+                <p>Spring Potential Energy={{text_u}} joules</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == "eV" %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                    <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b>to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}/(1.602×10<sup>-19</sup>)</p>
+                <p>Spring Potential Energy={{text_u}} joules</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'kcal' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i></b> to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*4184</p>
+                <p>Spring Potential Energy={{text_u}} joules</p>
+            </details>
+            {% endif %}
+
+            {% if u_op == 'ft-lb' %}
+            <details style="border:2px solid #009FE8; width:100%;">
+                <summary>
+                     <b>Convert the Spring Potential Energy {{u}}<b><i>"{{u_op}}"</i> </b>to
+                    <b><i>"joules"</i></b></b>
+                </summary>
+                <p>Spring Potential Energy={{u}}*1.356</p>
+                <p>Spring Potential Energy={{text_u}} joules</p>
+            </details>
+            {% endif %}
+
+            <strong>Put values into formula</strong>
+
+            {% if u_op == "joules" %}
+            <p>Spring Stretch Length = √2*{{u}}/{{fc}}</p>
+            {% else %}
+            <p>Spring Stretch Length = √2*{{text_u}}/{{fc}}</p>
+            {% endif %}
+
+            {% if fc == "NaN" %}
+            <p>Spring Stretch Length = {{x}} meters </p>
+            <center><b id="formula" style="font-size:25px;">Spring Stretch Length  = {{x}} meters </b></center>
+
+            {% else %}
+            <p>Spring Stretch Length= {{x}} meters</p>
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+    {% endif %}
+</div>
+</div>
+
+
+
+<script>
+    var validNumber = new RegExp(/^\d*\.?-?\d*$/);
+    var fist_input = document.getElementById("inlineFormInputGroup").value;
+    function validateNumber(elem) {
+        console.log(elem)
+        if (validNumber.test(elem.value)) {
+            fist_input = elem.value;
+        } else {
+            elem.value = fist_input;
+        }
+    }
+</script>
+
+<script>
+    function myFunction() {
+
+        {% if given_data == "form1" %}
+
+            document.getElementsByName("fc")[0].value = "";
+            document.getElementsByName("x")[0].value = "";
+
+            document.getElementsByName("fc_op")[0].value = "N/m";
+            document.getElementsByName("x_op")[0].value = "m";
+
+            document.getElementById("clear").innerHTML = "";
+
+        {% endif %}
+
+        {% if given_data == "form2" %}
+
+            document.getElementsByName("u")[0].value = "";
+
+            document.getElementsByName("x")[0].value = "";
+            document.getElementsByName("u_op")[0].value = "joules";
+
+            document.getElementsByName("x_op")[0].value = "m";
+            document.getElementById("clear").innerHTML = "";
+
+        {% endif %}
+
+        {% if given_data == "form3" %}
+
+
+            document.getElementsByName("u")[0].value = "";
+            document.getElementsByName("fc")[0].value = "";
+
+            document.getElementsByName("u_op")[0].value = "joules";
+            document.getElementsByName("fc_op")[0].value = "N/m";
+            document.getElementById("clear").innerHTML = "";
+
+            {% endif %}
+
+
+
+    }
+</script>
+<br>
+
+{% endblock %}

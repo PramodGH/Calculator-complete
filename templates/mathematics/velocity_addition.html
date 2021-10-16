@@ -1,0 +1,461 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+    type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Velocity Addition Calculator | Free Calculator to Velocity Addition</title>
+<meta name="description"
+    content="Cartesian-to-Polar Calculator makes it easy for you to determine the value o coordinates" />
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution" />
+<meta property="og:description" content="Angular Resolution Calculator" />
+<meta content="" property="og:site_name" />
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+    property="og:image" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="435" />
+<meta property="og:image:width" content="354" />
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator" />
+<meta name="twitter:title"
+    content="Cartesian to polar Calculator | Free Calculator to find Cartesian to polar values" />
+<meta name="twitter:description"
+    content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps." />
+<meta name="twitter:image:src"
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property="twitter:image:height" content="435" />
+<meta property="twitter:image:width" content="354" />
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Cartesian to polar Calculator | Free Calculator to find cartesian to polar values" />
+<meta property='og:image'
+    content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg" />
+<meta property='og:description' content="Angular Resolution Calculator." />
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if flag1 or flag2 %}
+<script>
+    $(document).ready(function () {
+        $("#hassle").click();
+    });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#velocity-addition'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Velocity Addition Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                    style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form action="{% url 'velocity-addition' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Choose option to calculate </span>
+                    </div>
+
+                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"
+                        onchange="this.form.submit()">
+
+                        {% if given == 'form1' %}
+                        <option value='form1' selected="selected">Calculate Relative Projectle velocity(u) using
+                            Space velocity(v) and Projectile velocity(w).
+                        </option>
+                        {% else %}
+                        <option value='form1'>Calculate Relative Projectle velocity(u) using
+                            Space velocity(v) and Projectile velocity(w).
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form2' %}
+                        <option value='form2' selected="selected">Calculate Projectile velocity(w) using Relative
+                            Projectle velocity(u)
+                            and Space velocity(v).
+                        </option>
+                        {% else %}
+                        <option value='form2'>Calculate Projectile velocity(w) using Relative Projectle velocity(u)
+                            and Relative Projectle velocity(u).
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form3' %}
+                        <option value='form3' selected="selected">Calculate Space velocity(v) using Relative Projectle
+                            velocity(u)
+                            and Projectle velocity(w).
+                        </option>
+                        {% else %}
+                        <option value='form3'>Calculate Space velocity(v) using Relative Projectle velocity(u)
+                            and Projectle velocity(w).
+                        </option>
+                        {% endif %}
+
+                    </select>
+                </div>
+
+                <!----------     forms different options : ---------->
+
+                {% if given != "form1" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Relative Projectile velocity(u)</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="rpv" type="number" step="any" name="rpv"
+                        value="{{rpv}}" class="form-control" required width="48">
+
+
+                    <select id="rpv_op" name="rpv_op" style="margin-top: 5px;width:100%" class="select form-control"
+                        onchange="this.form.submit()">
+
+                        {% if rpv_op == 'c' %}
+                        <option value='c' selected="selected">light speed (c)
+                        </option>
+                        {% else %}
+                        <option value='c'>light speed (c)
+                        </option>
+                        {% endif %}
+
+                        {% if rpv_op == 'm/s' %}
+                        <option value='m/s' selected="selected">meters per seconds (m/s)
+                        </option>
+                        {% else %}
+                        <option value='m/s'>meters per seconds (m/s)
+                        </option>
+                        {% endif %}
+
+                        {% if rpv_op == 'km/s' %}
+                        <option value='km/s' selected="selected">kilometers per second (km/s)
+                        </option>
+                        {% else %}
+                        <option value='km/s'>kilometers per second (km/s)
+                        </option>
+                        {% endif %}
+
+                        {% if rpv_op == 'mi/s' %}
+                        <option value='mi/s' selected="selected">miles per second (mi/s)
+                        </option>
+                        {% else %}
+                        <option value='mi/s'>miles per second (mi/s)
+                        </option>
+                        {% endif %}
+
+                    </select>
+                </div>
+                {% endif %}
+
+
+                {% if given != "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Projectile velocity(w)</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="pv" type="number" step="any" name="pv" value="{{pv}}"
+                        class="form-control" required width="48">
+
+
+                    <select id="pv_op" name="pv_op" style="margin-top: 5px;width:100%" class="select form-control"
+                        onchange="this.form.submit()">
+
+                        {% if pv_op == 'c' %}
+                        <option value='c' selected="selected">light speed (c)
+                        </option>
+                        {% else %}
+                        <option value='c'>light speed (c)
+                        </option>
+                        {% endif %}
+
+                        {% if pv_op == 'm/s' %}
+                        <option value='m/s' selected="selected">meters per seconds (m/s)
+                        </option>
+                        {% else %}
+                        <option value='m/s'>meters per seconds (m/s)
+                        </option>
+                        {% endif %}
+
+                        {% if pv_op == 'km/s' %}
+                        <option value='km/s' selected="selected">kilometers per second (km/s)
+                        </option>
+                        {% else %}
+                        <option value='km/s'>kilometers per second (km/s)
+                        </option>
+                        {% endif %}
+
+                        {% if pv_op == 'mi/s' %}
+                        <option value='mi/s' selected="selected">miles per second (mi/s)
+                        </option>
+                        {% else %}
+                        <option value='mi/s'>miles per second (mi/s)
+                        </option>
+                        {% endif %}
+
+                    </select>
+                </div>
+                {% endif %}
+
+
+                {% if given != "form3" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Space velocity(v)</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="sv" type="number" step="any" name="sv" value="{{sv}}"
+                        class="form-control" required width="48">
+
+
+                    <select id="sv_op" name="sv_op" style="margin-top: 5px;width:100%" class="select form-control"
+                        onchange="this.form.submit()">
+
+                        {% if sv_op == 'c' %}
+                        <option value='c' selected="selected">light speed (c)
+                        </option>
+                        {% else %}
+                        <option value='c'>light speed (c)
+                        </option>
+                        {% endif %}
+
+                        {% if sv_op == 'm/s' %}
+                        <option value='m/s' selected="selected">meters per seconds (m/s)
+                        </option>
+                        {% else %}
+                        <option value='m/s'>meters per seconds (m/s)
+                        </option>
+                        {% endif %}
+
+                        {% if sv_op == 'km/s' %}
+                        <option value='km/s' selected="selected">kilometers per second (km/s)
+                        </option>
+                        {% else %}
+                        <option value='km/s'>kilometers per second (km/s)
+                        </option>
+                        {% endif %}
+
+                        {% if sv_op == 'mi/s' %}
+                        <option value='mi/s' selected="selected">miles per second (mi/s)
+                        </option>
+                        {% else %}
+                        <option value='mi/s'>miles per second (mi/s)
+                        </option>
+                        {% endif %}
+
+                    </select>
+                </div>
+                {% endif %}
+
+
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'velocity-addition' %}" class="btn btn-warning"
+                                style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+        <!--        if given == "form1" and wt_sol and vol_sol and eq_wt -->
+        {% if flag1 %}
+
+        <div class="card c1" id="velocity-addition">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Realative Projectile Velocity :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">u = (v+w) /(1 + (v * w)/c²)</p>
+                <br>
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        u is the speed of the projectile as seen outside of the spaceship.
+                    </li>
+                    <li>
+                        v is the speed of the spaceship.
+                    </li>
+                    <li>
+                        w is the speed of the projectile as seen from the spaceship.
+                    </li>
+                    <li>
+                        c is the speed of light (299792458 m/s).
+                    </li>
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>space velocity (v) = {{sv}} {{sv_op}}</p>
+                <p>Projectile Velocity (w) = {{pv}} {{pv_op}}</p>
+
+
+                <strong>Put values into formula:-</strong>
+                <p>u = ({{sv}}+{{pv}}) /(1 + ({{sv}} * {{pv}})/299792458²)</p>
+                <p>u = {{rpv_mid_num}} / (1 + ({{rpv_sec_num}} / {{rpv_sqr_of_c}}))</p>
+
+                <strong>Result </strong>
+                <p>u = {{rpv_result}} m/s</p>
+
+            </div>
+        </div>
+        {% endif %}
+
+        <!--         if given == "form2" -->
+        {% if flag2 %}
+
+        <div class="card c1" id="velocity-addition">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Projectile velocity (w): </h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">u = (v+w) /(1 + (v * w)/c²)</p>
+                <br>
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        u is the speed of the projectile as seen outside of the spaceship.
+                    </li>
+                    <li>
+                        v is the speed of the spaceship.
+                    </li>
+                    <li>
+                        w is the speed of the projectile as seen from the spaceship.
+                    </li>
+                    <li>
+                        c is the speed of light (299792458 m/s).
+                    </li>
+
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Relative Projectile velocity (u) = {{rpv}} {{rpv_op}}</p>
+                <p>Space Velocity (v) = {{sv}} {{sv_op}}</p>
+
+
+                <strong>Input values are:-</strong>
+                <p>u = ({{sv}}+{{pv}}) /(1 + ({{sv}} * {{pv}})/299792458²)</p>
+                <p>u = rpv_mid_num / (1 + (rpv_sec_num / rpv_sqr_of_c))</p>
+
+                <!--                w = c² (u - v) / (c2 - u*v)-->
+                <strong>Put values into formula:-</strong>
+                <p>w = c² (u - v) / (c2 - u*v)</p>
+                <p>w = 299792458² * ({{rpv}} - {{sv}}) / (299792458² - {{rpv}}*{{sv}})</p>
+
+                <strong>Result </strong>
+                <p>w = {{pv_result}} m/s</p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+<!--         if given == "form3" -->
+{% if flag3 %}
+
+<div class="card c1" id="velocity-addition">
+    <div class="card-header">
+        <h2 class="h2">Steps to Find Space Velocity (v): </h2>
+    </div>
+
+    <div class="card-body">
+        <strong>Formula:-</strong><br>
+        <p class="btn btn-outline-secondary active">u = (v+w) /(1 + (v * w)/c²)</p>
+        <br>
+        <strong>where:</strong>
+        <ul>
+            <li>
+                u is the speed of the projectile as seen outside of the spaceship.
+            </li>
+            <li>
+                v is the speed of the spaceship.
+            </li>
+            <li>
+                w is the speed of the projectile as seen from the spaceship.
+            </li>
+            <li>
+                c is the speed of light (299792458 m/s).
+            </li>
+
+        </ul>
+
+        <strong>Input values are:-</strong>
+        <p>Relative Projectile velocity (u) = {{rpv}} {{rpv_op}}</p>
+        <p>Projectile Velocity (w) = {{pv}} {{pv_op}}</p>
+
+
+
+        <!--              v = c² (u - w) / (c² - u*w)  -->
+        <strong>Put values into formula:-</strong>
+        <p>v = c² (u - w) / (c² - u*w)</p>
+        <p>v = 299792458² * ({{rpv}} - {{pv}}) / (299792458² - {{rpv}}*{{pv}})</p>
+
+        <strong>Result </strong>
+        <p>v = {{sv_result}} m/s</p>
+
+
+    </div>
+</div>
+</div>
+</div>
+{% endif %}
+
+
+</div>
+</div>
+{% endblock content %}

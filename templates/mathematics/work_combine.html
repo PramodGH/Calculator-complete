@@ -1,0 +1,344 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Parallel line Calculator | Free Calculator to Parallel line</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Parallel line Calculator | Free Calculator to find Parallel line"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag  %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#work-combine'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Work word Problem Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'work-combine' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Person A completes the job in</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a" type="number" step="any" name="a"
+                           value="{{a}}" required=""
+                            class="form-control"  required width="48">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Hours</span>
+                    </div>
+
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Person B completes the job in</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b" type="number" step="any" name="b"
+                           value="{{b}}" required=""
+                            class="form-control"  required width="48">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" >Hours</span>
+                    </div>
+                </div>
+
+
+
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class="center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'work-combine' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% if not flag%}
+<br><br>
+{% endif %}
+
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+            <div class="card c1" id="work-combine">
+            <div class="card-header">
+                <h2 class="h2">Calculation of combined work time :</h2>
+            </div>
+                <div class="card-body">
+                <p>If it takes Person A {{a}} hours to do something, and Person B, {{b}} hours to do something, how long would it take if they worked together?</p>
+                </div>
+            <div class="card-body">
+                <strong>Use Work Formula:</strong><br>
+                <p class="btn btn-outline-secondary active">1/a + 1/b = 1/t</p> <br>
+                <p>This means the inverse of time it would take everyone working together equals the sum of inverse of times
+                 it would take each person working individually.</p>
+
+
+<!--                <strong>Input values are:</strong>-->
+<!--                <p>a = {{ a }}</p>-->
+<!--                <p>b = {{ b }}</p>-->
+
+                <strong>Given a = {{a}} and b ={{b}}, we have:</strong>
+<!--                <p>1/{{a}} + 1/{{b}}</p>-->
+                <table>
+                    <tbody>
+                    <tr>
+                        <td style="border-bottom: solid 2px black;">1</td>
+                        <td>=</td>
+                        <td style="border-bottom: solid 2px black;"> {{a}}</td>
+                    </tr>
+                    <tr>
+                        <td>t</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;&nbsp;{{b}} </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                {% if is_two_no_equal %}
+                <p>Since, our denominators for Fraction 1 and Fraction 2 are same, we can just add them up as is.</p>
+                <p>Fraction 1 + Fraction 2 = ( {{mid_numerator1}} + {{mid_numerator2}} ) / {{total_denominator}}</p>
+                <p>Fraction 1 + Fraction 2 = {{total_numerator}}/{{total_denominator}}</p>
+
+                {% else %}
+                <p>The Denominators of our two fractions are not equal. We need to have matching denominator in order to add two fractions.</p>
+
+                <p>To do this, we multiply Numerator of fraction 1 by Denominator of fraction 2.
+                   We also multiply the Numerator of fraction 2 by Denominator of fraction 1 as illustrated below. We add those 2 results, and get our Numerator.
+                    Our Denominator is the product of the Denominators of both fractions.</p>
+
+<!--                 <strong>Fraction 1 + Fraction 2 = (Numerator 1 * Denominator 2 + Numerator 2 * Denominator 1) / (Denominator 1 * Denominator 2)</strong><br>-->
+                <strong>
+                    <table>
+                    <tbody>
+                    <tr>
+                        <td>Fraction 1 + Fraction 2 &nbsp; = </td>
+                        <td style="border-bottom: solid 2px black;">(Numerator 1 * Denominator 2 + Numerator 2 * Denominator 1)</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Denominator 1 * Denominator 2)</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </strong>
+
+
+<!--                <p>Fraction 1 + Fraction 2 = ( {{num1}}*{{denom2}} + {{num2}}*{{denom1}} )/( {{denom1}}*{{denom2}} )</p>-->
+                 <table>
+                    <tbody>
+                    <tr>
+                        <td>Fraction 1 + Fraction 2 &nbsp; = </td>
+                        <td style="border-bottom: solid 2px black;">{{num1}}*{{denom2}} + {{num2}}*{{denom1}}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{denom1}}*{{denom2}} </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+<!--                <p>Fraction 1 + Fraction 2 = ( {{mid_numerator1}} + {{mid_numerator2}} ) / {{total_denominator}}</p>-->
+                 <table>
+                    <tbody>
+                    <tr>
+                        <td>Fraction 1 + Fraction 2 &nbsp; = </td>
+                        <td style="border-bottom: solid 2px black;"> {{mid_numerator1}} + {{mid_numerator2}}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;{{total_denominator}} </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+<!--                <p>Fraction 1 + Fraction 2 = {{total_numerator}}/{{total_denominator}}</p>-->
+                 <table>
+                    <tbody>
+                    <tr>
+                        <td>Fraction 1 + Fraction 2 &nbsp; = </td>
+                        <td style="border-bottom: solid 2px black;"> {{total_numerator}}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;{{total_denominator}} </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                {% endif %}
+
+                {% if is_gcf_available  %}
+                <p>Our fraction is not in reduced form. Using GCF, we see that top and bottom can be reduced by {{gcf}}</p>
+
+                <p>Here, GCF = {{gcf}}</p>
+                <p>Reduced fraction = {{new_numerator}}/{{new_denominator}}</p>
+                {% else %}
+
+                <p>Final fraction = {{new_numerator}}/{{new_denominator}}</p>
+                {% endif %}
+
+
+
+                <strong>Solve for t:</strong>
+                 <table>
+                    <tbody>
+                    <tr>
+                        <td style="border-bottom: solid 2px black;">1 </td>
+                        <td>&nbsp; =</td>
+                        <td style="border-bottom: solid 2px black;"> {{new_numerator}}</td>
+                    </tr>
+                    <tr>
+                        <td>t</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;{{new_denominator}} </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                    <table>
+                        <tr>
+                            <td>t</td>
+                            <td>&nbsp; =</td>
+                            <td style="border-bottom: solid 2px black;">{{new_denominator}}</td>
+                        </tr>
+                        <tr>
+                             <td>&nbsp;</td>
+                            <td>&nbsp;&nbsp; </td>
+                            <td >{{new_numerator}}</td>
+                        </tr>
+                    </table>
+
+
+<!--                <p>t = {{new_denominator}}/{{new_numerator}}</p>-->
+
+                <strong>Convert to minutes:</strong><br>
+<!--                <p>Minutes = (60 * {{new_denominator}}) / {{new_numerator}}</p>-->
+<!--                Minutes = <span style="text-decoration:underline">(60 * {{new_denominator}})</span><br>-->
+<!--                {{new_numerator}}</p>-->
+
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Minutes &nbsp; = </td>
+                        <td style="border-bottom: solid 2px black;">(60 * {{new_denominator}})</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{new_numerator}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Minutes &nbsp; = </td>
+                        <td style="border-bottom: solid 2px black;">{{mid_min_ans}}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{new_numerator}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+<!--                <p>Minutes = {{mid_min_ans}}/{{new_numerator}}</p>-->
+                <p>Minutes = {{min_final_ans}}</p>
+
+                <strong>Result :</strong>
+                    <p>In minutes = {{min_final_ans}}</p>
+                    <p>In Hours = {{ans_in_hour}}</p>
+            </div>
+        </div>
+        {% endif %}
+</div>
+</div>
+{% endblock content %}

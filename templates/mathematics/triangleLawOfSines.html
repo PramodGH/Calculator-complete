@@ -1,0 +1,946 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Neutralization Calculator | Free Calculator to find Capacitance</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{% endblock meta %}
+
+{% block content %}
+
+{% if  flag123 or flag4 or flag5 or flag6 %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#triangle_law_of_sines'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Triangle Law of Sines Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'triangle_law_of_sines' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Choose Option to calculate</span>
+                    </div>
+
+                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"
+                            id="inlineFormInputGroup" onchange="this.form.submit()">
+
+                        {% if given == 'form1' %}
+                        <option value='form1' selected="selected">Angle A from a, B, b
+                        </option>
+                        {% else %}
+                        <option value='form1'>Angle A from a, B, b
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form2' %}
+                        <option value='form2' selected="selected">Angle A from a, C, c
+                        </option>
+                        {% else %}
+                        <option value='form2'>Angle A from a, C, c
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form3' %}
+                        <option value='form3' selected="selected">Angle B from b, A, a
+                        </option>
+                        {% else %}
+                        <option value='form3'>Angle B from b, A, a
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form4' %}
+                        <option value='form4' selected="selected">Angle B from b, C, c
+                        </option>
+                        {% else %}
+                        <option value='form4'>Angle B from b, C, c
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form5' %}
+                        <option value='form5' selected="selected">Angle C from c, A, a
+                        </option>
+                        {% else %}
+                        <option value='form5'>Angle C from c, A, a
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form6' %}
+                        <option value='form6' selected="selected">Angle C from c, B, b
+                        </option>
+                        {% else %}
+                        <option value='form6'>Angle C from c, B, b
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form7' %}
+                        <option value='form7' selected="selected">Side a from A, B, b
+                        </option>
+                        {% else %}
+                        <option value='form7'>Side a from A, B, b
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form8' %}
+                        <option value='form8' selected="selected">Side a from A, C, c
+                        </option>
+                        {% else %}
+                        <option value='form8'>Side a from A, C, c
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form9' %}
+                        <option value='form9' selected="selected">Side b from B, A, a
+                        </option>
+                        {% else %}
+                        <option value='form9'>Side b from B, A, a
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form10' %}
+                        <option value='form10' selected="selected">Side b from B, C, c
+                        </option>
+                        {% else %}
+                        <option value='form10'>Side b from B, C, c
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form11' %}
+                        <option value='form11' selected="selected">Side c from C, A, a
+                        </option>
+                        {% else %}
+                        <option value='form11'>Side c from C, A, a
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form12' %}
+                        <option value='form12' selected="selected">Side c from C, B, b
+                        </option>
+                        {% else %}
+                        <option value='form12'>Side c from C, B, b
+                        </option>
+                        {% endif %}
+                    </select>
+                </div>
+
+<!----------    Form 1    ----->
+                {% if given == "form1"  %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side a</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_a" type="number" step="any" min="0" name="side_a"
+                           value="{{side_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle B</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_b" type="number" step="any" min="0" name="angle_b"
+                           value="{{angle_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side b</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_b" type="number" step="any" min="0" name="side_b"
+                           value="{{side_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                {% endif %}
+
+                <!----------    Form2    ----->
+                {% if given == "form2"  %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side a</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_a" type="number" step="any" min="0" name="side_a"
+                           value="{{side_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle C</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_c" type="number" step="any" min="0" name="angle_c"
+                           value="{{angle_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side c</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_c" type="number" step="any" min="0" name="side_c"
+                           value="{{side_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+                <!----------    Form 3    ----->
+                {% if given == "form3"  %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side b</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_b" type="number" step="any" min="0" name="side_b"
+                           value="{{side_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle A</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_a" type="number" step="any" min="0" name="angle_a"
+                           value="{{angle_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side a</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_a" type="number" step="any" min="0" name="side_a"
+                           value="{{side_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+                <!----------    Form 4    ----->
+                {% if given == "form4"  %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side b</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_b" type="number" step="any" min="0" name="side_b"
+                           value="{{side_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle C</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_c" type="number" step="any" min="0" name="angle_c"
+                           value="{{angle_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side c</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_c" type="number" step="any" min="0" name="side_c"
+                           value="{{side_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+                <!----------    Form 5    ----->
+                {% if given == "form5"  %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side c</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_c" type="number" step="any" min="0" name="side_c"
+                           value="{{side_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle A</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_a" type="number" step="any" min="0" name="angle_a"
+                           value="{{angle_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side a</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_a" type="number" step="any" min="0" name="side_a"
+                           value="{{side_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+                <!----------    Form 6    ----->
+                {% if given == "form6"  %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side c</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_c" type="number" step="any" min="0" name="side_c"
+                           value="{{side_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle B</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_b" type="number" step="any" min="0" name="angle_b"
+                           value="{{angle_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side b</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_b" type="number" step="any" min="0" name="side_b"
+                           value="{{side_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+
+                <!----------    Form 7    ----->
+                {% if given == "form7"  %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle A</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_a" type="number" step="any" min="0" name="angle_a"
+                           value="{{angle_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle B</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_b" type="number" step="any" min="0" name="angle_b"
+                           value="{{angle_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side b</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_b" type="number" step="any" min="0" name="side_b"
+                           value="{{side_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+
+                <!----------    Form 8    ----->
+                {% if given == "form8"  %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle A</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_a" type="number" step="any" min="0" name="angle_a"
+                           value="{{angle_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle C</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_c" type="number" step="any" min="0" name="angle_c"
+                           value="{{angle_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side c</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_c" type="number" step="any" min="0" name="side_c"
+                           value="{{side_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+                <!----------    Form 9   ----->
+                {% if given == "form9"  %}
+               <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle B</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_b" type="number" step="any" min="0" name="angle_b"
+                           value="{{angle_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle A</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_a" type="number" step="any" min="0" name="angle_a"
+                           value="{{angle_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side a</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_a" type="number" step="any" min="0" name="side_a"
+                           value="{{side_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+
+                <!----------    Form 10    ----->
+                {% if given == "form10"  %}
+               <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle B</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_b" type="number" step="any" min="0" name="angle_b"
+                           value="{{angle_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle C</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_c" type="number" step="any" min="0" name="angle_c"
+                           value="{{angle_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side c</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_c" type="number" step="any" min="0" name="side_c"
+                           value="{{side_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+
+                <!----------    Form 11    ----->
+                {% if given == "form11"  %}
+               <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle C</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_c" type="number" step="any" min="0" name="angle_c"
+                           value="{{angle_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle A</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_a" type="number" step="any" min="0" name="angle_a"
+                           value="{{angle_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side a</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_a" type="number" step="any" min="0" name="side_a"
+                           value="{{side_a}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+                <!----------    Form 12    ----->
+                {% if given == "form12"  %}
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle C</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_c" type="number" step="any" min="0" name="angle_c"
+                           value="{{angle_c}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle B</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="angle_b" type="number" step="any" min="0" name="angle_b"
+                           value="{{angle_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">side b</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="side_b" type="number" step="any" min="0" name="side_b"
+                           value="{{side_b}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+                {% endif %}
+
+
+<!----------    Angle units part-->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Angle unit</span>
+                    </div>
+                <select class="select form-control" id="inlineFormInputGroup" name="angle_unit">
+                        {% if angle_unit == 'degree' %}
+                        <option value="degree" selected="selected">degrees</option>
+                        {% else %}
+                        <option value="degree">degree</option>
+                        {% endif %}
+                        {% if angle_unit == 'radian' %}
+                        <option value="radian" selected="selected">radian</option>
+                        {% else %}
+                        <option value="radian">radian</option>
+                        {% endif %}
+                </select>
+                </div>
+
+<!----------    Length Part-->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Length units*</span>
+                    </div>
+                <select class="select form-control" id="inlineFormInputGroup" name="length_unit">
+                   {% if length_unit == 'm' %}
+                        <option value="m" selected="selected">meter(m)</option>
+                        {% else %}
+                        <option value="m">meter(m)</option>
+                        {% endif %}
+
+                   {% if length_unit == 'cm' %}
+                        <option value="cm" selected="selected">cenimeter(cm)</option>
+                        {% else %}
+                        <option value="cm">cenimeter(cm)</option>
+                        {% endif %}
+
+                    {% if length_unit == 'mm' %}
+                        <option value="mm" selected="selected">millimeter(mm)</option>
+                        {% else %}
+                        <option value="mm">millimeter(mm)</option>
+                        {% endif %}
+
+                    {% if length_unit == 'yd' %}
+                        <option value="yd" selected="selected">yard(yd)</option>
+                        {% else %}
+                        <option value="yd">yard(yd)</option>
+                        {% endif %}
+
+                    {% if length_unit == 'ft' %}
+                        <option value="ft" selected="selected">feet(ft)</option>
+                        {% else %}
+                        <option value="ft">feet(ft)</option>
+                        {% endif %}
+
+                    {% if length_unit == 'in' %}
+                        <option value="in" selected="selected">inche(in)</option>
+                        {% else %}
+                        <option value="in">inche(in)</option>
+                        {% endif %}
+                </select>
+                </div>
+
+<!-------------  Significant Figures-->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Significant Figures</span>
+                    </div>
+                <select class="select form-control" id="inlineFormInputGroup" name="significant_figures">
+                   {% if significant_figures == 'auto' %}
+                        <option value="9" selected="selected">auto</option>
+                        {% else %}
+                        <option value="9">auto</option>
+                        {% endif %}
+
+                   {% if significant_figures == 3 %}
+                        <option value="3" selected="selected">3</option>
+                        {% else %}
+                        <option value="3">3</option>
+                        {% endif %}
+
+                    {% if significant_figures == 4 %}
+                        <option value="4" selected="selected">4</option>
+                        {% else %}
+                        <option value="4">4</option>
+                        {% endif %}
+
+                    {% if length_unit == 5 %}
+                        <option value="5" selected="selected">5</option>
+                        {% else %}
+                        <option value="5">5</option>
+                        {% endif %}
+
+                    {% if significant_figures == 6 %}
+                        <option value="6" selected="selected">6</option>
+                        {% else %}
+                        <option value="6">6</option>
+                        {% endif %}
+
+                    {% if significant_figures == 7 %}
+                        <option value="7" selected="selected">7</option>
+                        {% else %}
+                        <option value="7">7</option>
+                        {% endif %}
+
+                    {% if significant_figures == 8 %}
+                        <option value="8" selected="selected">8</option>
+                        {% else %}
+                        <option value="8">8</option>
+                        {% endif %}
+                    {% if significant_figures == 9 %}
+                        <option value="9" selected="selected">9</option>
+                        {% else %}
+                        <option value="9">9</option>
+                        {% endif %}
+
+                </select>
+                </div>
+
+
+
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'triangle_law_of_sines' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+        <!--        if given == "form1" and wt_sol and vol_sol and eq_wt -->
+        {% if flag1 %}
+        <div class="card c1" id="triangle_law_of_sines">
+            <div class="card-header">
+                {% if given == 'form1' %}
+                <h2 class="h2">Steps to Find Angle A :</h2>
+                {% endif %}
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:-</strong><br>
+                {% if given == 'form1' %}
+                <p class="btn btn-outline-secondary active">Angle A = sin<sup>-1</sup>[( a * sin(B) )  / b ]
+                    </p>
+
+                {% endif %}
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        a - side a of triangle
+                    </li>
+                    <li>
+                        b - side b of triangle
+                    </li>
+                    <li>
+                       B - angle of triangle
+                    </li>
+
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>side a = {{side_a}} {{length_unit}}</p>
+                <p>angle b = {{angle_b}} {{length_unit}}</p>
+                <p>side b = {{side_b}} {{length_unit}}</p>
+
+<!--                <details style="border:2px solid #009FE8; width:100%;">-->
+<!--                    <summary><b>Unit Conversions :</b></summary>-->
+<!--                    {% for formulas in formula_desc %}-->
+<!--                    <p>{{ formulas }}</p>-->
+<!--                    {% endfor%}-->
+<!--                </details>-->
+<!--                <br>-->
+
+                <strong>Put values into formula</strong>
+
+                    <p>
+                        Angle A = sin<sup>-1</sup>[( {{side_a}} * sin({{angle_b}}) )  / {{side_b}} ]
+                    </p>
+
+                    <strong>Angle A = {{result}} {{length_unit}} </strong>
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+
+            </div>
+        </div>
+        {% endif %}
+
+<!--------  Flag 4 -> form4 -> side a-->
+        {% if flag4 %}
+            <div class="card c1" id="triangle_law_of_cosines">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find side a :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong> Formula:-</strong>
+                <p class="btn btn-outline-secondary active">Side a = &Sqrt;b<sup>2</sup> + c<sup>2</sup> - 2*b*c*cosA
+                    </p>
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        A - Angle A of triangle
+                    </li>
+                    <li>
+                        b - Side b of triangle
+                    </li>
+                    <li>
+                       c - Side c of triangle
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Angle A = {{angle_a}} {{angle_unit}}</p>
+                <p>Side b = {{side_b}} {{length_unit}}</p>
+                <p>Side c = {{side_c}} {{length_unit}}</p>
+
+
+                <strong>Put values into formula</strong>
+                <p>Side a = &Sqrt;{{side_b}}<sup>2</sup> + {{side_c}}<sup>2</sup> - 2*{{side_b}}*{{side_c}}*cos({{angle_a}})</p>
+                <strong>Side a = {{result}} {{length_unit}} </strong>
+
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+
+            </div>
+        </div>
+        {% endif %}
+
+<!------       Form5 -> flag5 -> side b-->
+        {% if flag5 %}
+            <div class="card c1" id="triangle_law_of_cosines">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find side b :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong> Formula:-</strong>
+                <p class="btn btn-outline-secondary active">Side b = &Sqrt;a<sup>2</sup> + c<sup>2</sup> - 2*a*c*cosB
+                    </p>
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        B- Angle B of triangle
+                    </li>
+                    <li>
+                        a - Side a of triangle
+                    </li>
+                    <li>
+                       c - Side c of triangle
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Angle B = {{angle_b}} {{angle_unit}}</p>
+                <p>Side a= {{side_a}} {{length_unit}}</p>
+                <p>Side c = {{side_c}} {{length_unit}}</p>
+
+                <strong>Put values into formula</strong>
+                <p>Side b = &Sqrt;{{side_a}}<sup>2</sup> + {{side_c}}<sup>2</sup> - 2*{{side_a}}*{{side_c}}*cos({{angle_b}})</p>
+                <strong>Side b = {{result}} {{length_unit}} </strong>
+
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+
+            </div>
+        </div>
+        {% endif %}
+
+<!--        Form6 -> flag6 - > side c-->
+        {% if flag6 %}
+            <div class="card c1" id="triangle_law_of_cosines">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find side c :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong> Formula:-</strong>
+                <p class="btn btn-outline-secondary active">Side c = &Sqrt;a<sup>2</sup> + b<sup>2</sup> - 2*a*b*cosC
+                    </p>
+                <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        C - Angle C of triangle
+                    </li>
+                    <li>
+                        a - Side a of triangle
+                    </li>
+                    <li>
+                       b - Side b of triangle
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Angle C = {{angle_c}} {{angle_unit}}</p>
+                <p>Side a = {{side_a}} {{length_unit}}</p>
+                <p>Side b = {{side_b}} {{length_unit}}</p>
+
+
+                <strong>Put values into formula</strong>
+                <p>Side c = &Sqrt;{{side_a}}<sup>2</sup> + {{side_b}}<sup>2</sup> - 2*{{side_a}}*{{side_b}}*cos({{angle_c}})</p>
+                <strong>Side c = {{result}} {{length_unit}} </strong>
+
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+
+            </div>
+        </div>
+        {% endif %}
+
+
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,197 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{% endblock css %}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Average rate of change Calculator | Free Calculator to Average rate of change</title>
+<meta name="description"
+      content="Average rate of change Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Average rate of change Calculator | Free Calculator to find Average rate of change"/>
+<meta property="og:description" content="Average rate of change Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Average rate of change Calculator | Free Calculator to find Average rate of change"/>
+<meta name="twitter:description"
+      content="Average rate of change Calculator makes it easy for you to determine the theoretical yield value fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Average rate of change Calculator | Free Calculator to find Average rate of change "/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Average rate of change Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag  %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#average-rate-of-change'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Average Rate of Change Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'average-rate-of-change' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" >First point coordinates</span>
+                    </div></div>
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >x<sub>1</sub></span>
+
+                    <input style="margin-top: 5px;width:100%" id="x1" type="number" step="any" name="x1"
+                           value="{{x1}}" required=""
+                            class="form-control" required width="48">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >f(x₁)</span>
+                    </div>
+                     <input style="margin-top: 5px;width:100%" id="fx1" type="number" step="any" name="fx1"
+                           value="{{fx1}}" required=""
+                           class="form-control"  required width="48">
+                            </div>
+                            <br>
+
+
+<!--                second point coordinates -->
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" >Second point coordinates</span>
+                    </div></div>
+                <div>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >x₂</span>
+
+                    <input style="margin-top: 5px;width:100%" id="x2" type="number" step="any" name="x2"
+                           value="{{x2}}" required=""
+                            class="form-control" required width="48">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >f(x₂)</span>
+                    </div>
+
+                     <input style="margin-top: 5px;width:100%" id="fx2" type="number" step="any" name="fx2"
+                           value="{{fx2}}" required=""
+                            class="form-control" type="number" required width="48">
+                            </div>
+
+                    </div>
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class="center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'average-rate-of-change' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+            <div class="card c1" id="average-rate-of-change">
+            <div class="card-header">
+                <h2 class="h2">Steps to find Average Rate of Change:</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:</strong><br>
+                <p class="btn btn-outline-secondary active">A = [f(x2) - f(x1)] / [x2 - x1],</p> <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        x1, f(x1) are the coordinates of the first point.
+                    </li>
+                    <li>
+                       x2, f(x2) are the coordinates of the second point.
+                    </li>
+                </ul>
+
+                <strong>Input values are:</strong>
+                <p>x₁ = {{ x1 }}</p>
+                <p>f(x₁) = {{ fx1 }}</p>
+                <p>x₂ = {{ x2 }}</p>
+                <p>f(x₂) = {{ fx2 }}</p>
+
+                <strong>Put values into formula:</strong>
+                    <p>A = [f({{fx2}}) - f({{fx1}})] / [({{x2}}) - ({{x1}})] = {{a_result}}</p>
+
+                <strong>Result:</strong>
+                <p>A = {{a_result}}</p>
+
+            </div>
+        </div>
+        {% endif %}
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,873 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Neutralization Calculator | Free Calculator to find Capacitance</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag1 or flag2 or flag3 or flag4 %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#angle-between-two-vectors'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Angle between two vectors Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="{% url 'angle-between-two-vectors' %}" method="POST" id="my_form">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Vectors in</span>
+                    </div>
+
+                    <select id="given" name="given" style="margin-top: 5px;width:100%" class="select form-control"
+                            id="inlineFormInputGroup" onchange="this.form.submit()">
+
+                        {% if given == 'form1' %}
+                        <option value='form1' selected="selected">Angle between 2D vectors
+                        </option>
+                        {% else %}
+                        <option value='form1'>Angle between 2D vectors
+                        </option>
+                        {% endif %}
+
+                        {% if given == 'form2' %}
+                        <option value='form2' selected="selected">Angle between 3D vectors
+                        </option>
+                        {% else %}
+                        <option value='form2'>Angle between 3D vectors
+                        </option>
+                        {% endif %}
+
+                    </select>
+                </div>
+
+<!----------     If form 1 is selected - 2D-->
+
+                {% if given == "form1" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >vector a</span>
+                    </div>
+
+                   <select id="given_2d_a" name="given_2d_a" style="margin-top: 5px;width:100%" class="select form-control"
+                            id="inlineFormInputGroup" onchange="this.form.submit()">
+
+                        {% if given_2d_a == 'cr' %}
+                        <option value="cr" selected="selected">Coordinate Representation</option>
+                        {% else %}
+                        <option value="cr">Coordinate Representation</option>
+                        {% endif %}
+
+                        {% if given_2d_a == 'pr' %}
+                        <option value="pr" selected="selected">Point Representation</option>
+                        {% else %}
+                        <option value="pr">Point Representation</option>
+                        {% endif %}
+                    </select>
+                </div>
+
+
+
+                 {% if given_2d_a == "cr" and given == 'form1' %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_2d_cr_x" type="number" step="any" min="0" name="a_2d_cr_x"
+                           value="{{a_2d_cr_x}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="text" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_2d_cr_y" type="number" step="any" min="0" name="a_2d_cr_y"
+                           value="{{a_2d_cr_y}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+                {% if given_2d_a == "pr" and given == 'form1' %}
+                <div class="input-group mb-3">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Initial point A</span>
+                     </div></div>
+
+                    <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_2d_pr_x1" type="number" step="any" min="0" name="a_2d_pr_x1"
+                           value="{{a_2d_pr_x1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_2d_pr_y1" type="number" step="any" min="0" name="a_2d_pr_y1"
+                           value="{{a_2d_pr_y1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+                </div>
+
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Terminal point B</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_2d_pr_x2" type="number" step="any" min="0" name="a_2d_pr_x2"
+                           value="{{a_2d_pr_x2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_2d_pr_y2" type="number" step="any" min="0" name="a_2d_pr_y2"
+                           value="{{a_2d_pr_y2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+<!------------    Form1 2D - vector B pat-->
+                {% if given == 'form1' %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">vector b</span>
+                    </div>
+
+                   <select id="given_2d_b" name="given_2d_b" style="margin-top: 5px;width:100%" class="select form-control"
+                            onchange="this.form.submit()">
+
+                        {% if given_2d_b == 'cr' %}
+                        <option value="cr" selected="selected">Coordinate Representation</option>
+                        {% else %}
+                        <option value="cr">Coordinate Representation</option>
+                        {% endif %}
+
+                        {% if given_2d_b == 'pr' %}
+                        <option value="pr" selected="selected">Point Representation</option>
+                        {% else %}
+                        <option value="pr">Point Representation</option>
+                        {% endif %}
+                    </select>
+                </div>
+                {% endif %}
+
+
+                 {% if given_2d_b == "cr" and given == 'form1' %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_2d_cr_x" type="number" step="any" min="0" name="b_2d_cr_x"
+                           value="{{a_2d_cr_x}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="text" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_2d_cr_y" type="number" step="any" min="0" name="b_2d_cr_y"
+                           value="{{a_2d_cr_y}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+                {% if given_2d_b == "pr" and given == 'form1' %}
+                <div class="input-group mb-3">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Initial point A</span>
+                     </div></div>
+
+                 <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_2d_pr_x1" type="number" step="any" min="0" name="b_2d_pr_x1"
+                           value="{{b_2d_pr_x1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_2d_pr_y1" type="number" step="any" min="0" name="b_2d_pr_y1"
+                           value="{{b_2d_pr_y1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+                </div>
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Terminal point B</span>
+                    </div></div>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_2d_pr_x2" type="number" step="any" min="0" name="b_2d_pr_x2"
+                           value="{{b_2d_pr_x2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_2d_pr_y2" type="number" step="any" min="0" name="b_2d_pr_y2"
+                           value="{{b_2d_pr_y2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+
+
+
+<!------------  Form2 3D part full-->
+                {% if given == "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >vector a</span>
+                    </div>
+
+                   <select id="given_3d_a" name="given_3d_a" style="margin-top: 5px;width:100%" class="select form-control"
+                            onchange="this.form.submit()">
+
+                        {% if given_3d_a == 'cr' %}
+                        <option value="cr" selected="selected">Coordinate Representation</option>
+                        {% else %}
+                        <option value="cr">Coordinate Representation</option>
+                        {% endif %}
+
+                        {% if given_3d_a == 'pr' %}
+                        <option value="pr" selected="selected">Point Representation</option>
+                        {% else %}
+                        <option value="pr">Point Representation</option>
+                        {% endif %}
+                    </select>
+                </div>
+                {% endif %}
+
+
+                 {% if given_3d_a == "cr" and given == "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_3d_cr_x" type="number" step="any" min="0" name="a_3d_cr_x"
+                           value="{{a_3d_cr_x}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="text" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_3d_cr_y" type="number" step="any" min="0" name="a_3d_cr_y"
+                           value="{{a_3d_cr_y}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">z</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_3d_cr_z" type="number" step="any" min="0" name="a_3d_cr_z"
+                           value="{{a_3d_cr_z}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+                {% if given_3d_a == "pr" and given == "form2" %}
+                <div class="input-group mb-3">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Initial point A</span>
+                    </div>
+                </div>
+
+                    <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_3d_pr_x1" type="number" step="any" min="0" name="a_3d_pr_x1"
+                           value="{{a_3d_pr_x1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_3d_pr_y1" type="number" step="any" min="0" name="a_3d_pr_y1"
+                           value="{{a_3d_pr_y1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">z1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_3d_pr_z1" type="number" step="any" min="0" name="a_3d_pr_z1"
+                           value="{{a_3d_pr_z1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+                </div>
+
+
+
+
+
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Terminal point B</span>
+                    </div></div>
+
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_3d_pr_x2" type="number" step="any" min="0" name="a_3d_pr_x2"
+                           value="{{a_3d_pr_x2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_3d_pr_y2" type="number" step="any" min="0" name="a_3d_pr_y2"
+                           value="{{a_3d_pr_y2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+
+                        <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">z2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="a_3d_pr_z2" type="number" step="any" min="0" name="a_3d_pr_z2"
+                           value="{{a_3d_pr_z2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+<!------------    Form1 3D - vector B pat-->
+                {% if given == 'form2' %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">vector b</span>
+                    </div>
+
+                   <select id="given_3d_b" name="given_3d_b" style="margin-top: 5px;width:100%" class="select form-control"
+                            onchange="this.form.submit()">
+
+                        {% if given_3d_b == 'cr' %}
+                        <option value="cr" selected="selected">Coordinate Representation</option>
+                        {% else %}
+                        <option value="cr">Coordinate Representation</option>
+                        {% endif %}
+
+                        {% if given_3d_b == 'pr' %}
+                        <option value="pr" selected="selected">Point Representation</option>
+                        {% else %}
+                        <option value="pr">Point Representation</option>
+                        {% endif %}
+                    </select>
+                </div>
+                {% endif %}
+
+
+                 {% if given_3d_b == "cr" and given == "form2" %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_3d_cr_x" type="number" step="any" min="0" name="b_3d_cr_x"
+                           value="{{b_3d_cr_x}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="text" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_3d_cr_y" type="number" step="any" min="0" name="b_3d_cr_y"
+                           value="{{b_3d_cr_y}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">z</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_3d_cr_z" type="number" step="any" min="0" name="b_3d_cr_z"
+                           value="{{b_3d_cr_z}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+                {% if given_3d_b == "pr" and given == "form2" %}
+                <div class="input-group mb-3">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Initial point A</span>
+                    </div>
+                    </div>
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_3d_pr_x1" type="number" step="any" min="0" name="b_3d_pr_x1"
+                           value="{{b_3d_pr_x1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_3d_pr_y1" type="number" step="any" min="0" name="b_3d_pr_y1"
+                           value="{{b_3d_pr_y1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">z1</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_3d_pr_z1" type="number" step="any" min="0" name="b_3d_pr_z1"
+                           value="{{b_3d_pr_z1}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                </div>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Terminal point B</span>
+                    </div>
+                </div>
+
+                    <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">x2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_3d_pr_x2" type="number" step="any" min="0" name="b_3d_pr_x2"
+                           value="{{b_3d_pr_x2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                     <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">y2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_3d_pr_y2" type="number" step="any" min="0" name="b_3d_pr_y2"
+                           value="{{b_3d_pr_y2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">z2</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="b_3d_pr_z2" type="number" step="any" min="0" name="b_3d_pr_z2"
+                           value="{{b_3d_pr_z2}}"
+                           required="" oninput="validateNumber(this);" class="form-control" type="number" required
+                           width="48">
+
+                </div>
+                {% endif %}
+
+
+                <div>
+                    <div class=" center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'neutralization' %}" class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+        <!--        if given == "form1" and wt_sol and vol_sol and eq_wt -->
+        {% if flag1 %}
+
+        <div class="card c1" id="neutralization">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Normality :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Normality Formula:-</strong><br>
+                <p class="btn btn-outline-secondary active">Normality = weight of solute / volume of
+                    sovent * equivalent weight</p>
+                <br>
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        <bold>Weight of solute</bold>
+                        is the weight of the substance of interest (acid or base), expressed in
+                        <bold>grams (g)</bold>
+                        .
+                    </li>
+                    <li>
+                        <bold>Volume of solvent</bold>
+                        is the volume of the liquid in which the substance is dissolved. It is typically measured in
+                        <bold>liters (L)</bold>
+                        .
+                    </li>
+                    <li>
+                        <bold>Equivalent weight</bold>
+                        is equal to the molecular weight of the substance (acid or base) divided by its valence. You can
+                        easily find this value for most common substances. It is expressed in
+                        <bold>g/eq</bold>
+                        .
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+                <strong>Input values are:-</strong>
+                <p>Weight of solute = {{wt_sol}} {{wt_sol_op}}</p>
+                <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>
+                <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>
+
+                <details style="border:2px solid #009FE8; width:100%;">
+                    <summary><b>Unit Conversions :</b></summary>
+                    {% for formulas in formula_desc %}
+                    <p>{{ formulas }}</p>
+                    {% endfor%}
+                </details>
+                <br>
+
+                <strong>Put values into formula</strong>
+                <p>{{ put_values_in_formula }}</p>
+
+                <!--<center><b id="formula" style="font-size:25px;">Normalization = {{norm}} N </b></center>-->
+                </b><strong>Normality = {{norm}} <sup>{{power_of_result}}</sup> N </strong>
+
+            </div>
+        </div>
+        {% endif %}
+
+        <!--         if given == "form2" and vol_sol and norm and wt_sol -->
+        {% if flag2 %}
+
+        <div class="card c1" id="neutralization">
+            <div class="card-header">
+                <h2 class="h2">Steps to Find Equivalent weight:</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Equivalent weight:-</strong><br>
+                <p class="btn btn-outline-secondary active">Equivalent weight = weight of solute / (volume of
+                    solvent * normality) </p><br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        <bold>Weight of solute</bold>
+                        is the weight of the substance of interest (acid or base), expressed in
+                        <bold>grams (g)</bold>
+                        grams (g)
+                    </li>
+                    <li>
+                        <bold>Volume of solvent</bold>
+                        is the volume of the liquid in which the substance is dissolved. It is typically measured in
+                        <bold>liters (L)</bold>
+                    </li>
+                    <li>
+                        <bold>Normality</bold>
+                        bold> is a value that measures the concentration of the substance (acid or base) in a dissolving
+                        liquid. It is measured in the unit N equivalent to
+                        <bold>eq/L</bold>
+                    </li>
+                    <!--                    <li>S is the separation distance between the plates..</li>-->
+                </ul>
+
+
+                <strong>Input values are:-</strong>
+                <p>Weight of solute = {{wt_sol}} {{wt_sol_op}}</p>
+                <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>
+                <p>Normality = {{norm}} N</p>
+
+                <details style="border:2px solid #009FE8; width:100%;">
+                    <summary><b>Unit Conversions :</b></summary>
+                    {% for formulas in formula_desc %}
+                    <p>{{ formulas }}</p>
+                    {% endfor%}
+                </details>
+                <br>
+
+                <strong>Put values into formula</strong>
+                <p>{{ put_values_in_formula }}</p>
+
+                <!--                    <center><b id="formula" style="font-size:25px;">Equivalent weight = {{eq_wt}} g </b></center>-->
+                <!--                <center><b>Equivalent weight = {{eq_wt}} g </b></center>-->
+                </b><strong>Equivalent weight = {{eq_wt}} <sup>{{power_of_result}}</sup> g </strong>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-----------Volume of solvent result-->
+{% if flag3 %}
+<!--if given == "form3" and eq_wt and norm and wt_sol -->
+<div class="card c1" id="neutralization">
+    <div class="card-header">
+        <h2 class="h2">Steps to Volume of solvent:</h2>
+    </div>
+
+    <div class="card-body">
+
+        <strong>Volume of solvent:-</strong>
+        <br>
+        <p class="btn btn-outline-secondary active">Volume of solvent = weight of solute / (normality *
+            equivalent weight)</p>
+        <br>
+        <strong>where:</strong>
+        <ul>
+            <li>
+                <bold>Weight of solute</bold>
+                is the weight of the substance of interest (acid or base), expressed in
+                <bold>grams (g)</bold>
+                .
+            </li>
+            <li>
+                <bold>Equivalent weight</bold>
+                is equal to the molecular weight of the substance (acid or base) divided by its valence. You can easily
+                find this value for most common substances. It is expressed in
+                <bold>g/eq</bold>
+                .
+            </li>
+            <li>
+                <bold>Normality</bold>
+                is a value that measures the concentration of the substance (acid or base) in a dissolving liquid.
+                It is measured in the unit N equivalent to
+                <bold>eq/L</bold>
+                .
+            </li>
+        </ul>
+
+
+        <strong>Input values are:-</strong>
+        <p>Weight of solute = {{wt_sol}} {{wt_sol_op}}</p>
+        <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>
+        <p>Normality = {{norm}} N</p>
+
+        <details style="border:2px solid #009FE8; width:100%;">
+            <summary><b>Unit Conversions:</b></summary>
+            {% for formulas in formula_desc %}
+            <p>{{ formulas }}</p>
+            {% endfor%}
+        </details>
+        <br>
+        <strong>Put values into formula</strong>
+        <p>{{ put_values_in_formula }}</p>
+
+        <!--        <center><b id="formula" style="font-size:25px;">Volume of solvent = {{vol_sol}} L </b></center>-->
+        <strong>Volume of solvent = {{vol_sol}} <sup>{{power_of_result}}</sup> L </strong>
+
+    </div>
+</div>
+</div>
+</div>
+{% endif %}
+
+<!---------- Weight of solute result-->
+{% if flag4 %}
+<!--if given == "form4" and eq_wt and norm and vol_sol -->
+<div class="card c1" id="neutralization">
+    <div class="card-header">
+        <h2 class="h2">Steps to Find Weight of solute:</h2>
+    </div>
+
+    <div class="card-body">
+
+        <strong>Weight of solute:-</strong>
+        <br>
+        <p class="btn btn-outline-secondary active">Weight of solute = normality *
+            equivalent weight * volume of solvent </p>
+        <br>
+
+        <strong>where:</strong>
+        <ul>
+            <li>
+                <bold>Equivalent weight</bold>
+                is equal to the molecular weight of the substance (acid or base) divided by its valence. You can easily
+                find this value for most common substances. It is expressed in
+                <bold>g/eq</bold>
+                .
+            </li>
+            <li>
+                <bold>Normality</bold>
+                bold> is a value that measures the concentration of the substance (acid or base) in a dissolving liquid.
+                It is measured in the unit N equivalent to
+                <bold>eq/L</bold>
+                .
+            </li>
+            <li>
+                <bold>Volume of solvent</bold>
+                is the volume of the liquid in which the substance is dissolved. It is typically measured in
+                <bold>liters (L)</bold>
+                .
+            </li>
+        </ul>
+
+
+        <strong>Input values are:-</strong>
+        <p>Equivalent weight = {{eq_wt}} {{eq_wt_op}}</p>
+        <p>Volume of solvent = {{vol_sol}} {{vol_sol_op}}</p>
+        <p>Normality = {{norm}} N</p>
+
+
+        <details style="border:2px solid #009FE8; width:100%;">
+            <summary><b>Unit Conversions :</b></summary>
+            {% for formulas in formula_desc %}
+            <p>{{ formulas }}</p>
+            {% endfor%}
+        </details>
+        <br>
+
+        <strong>Put values into formula</strong>
+        <p>{{ put_values_in_formula }}</p>
+
+        <!--        <center><b id="formula" style="font-size:25px;">Weight of solute = {{wt_sol}} g </b></center>-->
+
+        <strong>Weight of solute = {{wt_sol}} <sup>{{power_of_result}}</sup> g </strong>
+
+    </div>
+</div>
+</div>
+</div>
+{% endif %}
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,206 @@
+{%extends 'calculator/base.html'%}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+      type="icon">
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock css%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>Parallel line Calculator | Free Calculator to Parallel line</title>
+<meta name="description"
+      content="Capacitance Calculator makes it easy for you to determine the value of capacitance, area, and distance with steps."/>
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url"/>
+<meta property="og:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta property="og:description" content="Angular Resolution Calculator"/>
+<meta content="" property="og:site_name"/>
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"
+      property="og:image"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:height" content="435"/>
+<meta property="og:image:width" content="354"/>
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator"/>
+<meta name="twitter:title" content="Angular Resolution Calculator | Free Calculator to find Angular Resolution"/>
+<meta name="twitter:description"
+      content="Angular Resolution Calculator makes it easy for you to determine the theoretical yield value of the chemical reaction in fraction of seconds with steps."/>
+<meta name="twitter:image:src"
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property="twitter:image:height" content="435"/>
+<meta property="twitter:image:width" content="354"/>
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<meta property='og:title' content="Parallel line Calculator | Free Calculator to find Parallel line"/>
+<meta property='og:image'
+      content="https://onlinecalculator.guru/static/images/Chemistry/Theoratical-Yield-Calculator.jpeg"/>
+<meta property='og:description' content="Angular Resolution Calculator."/>
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/"/>
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock meta %}
+
+{% block content %}
+{% if  flag  %}
+<script>
+        $(document).ready(function () {
+            $("#hassle").click();
+        });
+
+</script>
+<button type="button" hidden id="hassle" onclick="location.href='#parallel-line'">ans1</button>
+{% endif %}
+
+
+<div class="container" style="height: auto !important;">
+    <div class="card c1">
+        <div class="card-header">
+            <h1 class="h1">Parallel line Calculator</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <p {% if message.tags %} id="message_container" class="alert alert-danger text-center" {% endif %}
+                   style="color:red">{{ message }}</p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+<!----------   Form  --------->
+            <form action="{% url 'parallel-line' %}" method="POST" id="my_form">
+                {% csrf_token %}
+
+                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">First line equation y = mx + c</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">m</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="m" type="number" step="any" name="m"
+                           value="{{m}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">r</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="r" type="number" step="any" name="r"
+                           value="{{r}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Second line passes through point</span>
+                    </div></div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >x</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="x" type="number" step="any" name="x"
+                           value="{{x}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="text" required width="48">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >y</span>
+                    </div>
+
+                    <input style="margin-top: 5px;width:100%" id="y" type="number" step="any" name="y"
+                           value="{{y}}" required=""
+                           oninput="validateNumber(this);" class="form-control" type="number" required width="48">
+                </div>
+<!----------    Calculate, Reset part-->
+                <div>
+                    <div class="center col mt-2 ">
+                        <center>
+                            <button type="submit" class="btn btn-primary">Calculate</button>
+                            <a href="{% url 'parallel-line' %}"  class="btn btn-warning" style="margin-top:5px;">Reset</a>
+                        </center>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!--summary of result and how it's evaluated-->
+<div id="clear">
+    <div class="container" style="height: auto !important;">
+
+        {% if flag %}
+            <div class="card c1" id="parallel-line">
+            <div class="card-header">
+                <h2 class="h2">Steps to find parallel-line equation :</h2>
+            </div>
+
+            <div class="card-body">
+                <strong>Formula:</strong><br>
+                <p class="btn btn-outline-secondary active">b = y - m * x</p> <br>
+                <p class="btn btn-outline-secondary active">Distance(D) = |b - r| / √(m² + 1) </p> <br>
+
+                <strong>where:</strong>
+                <ul>
+                    <li>
+                        m, r - m is slope and r is intercept on y axis
+                    </li>
+                    <li>
+                        x, y - coordinates of the point your line is supposed to pass through.
+                    </li>
+                    <li>
+                        a, b - a and b are the coefficients
+                    </li>
+                </ul>
+
+                <strong>Input values are:</strong>
+                <p>m = {{ m }}</p>
+                <p>r = {{ r }}</p>
+                <p>x = {{ x }}</p>
+                <p>y = {{ y }}</p>
+
+                <strong>Result :</strong>
+                    <p>Parallel line equation y = ax + b</p>
+                    <p>a = m = {{m}}</p>
+                    <p>b = {{b}} ,&nbsp;&nbsp;  (using b = y - m * x)</p>
+                    <p>D = |b - r| / √(m² + 1) </p>
+                    <p>&nbsp;&nbsp;&nbsp;=  |{{b}} - ({{r}})| / √({{m}}² + 1) =  {{distance }}</p>
+
+            </div>
+        </div>
+        {% endif %}
+</div>
+</div>
+{% endblock content %}

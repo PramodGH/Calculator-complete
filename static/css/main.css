@@ -5,6 +5,7 @@
     font-family: 'Lato', sans-serif;
   }
 
+
    #Valpy/
   p {
     font-size: 1.1rem;
@@ -440,3 +441,5 @@
       width: 0px;  /* Remove scrollbar space */
       background: transparent;  /* Optional: just make scrollbar invisible */
     }
+    #underline-division{
+    text-decoration: underline}
